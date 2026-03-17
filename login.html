@@ -1,113 +1,133 @@
-<!-- 🔥 SUPABASE (OBRIGATÓRIO) -->
-<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
 
-<script>
-  const SUPABASE_URL = "https://rjiydewkobfbevzfrxbz.supabase.co";
+    <!-- Supabase -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  </head>
 
-  const SUPABASE_ANON_KEY =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqaXlkZXdrb2JmYmV2emZyeGJ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM0ODEyOTksImV4cCI6MjA4OTA1NzI5OX0.QvooykPpjtAptqIYG2cIsnTv7yZeNyNFQ5QirgaKeQ8";
+  <body>
+    <div class="loginCard">
+      <h2>Login</h2>
 
-  const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_ANON_KEY,
-  );
+      <input type="email" id="email" placeholder="Email" />
+      <input type="password" id="senha" placeholder="Senha" />
 
-  // 🔥 CORREÇÃO DO RECOVERY (AGORA FUNCIONA)
-  (async () => {
-    const params = new URLSearchParams(window.location.hash.substring(1));
+      <button onclick="fazerLogin()">Entrar</button>
+      <button onclick="recuperarSenha()">Esqueci minha senha</button>
+    </div>
 
-    if (params.get("type") === "recovery") {
-      const access_token = params.get("access_token");
+    <script>
+      const SUPABASE_URL = "https://rjiydewkobfbevzfrxbz.supabase.co";
 
-      if (access_token) {
-        const { error } = await supabaseClient.auth.exchangeCodeForSession(
-          window.location.hash,
-        );
+      const SUPABASE_ANON_KEY =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqaXlkZXdrb2JmYmV2emZyeGJ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM0ODEyOTksImV4cCI6MjA4OTA1NzI5OX0.QvooykPpjtAptqIYG2cIsnTv7yZeNyNFQ5QirgaKeQ8";
 
-        if (error) {
-          alert("Erro ao validar recuperação: " + error.message);
+      const supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_ANON_KEY,
+      );
+
+      (async () => {
+        const params = new URLSearchParams(window.location.hash.substring(1));
+
+        if (params.get("type") === "recovery") {
+          const access_token = params.get("access_token");
+
+          if (access_token) {
+            const { error } = await supabaseClient.auth.exchangeCodeForSession(
+              window.location.hash,
+            );
+
+            if (error) {
+              alert("Erro ao validar recuperação: " + error.message);
+              return;
+            }
+
+            const card = document.querySelector(".loginCard");
+
+            if (card) {
+              card.innerHTML = `
+              <h2>Nova senha</h2>
+              <input type="password" id="novaSenha" placeholder="Nova senha" />
+              <button onclick="atualizarSenha()">Atualizar senha</button>
+            `;
+            }
+          }
+        }
+      })();
+
+      if (window.location.href.includes("access_token")) {
+        window.history.replaceState({}, document.title, "/SCFP/login.html");
+      }
+
+      async function fazerLogin() {
+        const email = document.getElementById("email").value;
+        const senha = document.getElementById("senha").value;
+
+        if (!email || !senha) {
+          alert("Informe email e senha");
           return;
         }
 
-        const card = document.querySelector(".loginCard");
+        const { error } = await supabaseClient.auth.signInWithPassword({
+          email,
+          password: senha,
+        });
 
-        if (card) {
-          card.innerHTML = `
-          <h2>Nova senha</h2>
-          <input type="password" id="novaSenha" placeholder="Nova senha" />
-          <button onclick="atualizarSenha()">Atualizar senha</button>
-        `;
+        if (error) {
+          alert("Login inválido");
+          return;
         }
+
+        window.location.href = "/SCFP/index.html";
       }
-    }
-  })();
 
-  // limpa URL
-  if (window.location.href.includes("access_token")) {
-    window.history.replaceState({}, document.title, "/SCFP/login.html");
-  }
+      async function recuperarSenha() {
+        const email = document.getElementById("email").value;
 
-  async function fazerLogin() {
-    const email = document.querySelector("input[type=email]").value;
-    const senha = document.querySelector("input[type=password]").value;
+        if (!email) {
+          alert("Digite seu email");
+          return;
+        }
 
-    if (!email || !senha) {
-      alert("Informe email e senha");
-      return;
-    }
+        const { error } = await supabaseClient.auth.resetPasswordForEmail(
+          email,
+          {
+            redirectTo: "https://marcormarques.github.io/SCFP/login.html",
+          },
+        );
 
-    const { error } = await supabaseClient.auth.signInWithPassword({
-      email: email,
-      password: senha,
-    });
+        if (error) {
+          alert("Erro: " + error.message);
+          return;
+        }
 
-    if (error) {
-      alert("Login inválido");
-      return;
-    }
+        alert("Email enviado!");
+      }
 
-    window.location.href = "/SCFP/index.html";
-  }
+      async function atualizarSenha() {
+        const novaSenha = document.getElementById("novaSenha").value;
 
-  async function recuperarSenha() {
-    const email = document.getElementById("email").value;
+        if (!novaSenha) {
+          alert("Digite a nova senha");
+          return;
+        }
 
-    if (!email) {
-      alert("Digite seu email para recuperar a senha");
-      return;
-    }
+        const { error } = await supabaseClient.auth.updateUser({
+          password: novaSenha,
+        });
 
-    const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
-      redirectTo: "https://marcormarques.github.io/SCFP/login.html",
-    });
+        if (error) {
+          alert("Erro: " + error.message);
+          return;
+        }
 
-    if (error) {
-      alert("Erro: " + error.message);
-      console.log(error);
-      return;
-    }
-
-    alert("Email de recuperação enviado!");
-  }
-
-  async function atualizarSenha() {
-    const novaSenha = document.getElementById("novaSenha").value;
-
-    if (!novaSenha) {
-      alert("Digite a nova senha");
-      return;
-    }
-
-    const { error } = await supabaseClient.auth.updateUser({
-      password: novaSenha,
-    });
-
-    if (error) {
-      alert("Erro: " + error.message);
-      return;
-    }
-
-    alert("Senha atualizada com sucesso!");
-    window.location.href = "/SCFP/login.html";
-  }
-</script>
+        alert("Senha atualizada!");
+        window.location.href = "/SCFP/login.html";
+      }
+    </script>
+  </body>
+</html>
