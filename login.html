@@ -34,30 +34,24 @@
       );
 
       (async () => {
-        const params = new URLSearchParams(window.location.hash.substring(1));
+        const hash = window.location.hash;
 
-        if (params.get("type") === "recovery") {
-          const access_token = params.get("access_token");
+        if (hash.includes("access_token")) {
+          const { data, error } = await supabaseClient.auth.getSession();
 
-          if (access_token) {
-            const { error } = await supabaseClient.auth.exchangeCodeForSession(
-              window.location.hash,
-            );
+          if (error) {
+            alert("Erro ao validar recuperação: " + error.message);
+            return;
+          }
 
-            if (error) {
-              alert("Erro ao validar recuperação: " + error.message);
-              return;
-            }
+          const card = document.querySelector(".loginCard");
 
-            const card = document.querySelector(".loginCard");
-
-            if (card) {
-              card.innerHTML = `
-              <h2>Nova senha</h2>
-              <input type="password" id="novaSenha" placeholder="Nova senha" />
-              <button onclick="atualizarSenha()">Atualizar senha</button>
-            `;
-            }
+          if (card) {
+            card.innerHTML = `
+        <h2>Nova senha</h2>
+        <input type="password" id="novaSenha" placeholder="Nova senha" />
+        <button onclick="atualizarSenha()">Atualizar senha</button>
+      `;
           }
         }
       })();
