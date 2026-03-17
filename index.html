@@ -475,6 +475,8 @@
         );
 
         async function verificarLogin() {
+          await new Promise((resolve) => setTimeout(resolve, 500));
+
           const { data } = await supabaseClient.auth.getSession();
 
           if (!data.session) {
