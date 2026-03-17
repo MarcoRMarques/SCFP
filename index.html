@@ -477,17 +477,23 @@
           },
         );
 
-        async function verificarLogin() {
-          await new Promise((resolve) => setTimeout(resolve, 500));
+        // 🔐 VERIFICAÇÃO DE LOGIN (CORRETA)
 
-          const { data } = await supabaseClient.auth.getSession();
+        (async () => {
+          const {
+            data: { session },
+          } = await supabaseClient.auth.getSession();
 
-          if (!data.session) {
+          if (!session) {
             window.location.href = "login.html";
           }
-        }
+        })();
 
-        verificarLogin();
+        supabaseClient.auth.onAuthStateChange((event, session) => {
+          if (!session) {
+            window.location.href = "login.html";
+          }
+        });
 
         function converterValor(valor) {
           if (valor === null || valor === undefined) return 0;
