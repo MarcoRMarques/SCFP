@@ -463,8 +463,9 @@
       <script src="https://unpkg.com/lucide@latest"></script>
 
       <script>
-        window.location.href = "login.html";
-        return;
+        if (true) {
+          window.location.href = "login.html";
+        }
         const SUPABASE_URL = "https://rjiydewkobfbevzfrxbz.supabase.co";
         const SUPABASE_ANON_KEY =
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqaXlkZXdrb2JmYmV2emZyeGJ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM0ODEyOTksImV4cCI6MjA4OTA1NzI5OX0.QvooykPpjtAptqIYG2cIsnTv7yZeNyNFQ5QirgaKeQ8";
@@ -477,7 +478,7 @@
           const { data } = await supabaseClient.auth.getSession();
 
           if (!data.session) {
-            window.location.href = "/SCFP/login.html";
+            window.location.href = "login.html";
           }
         }
 
