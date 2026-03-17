@@ -13,6 +13,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png" />
 
     <link rel="stylesheet" href="css/style.css" />
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
   </head>
 
   <body>
@@ -462,10 +463,12 @@
       <script src="https://unpkg.com/lucide@latest"></script>
 
       <script>
+        window.location.href = "login.html";
+        return;
         const SUPABASE_URL = "https://rjiydewkobfbevzfrxbz.supabase.co";
         const SUPABASE_ANON_KEY =
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqaXlkZXdrb2JmYmV2emZyeGJ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM0ODEyOTksImV4cCI6MjA4OTA1NzI5OX0.QvooykPpjtAptqIYG2cIsnTv7yZeNyNFQ5QirgaKeQ8";
-        const supabaseClient = window.supabase.createClient(
+        const supabaseClient = supabase.createClient(
           SUPABASE_URL,
           SUPABASE_ANON_KEY,
         );
