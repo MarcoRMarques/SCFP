@@ -17,14 +17,24 @@
       const access_token = params.get("access_token");
 
       if (access_token) {
-        await supabaseClient.auth.exchangeCodeForSession(window.location.href);
+        const { error } = await supabaseClient.auth.exchangeCodeForSession(
+          window.location.hash,
+        );
 
-        // mostra tela de nova senha
-        document.querySelector(".loginCard").innerHTML = `
-        <h2>Nova senha</h2>
-        <input type="password" id="novaSenha" placeholder="Nova senha" />
-        <button onclick="atualizarSenha()">Atualizar senha</button>
-      `;
+        if (error) {
+          alert("Erro ao validar recuperação: " + error.message);
+          return;
+        }
+
+        const card = document.querySelector(".loginCard");
+
+        if (card) {
+          card.innerHTML = `
+          <h2>Nova senha</h2>
+          <input type="password" id="novaSenha" placeholder="Nova senha" />
+          <button onclick="atualizarSenha()">Atualizar senha</button>
+        `;
+        }
       }
     }
   })();
