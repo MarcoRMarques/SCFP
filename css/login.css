@@ -1,0 +1,122 @@
+* {
+  box-sizing: border-box;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+body {
+  margin: 0;
+  font-family:
+    "Poppins",
+    Segoe UI,
+    sans-serif;
+
+  background-image: url("../img/login-bg.png");
+  background-size: cover;
+  background-position: center;
+
+  height: 100vh;
+}
+
+.overlay {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+}
+
+.loginCard {
+  width: 300px;
+  max-width: 90%;
+
+  background: white;
+
+  padding: 35px 28px 40px 28px;
+
+  border-radius: 12px;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.loginCard input {
+  width: 100%;
+
+  padding: 13px;
+  margin-top: 8px;
+
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+
+  font-size: 14px;
+
+  transition: 0.2s;
+}
+
+.loginCard input:focus {
+  outline: none;
+  border-color: #10b981;
+
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+.loginCard button {
+  width: 100%;
+  padding: 13px;
+
+  margin-top: 8px;
+
+  background: #10b981;
+  color: white;
+
+  border: none;
+  border-radius: 8px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.loginCard button:hover {
+  background: #059669;
+}
+
+.logoArea h2 {
+  margin: 6px 0 2px;
+  font-size: 26px;
+}
+
+.logoArea p {
+  font-size: 14px;
+
+  color: #10b981;
+
+  font-weight: 500;
+}
+
+.recuperar {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #666;
+}
+.logoArea h2 {
+  font-size: 28px;
+
+  letter-spacing: 1px;
+
+  font-weight: 700;
+
+  margin: 6px 0 2px;
+}

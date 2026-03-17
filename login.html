@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>SCFP - Login</title>
+
+    <link rel="stylesheet" href="css/login.css" />
+
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  </head>
+
+  <body>
+    <div class="overlay">
+      <div class="loginCard">
+        <div class="logoArea">
+          <div class="avatar"></div>
+          <h2>SCFP</h2>
+          <p>Sistema de Controle Financeiro Pessoal</p>
+        </div>
+
+        <input type="email" id="email" placeholder="Email" />
+
+        <input type="password" id="senha" placeholder="Senha" />
+
+        <button onclick="fazerLogin()">Acessar</button>
+
+        <p class="recuperar" onclick="recuperarSenha()" style="cursor: pointer">
+          Esqueceu a senha?
+        </p>
+      </div>
+    </div>
+
+    <script>
+      const SUPABASE_URL = "https://rjiydewkobfbevzfrxbz.supabase.co";
+
+      const SUPABASE_ANON_KEY =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqaXlkZXdrb2JmYmV2emZyeGJ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM0ODEyOTksImV4cCI6MjA4OTA1NzI5OX0.QvooykPpjtAptqIYG2cIsnTv7yZeNyNFQ5QirgaKeQ8";
+
+      const supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_ANON_KEY,
+      );
+
+      async function fazerLogin() {
+        const email = document.querySelector("input[type=email]").value;
+
+        const senha = document.querySelector("input[type=password]").value;
+
+        if (!email || !senha) {
+          alert("Informe email e senha");
+          return;
+        }
+
+        const { error } = await supabaseClient.auth.signInWithPassword({
+          email: email,
+          password: senha,
+        });
+
+        if (error) {
+          alert("Login inválido");
+          return;
+        }
+
+        window.location.href = "index.html";
+      }
+
+      async function recuperarSenha() {
+        const email = document.getElementById("email").value;
+
+        if (!email) {
+          alert("Digite seu email para recuperar a senha");
+          return;
+        }
+
+        const { error } = await supabaseClient.auth.resetPasswordForEmail(
+          email,
+          {
+            redirectTo: window.location.origin + "/login.html",
+          },
+        );
+
+        if (error) {
+          alert("Erro ao enviar email");
+          return;
+        }
+
+        alert("Email de recuperação enviado!");
+      }
+      const hash = window.location.hash;
+
+      if (hash.includes("type=recovery")) {
+        document.querySelector(".loginCard").innerHTML = `
+    <h2>Nova senha</h2>
+
+    <input type="password" id="novaSenha" placeholder="Nova senha" />
+
+    <button onclick="atualizarSenha()">Atualizar senha</button>
+  `;
+      }
+    </script>
+  </body>
+</html>
+
+>
