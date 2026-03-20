@@ -994,6 +994,9 @@
               document.getElementById("btnSalvarMov").innerText = "Salvar";
               mostrarAviso("Lançamento atualizado com sucesso.", "sucesso");
             } else {
+              const { data: userData } = await supabaseClient.auth.getUser();
+              const user = userData.user;
+
               const { error } = await supabaseClient.from("mov").insert([
                 {
                   data,
@@ -1002,6 +1005,7 @@
                   tipo,
                   valor,
                   obs,
+                  user_id: user.id,
                 },
               ]);
 
@@ -1395,6 +1399,9 @@ ${formatarMoeda(resultadoDia)}
                 obs,
               });
 
+              const { data: userData } = await supabaseClient.auth.getUser();
+              const user = userData.user;
+
               const sucesso = await inserirContaSupabase({
                 nome,
                 categoria: categoria || "Sem categoria",
@@ -1406,6 +1413,7 @@ ${formatarMoeda(resultadoDia)}
                 pagamento: null,
 
                 obs,
+                user_id: user.id,
               });
 
               if (!sucesso) return;
