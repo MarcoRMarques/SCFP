@@ -624,9 +624,21 @@
         }
 
         async function carregarContasSupabase() {
+          const {
+            data: { session },
+          } = await supabaseClient.auth.getSession();
+
+          const user = session?.user;
+
+          if (!user) {
+            console.error("Usuário não autenticado");
+            return;
+          }
+
           const { data, error } = await supabaseClient
             .from("contas")
             .select("*")
+            .eq("user_id", user.id)
             .order("venc", { ascending: true })
             .order("id", { ascending: true });
 
@@ -1399,8 +1411,16 @@ ${formatarMoeda(resultadoDia)}
                 obs,
               });
 
-              const { data: userData } = await supabaseClient.auth.getUser();
-              const user = userData.user;
+              const {
+                data: { session },
+              } = await supabaseClient.auth.getSession();
+
+              const user = session?.user;
+
+              if (!user) {
+                mostrarAviso("Usuário não autenticado.");
+                return;
+              }
 
               const sucesso = await inserirContaSupabase({
                 nome,
