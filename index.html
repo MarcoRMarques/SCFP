@@ -684,17 +684,17 @@
         }
 
         async function inserirContaSupabase(conta) {
-          const { error } = await supabaseClient.from("contas").insert([conta]);
+          const { data, error } = await supabaseClient
+            .from("contas")
+            .insert([conta]);
 
           if (error) {
-            console.error(
-              "Erro ao inserir conta:",
-              JSON.stringify(error, null, 2),
-            );
-            mostrarAviso("Erro ao salvar conta.");
+            console.error("ERRO COMPLETO:", error);
+            mostrarAviso("Erro ao salvar conta: " + error.message);
             return false;
           }
 
+          console.log("INSERIDO:", data);
           return true;
         }
 
