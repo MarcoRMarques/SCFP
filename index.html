@@ -762,16 +762,28 @@
         }
 
         async function carregarCategoriasSupabase() {
+          const {
+            data: { session },
+          } = await supabaseClient.auth.getSession();
+
+          const user = session?.user;
+
+          if (!user) {
+            console.error("Usuário não autenticado");
+            return;
+          }
+
           const { data, error } = await supabaseClient
             .from("categorias")
             .select("*")
-            .order("nome", { ascending: true });
+            .eq("user_id", user.id); // 🔥 SOMENTE DO USUÁRIO
 
           if (error) {
             mostrarAviso("Erro ao carregar categorias.");
             console.error("Erro carregar categorias:", error);
             return;
           }
+
           console.log("CATEGORIAS OK:", data);
 
           categorias = (data || []).map((item) => ({
@@ -2780,6 +2792,9 @@ ${formatarMoeda(resultadoDia)}
 
           if (user) {
             await inicializarDadosUsuario(user.id); // 👈 NOVO PASSO
+
+            // 🔥 PASSO 4 (IMPORTANTE)
+            await new Promise((resolve) => setTimeout(resolve, 200));
           }
 
           await carregarDadosIniciaisSupabase();
