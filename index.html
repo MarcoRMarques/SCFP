@@ -922,6 +922,13 @@
           await carregarMovSupabase();
           await carregarContasSupabase();
 
+          if (!categorias.length || !contasSistema.length) {
+            await new Promise((resolve) => setTimeout(resolve, 300));
+
+            await carregarCategoriasSupabase();
+            await carregarContasSistemaSupabase();
+          }
+
           carregarSelectContas();
           preencherFiltroMes();
           carregarCategorias();
@@ -2723,11 +2730,57 @@ ${formatarMoeda(resultadoDia)}
           }
         }
 
+        async function inicializarDadosUsuario(userId) {
+          // Verifica categorias
+          const { data: categoriasExistentes } = await supabaseClient
+            .from("categorias")
+            .select("id")
+            .eq("user_id", userId)
+            .limit(1);
+
+          if (!categoriasExistentes || categoriasExistentes.length === 0) {
+            await supabaseClient.from("categorias").insert([
+              { nome: "Moradia", tipo: "CF", user_id: userId },
+              { nome: "Alimentação", tipo: "CV", user_id: userId },
+              { nome: "Veículo", tipo: "CV", user_id: userId },
+              { nome: "Saúde", tipo: "CV", user_id: userId },
+              { nome: "Assinaturas", tipo: "CV", user_id: userId },
+              { nome: "Cartão de Crédito", tipo: "CV", user_id: userId },
+              { nome: "Empréstimos Bancários", tipo: "CV", user_id: userId },
+              { nome: "Empréstimos Particulares", tipo: "CV", user_id: userId },
+            ]);
+          }
+
+          // Verifica contas
+          const { data: contasExistentes } = await supabaseClient
+            .from("contas_sistema")
+            .select("id")
+            .eq("user_id", userId)
+            .limit(1);
+
+          if (!contasExistentes || contasExistentes.length === 0) {
+            await supabaseClient.from("contas_sistema").insert([
+              { nome: "Dinheiro", user_id: userId },
+              { nome: "Caixa Econômica Federal", user_id: userId },
+            ]);
+          }
+
+          // pequeno delay pra garantir consistência
+          await new Promise((resolve) => setTimeout(resolve, 300));
+        }
+
         document.addEventListener("DOMContentLoaded", async function () {
           mostrarUsuario();
-          console.log("TESTE FINAL SCRIPT");
 
-          garantirTabelaMovVisivelAoCarregar();
+          const {
+            data: { session },
+          } = await supabaseClient.auth.getSession();
+
+          const user = session?.user;
+
+          if (user) {
+            await inicializarDadosUsuario(user.id); // 👈 NOVO PASSO
+          }
 
           await carregarDadosIniciaisSupabase();
 
