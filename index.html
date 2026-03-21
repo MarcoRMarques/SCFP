@@ -1847,7 +1847,9 @@ ${formatarMoeda(resultadoDia)}
           meses.forEach((m) => {
             let op = document.createElement("option");
             op.value = m;
-            op.text = m;
+
+            // ✅ FORMATA IGUAL AO OUTRO
+            op.text = m.split("-").reverse().join("/");
 
             topo.appendChild(op);
           });
