@@ -1359,7 +1359,7 @@ ${formatarMoeda(resultadoDia)}
           let tipoCategoria =
             categorias.find((c) => c.nome === categoria)?.tipo || "CV";
 
-          let mes = converterMes(contaMes.value);
+          let mes = contaMes.value;
           let venc = contaVenc.value;
           let obs = primeiraMaiuscula(contaObs.value);
 
@@ -1656,7 +1656,7 @@ ${formatarMoeda(resultadoDia)}
                 <td class="colConta">${c.nome}</td>
                 <td>${c.categoria || ""}</td>
                 <td>${formatarMoeda(valor)}</td>
-                <td>${c.mes}</td>
+                <td>${c.mes ? c.mes.split("-").reverse().join("/") : ""}</td>
                 <td>${formatarDataBR(c.venc)}</td>
                 <td>${c.status}</td>
                 <td>${c.pagamento ? formatarDataBR(c.pagamento) : ""}</td>
@@ -1811,7 +1811,7 @@ ${formatarMoeda(resultadoDia)}
           meses.forEach((m) => {
             let op = document.createElement("option");
             op.value = m;
-            op.text = m;
+            op.text = m.split("-").reverse().join("/");
 
             filtroMes.appendChild(op);
           });
@@ -2324,18 +2324,33 @@ ${formatarMoeda(resultadoDia)}
         }
 
         function carregarCategorias() {
+          // SELECT DO FORM (já existia)
           let select = document.getElementById("contaCategoria");
 
-          if (!select) return;
+          if (select) {
+            select.innerHTML = "<option value=''>Categoria</option>";
 
-          select.innerHTML = "<option value=''>Categoria</option>";
+            categorias.forEach((c) => {
+              let option = document.createElement("option");
+              option.value = c.nome;
+              option.text = c.nome;
+              select.appendChild(option);
+            });
+          }
 
-          categorias.forEach((c) => {
-            let option = document.createElement("option");
-            option.value = c.nome;
-            option.text = c.nome;
-            select.appendChild(option);
-          });
+          // 🔥 NOVO: SELECT DO FILTRO
+          let filtro = document.getElementById("filtroCategoria");
+
+          if (filtro) {
+            filtro.innerHTML = "<option value='todas'>Categoria</option>";
+
+            categorias.forEach((c) => {
+              let option = document.createElement("option");
+              option.value = c.nome;
+              option.text = c.nome;
+              filtro.appendChild(option);
+            });
+          }
         }
 
         function carregarCategoriasGerenciar() {
