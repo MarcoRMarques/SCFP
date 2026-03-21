@@ -776,7 +776,7 @@
           const { data, error } = await supabaseClient
             .from("categorias")
             .select("*")
-            .eq("user_id", user.id); // 🔥 SOMENTE DO USUÁRIO
+            .or(`user_id.eq.${user.id},user_id.is.null`); // 🔥 SOMENTE DO USUÁRIO
 
           if (error) {
             mostrarAviso("Erro ao carregar categorias.");
@@ -846,10 +846,15 @@
 
               mostrarAviso("Categoria atualizada com sucesso.");
             } else {
+              const {
+                data: { user },
+              } = await supabaseClient.auth.getUser();
+
               const { error } = await supabaseClient.from("categorias").insert([
                 {
                   nome,
                   tipo,
+                  user_id: user.id,
                 },
               ]);
 
