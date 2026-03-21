@@ -2429,11 +2429,16 @@ ${formatarMoeda(resultadoDia)}
           }
 
           try {
+            const {
+              data: { user },
+            } = await supabaseClient.auth.getUser();
+
             const { error } = await supabaseClient
               .from("contas_sistema")
               .insert([
                 {
                   nome,
+                  user_id: user.id,
                 },
               ]);
 
