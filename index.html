@@ -1254,27 +1254,24 @@ ${formatarMoeda(resultadoDia)}
           let saidas = 0;
 
           mov.forEach((m) => {
-            let valor = m.valor;
+            let valor = converterValor(m.valor);
 
             if (contaFiltro && m.banco !== contaFiltro) return;
-
-            if (m.tipo == "Entrada") {
-              saldo += valor;
-              entradas += valor; // 🔥 ADICIONADO
-            } else {
-              saldo -= valor;
-              saidas += valor; // 🔥 ADICIONADO
-            }
 
             let dataMov = new Date(m.data);
 
             if (filtroInicio && dataMov < new Date(filtroInicio)) return;
             if (filtroFim && dataMov > new Date(filtroFim)) return;
 
+            // 🔥 AGORA CORRETO: só soma depois do filtro
             if (m.tipo == "Entrada") {
+              saldo += valor;
               saldoFiltrado += valor;
+              entradas += valor;
             } else {
+              saldo -= valor;
               saldoFiltrado -= valor;
+              saidas += valor;
             }
           });
 
