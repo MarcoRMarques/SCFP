@@ -1557,16 +1557,32 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .usuarioTopo {
   margin-right: 15px;
 }
-/* SCROLL NA TABELA DE CONTAS A PAGAR */
-.scrollContas {
+
+/* =========================
+   SCROLL PADRÃO TABELAS
+========================= */
+
+.scrollPadrao {
   max-height: 60vh;
   overflow-y: auto;
   overflow-x: hidden;
-  border: 3px solid red; /* TESTE */
 }
 
-.scrollContas table {
+.scrollPadrao table {
   width: 100%;
   border-collapse: collapse;
+}
+
+.scrollPadrao thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: linear-gradient(90deg, #16a34a, #22c55e);
+  color: white;
+}
+
+.scrollPadrao tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+  transition: 0.2s;
 }
 /* force update */
