@@ -204,6 +204,10 @@
           <button type="button" class="btnLimpar" onclick="limparFiltro()">
             Limpar
           </button>
+
+          <button type="button" class="btnFiltro" onclick="gerarRelatorioMov()">
+            📄 Relatório
+          </button>
         </div>
 
         <input type="date" id="data" />
@@ -2934,5 +2938,8 @@ ${formatarMoeda(resultadoDia)}
     <script>
       lucide.createIcons();
     </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="js/relatorios.js"></script>
   </body>
 </html>
