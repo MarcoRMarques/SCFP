@@ -1558,3 +1558,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-right: 15px;
 }
 /* SCROLL NA TABELA DE CONTAS A PAGAR */
+.scrollContas {
+  max-height: 60vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.scrollContas table {
+  width: 100%;
+  border-collapse: collapse;
+}
