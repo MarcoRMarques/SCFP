@@ -1,5 +1,7 @@
 function gerarRelatorioMov() {
   let contaFiltro = document.getElementById("filtroContaMov")?.value || "";
+  let inicio = document.getElementById("filtroInicio")?.value || "";
+  let fim = document.getElementById("filtroFim")?.value || "";
 
   let dados = mov.filter((m) => {
     if (contaFiltro && m.banco !== contaFiltro) return false;
@@ -131,8 +133,29 @@ function gerarRelatorioMov() {
 
 <body>
 
-  <h1>SCFP</h1>
-  <h2>Relatório - Livro Caixa</h2>
+  <div style="text-align:center; margin-bottom:20px;">
+  <div style="
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    color:#16a34a;
+    font-size:22px;
+    font-weight:700;
+  ">
+    <i data-lucide="landmark" style="color:#16a34a;width:26px;height:26px;"></i>
+    <span>SCFP - Sistema de Controle Financeiro Pessoal</span>
+  </div>
+
+  <div style="
+    margin-top:5px;
+    font-size:18px;
+    color:#374151;
+    font-weight:500;
+  ">
+    Relatório - Livro Caixa
+  </div>
+</div>
 
   <div class="info">
     <b>Período:</b> ${filtroInicio || "-"} até ${filtroFim || "-"}<br>
@@ -175,6 +198,12 @@ function gerarRelatorioMov() {
   let win = window.open("", "_blank");
   win.document.write(html);
   win.document.close();
+
+  setTimeout(() => {
+    if (win.lucide) {
+      win.lucide.createIcons();
+    }
+  }, 200);
 }
 function exportarPDF() {
   let elemento = document.getElementById("relatorioConteudo");
