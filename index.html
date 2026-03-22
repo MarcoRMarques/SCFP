@@ -192,6 +192,11 @@
           <input type="date" id="filtroInicio" />
           <input type="date" id="filtroFim" />
 
+          <!-- 🔥 AQUI -->
+          <select id="filtroContaMov">
+            <option value="">Todas as contas</option>
+          </select>
+
           <button type="button" class="btnFiltro" onclick="filtrarMov()">
             Filtrar
           </button>
@@ -949,6 +954,7 @@
           }
 
           carregarSelectContas();
+          carregarFiltroContasMov();
           preencherFiltroMes();
           carregarCategorias();
           carregarMov();
@@ -1106,6 +1112,8 @@
         }
 
         function carregarMov() {
+          let contaFiltro =
+            document.getElementById("filtroContaMov")?.value || "";
           tabelaMov.innerHTML = "";
 
           let entradas = 0;
@@ -1119,6 +1127,8 @@
           let dataAnterior = "";
 
           movOrdenado.forEach((m, i) => {
+            if (contaFiltro && m.banco !== contaFiltro) return;
+
             let indexOriginal = mov.indexOf(m);
             let dataMov = new Date(m.data);
 
@@ -2590,6 +2600,25 @@ ${formatarMoeda(resultadoDia)}
 
         let indexExcluir = null;
         let tipoExclusao = null;
+
+        function carregarFiltroContasMov() {
+          let select = document.getElementById("filtroContaMov");
+
+          if (!select) return;
+
+          select.innerHTML = '<option value="">Todas as contas</option>';
+
+          let contasUnicas = [...new Set(mov.map((m) => m.banco))];
+
+          contasUnicas.sort((a, b) => a.localeCompare(b, "pt-BR"));
+
+          contasUnicas.forEach((conta) => {
+            let option = document.createElement("option");
+            option.value = conta;
+            option.textContent = conta;
+            select.appendChild(option);
+          });
+        }
 
         function excluirMov(i) {
           const item = mov[i];
