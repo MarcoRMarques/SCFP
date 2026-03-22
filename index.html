@@ -1237,6 +1237,9 @@ ${formatarMoeda(resultadoDia)}
         }
 
         function calcularSaldo() {
+          let contaFiltro =
+            document.getElementById("filtroContaMov")?.value || "";
+
           let filtroMesSelecionado =
             document.getElementById("filtroMes")?.value || "todos";
 
@@ -1247,6 +1250,8 @@ ${formatarMoeda(resultadoDia)}
 
           mov.forEach((m) => {
             let valor = m.valor;
+
+            if (contaFiltro && m.banco !== contaFiltro) return;
 
             if (m.tipo == "Entrada") {
               saldo += valor;
@@ -1272,6 +1277,8 @@ ${formatarMoeda(resultadoDia)}
           let bancos = {};
 
           mov.forEach((m) => {
+            if (contaFiltro && m.banco !== contaFiltro) return;
+
             if (!bancos[m.banco]) {
               bancos[m.banco] = 0;
             }
