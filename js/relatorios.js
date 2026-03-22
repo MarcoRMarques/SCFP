@@ -151,7 +151,22 @@ ${linhas}
 <script>
 function exportarPDF() {
   let elemento = document.getElementById("relatorioConteudo");
-  html2pdf().from(elemento).save();
+  html2pdf()
+  .set({
+    margin: 8,
+    filename: "SCFP_relatorio.pdf",
+    html2canvas: {
+      scale: 2,
+      useCORS: true
+    },
+    jsPDF: {
+      unit: "mm",
+      format: "a4",
+      orientation: "landscape" // 🔥 AQUI ESTÁ A CHAVE
+    }
+  })
+  .from(elemento)
+  .save();
 }
 
 function compartilharWhatsApp() {

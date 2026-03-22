@@ -1622,4 +1622,25 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-size: 16px;
   margin: 10px 0;
 }
+
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  table {
+    font-size: 13px;
+  }
+
+  th,
+  td {
+    padding: 6px;
+  }
+
+  .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
 /* force update */
