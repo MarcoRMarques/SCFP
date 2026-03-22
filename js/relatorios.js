@@ -52,36 +52,25 @@ function gerarRelatorioMov() {
 <html>
 <head>
   <title>SCFP - Relatório</title>
+
+  <!-- 🔥 IMPORTANTE: bibliotecas -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
       padding: 30px;
       background: #f9fafb;
       color: #1f2937;
-    }
-
-    h1 {
-      text-align: center;
-      color: #16a34a;
-      margin-bottom: 5px;
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #374151;
-    }
-
-    .info {
-      margin-bottom: 15px;
-      font-size: 14px;
+      font-size: 16px;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 20px;
-      font-size: 14px;
+      font-size: 15px;
     }
 
     th {
@@ -96,10 +85,6 @@ function gerarRelatorioMov() {
       border-bottom: 1px solid #e5e7eb;
     }
 
-    tr:nth-child(even) {
-      background: #f3f4f6;
-    }
-
     .entrada {
       color: #16a34a;
       font-weight: 600;
@@ -108,11 +93,6 @@ function gerarRelatorioMov() {
     .saida {
       color: #dc2626;
       font-weight: 600;
-    }
-
-    .totais {
-      margin-top: 20px;
-      font-size: 16px;
     }
 
     .btn {
@@ -124,41 +104,40 @@ function gerarRelatorioMov() {
       border-radius: 6px;
       cursor: pointer;
     }
-
-    .btn:hover {
-      background: #15803d;
-    }
   </style>
 </head>
 
 <body>
 
   <div style="text-align:center; margin-bottom:20px;">
-  <div style="
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    color:#16a34a;
-    font-size:22px;
-    font-weight:700;
-  ">
-    <i data-lucide="landmark" style="color:#16a34a;width:26px;height:26px;"></i>
-    <span>SCFP - Sistema de Controle Financeiro Pessoal</span>
+    <div style="
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      color:#16a34a;
+      font-size:22px;
+      font-weight:700;
+    ">
+      <i data-lucide="landmark" style="width:26px;height:26px;"></i>
+      <span>SCFP - Sistema de Controle Financeiro Pessoal</span>
+    </div>
+
+    <div style="margin-top:5px; font-size:18px; color:#374151;">
+      Relatório - Livro Caixa
+    </div>
   </div>
 
-  <div style="
-    margin-top:5px;
+  <div class="info" style="
+    margin-top:20px;
+    margin-bottom:20px;
     font-size:18px;
-    color:#374151;
-    font-weight:500;
+    background:#f3f4f6;
+    padding:14px 18px;
+    border-radius:8px;
+    border-left:5px solid #16a34a;
   ">
-    Relatório - Livro Caixa
-  </div>
-</div>
-
-  <div class="info">
-    <b>Período:</b> ${filtroInicio || "-"} até ${filtroFim || "-"}<br>
+    <b>Período:</b> ${formatarDataInput(inicio)} até ${formatarDataInput(fim)}<br>
     <b>Conta:</b> ${contaFiltro || "Todas as contas"}
   </div>
 
@@ -179,7 +158,7 @@ function gerarRelatorioMov() {
       </tbody>
     </table>
 
-    <div class="totais">
+    <div style="margin-top:20px;">
       <p class="entrada">Entradas: ${formatarMoeda(entradas)}</p>
       <p class="saida">Saídas: ${formatarMoeda(saidas)}</p>
       <h3>Saldo Final: ${formatarMoeda(saldo)}</h3>
@@ -189,7 +168,7 @@ function gerarRelatorioMov() {
   <br>
 
   <button class="btn" onclick="exportarPDF()">📄 Baixar PDF</button>
-  <button class="btn" onclick="compartilharWhatsApp()">📲 WhatsApp</button>
+  <button class="btn" onclick="compartilharWhatsApp()">🟢 WhatsApp</button>
 
 </body>
 </html>
