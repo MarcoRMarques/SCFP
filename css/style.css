@@ -1585,4 +1585,21 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   background-color: rgba(0, 0, 0, 0.04);
   transition: 0.2s;
 }
+
+/* =========================
+   LIVRO CAIXA (controle toggle + scroll)
+========================= */
+
+#containerTabelaMov.scrollPadrao {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+#containerTabelaMov.scrollPadrao.tabelaVisivel {
+  max-height: 60vh;
+  overflow-y: auto;
+  opacity: 1;
+}
 /* force update */
