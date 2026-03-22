@@ -1566,6 +1566,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   max-height: 60vh;
   overflow-y: auto;
   overflow-x: hidden;
+  margin-top: 8px; /* 👈 INSERIR EXATAMENTE AQUI */
 }
 
 .scrollPadrao table {
