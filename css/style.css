@@ -1603,4 +1603,23 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   overflow-y: auto;
   opacity: 1;
 }
+/* =========================
+   SUBTOTAL LIVRO CAIXA
+========================= */
+
+#subtotalEntradas {
+  color: #16a34a; /* verde padrão sistema */
+  font-weight: 700;
+  margin-right: 15px;
+}
+
+#subtotalSaidas {
+  color: #dc2626; /* vermelho padrão saída */
+  font-weight: 700;
+}
+.resumoLivroCaixa {
+  text-align: center;
+  font-size: 16px;
+  margin: 10px 0;
+}
 /* force update */
