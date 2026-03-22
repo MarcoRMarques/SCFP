@@ -47,14 +47,101 @@ function gerarRelatorioMov() {
   });
 
   let html = `
+<html>
+<head>
+  <title>SCFP - Relatório</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f9fafb;
+      color: #1f2937;
+    }
+
+    h1 {
+      text-align: center;
+      color: #16a34a;
+      margin-bottom: 5px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #374151;
+    }
+
+    .info {
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    th {
+      background: linear-gradient(90deg, #16a34a, #22c55e);
+      color: white;
+      padding: 10px;
+      text-align: left;
+    }
+
+    td {
+      padding: 8px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    tr:nth-child(even) {
+      background: #f3f4f6;
+    }
+
+    .entrada {
+      color: #16a34a;
+      font-weight: 600;
+    }
+
+    .saida {
+      color: #dc2626;
+      font-weight: 600;
+    }
+
+    .totais {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    .btn {
+      background: #16a34a;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin-right: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #15803d;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>SCFP</h1>
+  <h2>Relatório - Livro Caixa</h2>
+
+  <div class="info">
+    <b>Período:</b> ${filtroInicio || "-"} até ${filtroFim || "-"}<br>
+    <b>Conta:</b> ${contaFiltro || "Todas as contas"}
+  </div>
+
   <div id="relatorioConteudo">
-    <h2>📊 Relatório - Livro Caixa</h2>
-
-    <p><b>Período:</b> ${filtroInicio || "Início"} até ${filtroFim || "Hoje"}</p>
-    <p><b>Conta:</b> ${contaFiltro || "Todas"}</p>
-
-    <table border="1" width="100%" cellspacing="0" cellpadding="5">
-      <thead style="background:#16a34a;color:white">
+    <table>
+      <thead>
         <tr>
           <th>Data</th>
           <th>Banco</th>
@@ -69,16 +156,21 @@ function gerarRelatorioMov() {
       </tbody>
     </table>
 
-    <h3 style="color:#16a34a">Entradas: ${formatarMoeda(entradas)}</h3>
-    <h3 style="color:#dc2626">Saídas: ${formatarMoeda(saidas)}</h3>
-    <h2>Saldo: ${formatarMoeda(saldo)}</h2>
+    <div class="totais">
+      <p class="entrada">Entradas: ${formatarMoeda(entradas)}</p>
+      <p class="saida">Saídas: ${formatarMoeda(saidas)}</p>
+      <h3>Saldo Final: ${formatarMoeda(saldo)}</h3>
+    </div>
   </div>
 
-  <br><br>
+  <br>
 
-  <button onclick="exportarPDF()">📄 Baixar PDF</button>
-  <button onclick="compartilharWhatsApp()">📲 WhatsApp</button>
-  `;
+  <button class="btn" onclick="exportarPDF()">📄 Baixar PDF</button>
+  <button class="btn" onclick="compartilharWhatsApp()">📲 WhatsApp</button>
+
+</body>
+</html>
+`;
 
   let win = window.open("", "_blank");
   win.document.write(html);
@@ -87,10 +179,15 @@ function gerarRelatorioMov() {
 function exportarPDF() {
   let elemento = document.getElementById("relatorioConteudo");
 
+  if (!elemento) {
+    mostrarAviso("Erro ao gerar PDF");
+    return;
+  }
+
   html2pdf()
     .set({
       margin: 10,
-      filename: "relatorio.pdf",
+      filename: "SCFP_relatorio.pdf",
       html2canvas: { scale: 2 },
       jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
     })
@@ -98,21 +195,44 @@ function exportarPDF() {
     .save();
 }
 function compartilharWhatsApp() {
-  let texto = "📊 Relatório Financeiro\n\n";
-
   let contaFiltro = document.getElementById("filtroContaMov")?.value || "";
 
-  texto += "Conta: " + (contaFiltro || "Todas") + "\n";
+  let texto = "📊 SCFP - Relatório Financeiro\n\n";
+
   texto +=
-    "Período: " + (filtroInicio || "-") + " até " + (filtroFim || "-") + "\n\n";
+    "Período: " + (filtroInicio || "-") + " até " + (filtroFim || "-") + "\n";
+  texto += "Conta: " + (contaFiltro || "Todas") + "\n\n";
 
-  let entradas = document.getElementById("subtotalEntradas").innerText;
-  let saidas = document.getElementById("subtotalSaidas").innerText;
+  texto += "Resumo:\n";
 
-  texto += "Entradas: " + entradas + "\n";
-  texto += "Saídas: " + saidas + "\n";
+  texto +=
+    "Entradas: " + document.getElementById("subtotalEntradas").innerText + "\n";
+  texto +=
+    "Saídas: " + document.getElementById("subtotalSaidas").innerText + "\n";
 
   let url = "https://wa.me/?text=" + encodeURIComponent(texto);
 
   window.open(url, "_blank");
+}
+function mostrarAviso(mensagem) {
+  let aviso = document.createElement("div");
+
+  aviso.innerText = mensagem;
+
+  aviso.style.position = "fixed";
+  aviso.style.top = "20px";
+  aviso.style.right = "20px";
+  aviso.style.background = "#16a34a"; // verde do sistema
+  aviso.style.color = "white";
+  aviso.style.padding = "12px 18px";
+  aviso.style.borderRadius = "8px";
+  aviso.style.boxShadow = "0 4px 12px rgba(0,0,0,0.2)";
+  aviso.style.zIndex = "9999";
+  aviso.style.fontSize = "14px";
+
+  document.body.appendChild(aviso);
+
+  setTimeout(() => {
+    aviso.remove();
+  }, 3000);
 }
