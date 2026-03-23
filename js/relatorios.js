@@ -103,6 +103,8 @@ function gerarRelatorioMov() {
 
 <body>
 
+<div id="relatorioPDF">
+
 <div style="text-align:center; margin-bottom:20px;">
   <div style="display:flex;align-items:center;justify-content:center;gap:10px;color:#16a34a;font-size:22px;font-weight:700;">
     <i data-lucide="landmark"></i>
@@ -119,7 +121,7 @@ function gerarRelatorioMov() {
   <b>Conta:</b> ${contaFiltro || "Todas as contas"}
 </div>
 
-<div id="relatorioConteudo">
+<div id="relatorioConteudo" style="margin-top:20px;">
 <table>
 <thead>
 <tr>
@@ -143,6 +145,8 @@ ${linhas}
 </div>
 </div>
 
+</div>
+
 <br>
 
 <button class="btn" onclick="window.exportarPDF()">📄 Baixar PDF</button>
@@ -150,23 +154,24 @@ ${linhas}
 
 <script>
 function exportarPDF() {
-  let elemento = document.getElementById("relatorioConteudo");
+  let elemento = document.getElementById("relatorioPDF");
+
   html2pdf()
-  .set({
-    margin: 8,
-    filename: "SCFP_relatorio.pdf",
-    html2canvas: {
-      scale: 2,
-      useCORS: true
-    },
-    jsPDF: {
-      unit: "mm",
-      format: "a4",
-      orientation: "landscape" // 🔥 AQUI ESTÁ A CHAVE
-    }
-  })
-  .from(elemento)
-  .save();
+    .set({
+      margin: 8,
+      filename: "SCFP_relatorio.pdf",
+      html2canvas: {
+        scale: 2,
+        useCORS: true
+      },
+      jsPDF: {
+        unit: "mm",
+        format: "a4",
+        orientation: "landscape"
+      }
+    })
+    .from(elemento)
+    .save();
 }
 
 function compartilharWhatsApp() {
