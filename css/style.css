@@ -1677,4 +1677,48 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
   padding-right: 30px;
 }
+.banner-motivacional {
+  margin: 20px 0;
+}
+
+.banner-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+  border-left: 6px solid #10b981;
+
+  padding: 15px;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  transition: all 0.4s ease;
+}
+
+.banner-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+
+  border-radius: 10px;
+}
+
+.banner-texto {
+  flex: 1;
+}
+
+.banner-texto p {
+  font-size: 15px;
+  font-weight: 500;
+  color: #065f46;
+  margin-bottom: 6px;
+}
+
+.banner-texto span {
+  font-size: 13px;
+  color: #047857;
+  font-weight: 600;
+}
 /* force update */

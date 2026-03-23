@@ -140,6 +140,17 @@
         </div>
       </div>
 
+      <!-- 🔥 Banner Motivacional -->
+      <div id="bannerMotivacional" class="banner-motivacional">
+        <div class="banner-card">
+          <img id="bannerImg" src="" alt="mentor" />
+          <div class="banner-texto">
+            <p id="bannerFrase">Carregando frase...</p>
+            <span id="bannerAutor"></span>
+          </div>
+        </div>
+      </div>
+
       <div class="container">
         <h3 class="tituloSecao">
           <svg
@@ -2973,8 +2984,49 @@ ${formatarMoeda(resultadoDia)}
       lucide.createIcons();
     </script>
 
+    <!-- 🔥 Banner Motivacional -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const frases = [
+          {
+            frase:
+              "Não economize o que sobra depois de gastar, gaste o que sobra depois de economizar.",
+            autor: "Warren Buffett",
+            img: "https://i.imgur.com/1X6ZQ.jpg",
+          },
+          {
+            frase:
+              "A melhor coisa que você pode fazer é investir em você mesmo.",
+            autor: "Charlie Munger",
+            img: "https://i.imgur.com/2Y7XQ.jpg",
+          },
+          {
+            frase:
+              "O sucesso depende mais de suas economias do que de qualquer outra coisa.",
+            autor: "J. D. Rockefeller",
+            img: "https://i.imgur.com/3Z8XQ.jpg",
+          },
+        ];
+
+        let indexBanner = 0;
+
+        function atualizarBanner() {
+          const item = frases[indexBanner];
+
+          document.getElementById("bannerFrase").innerText = `"${item.frase}"`;
+          document.getElementById("bannerAutor").innerText = item.autor;
+          document.getElementById("bannerImg").src = item.img;
+
+          indexBanner = (indexBanner + 1) % frases.length;
+        }
+
+        atualizarBanner();
+        setInterval(atualizarBanner, 5000);
+      });
+    </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script src="js/relatorios.js?v=1"></script>
-    <script src="js/relatoriosContas.js?v=1"></script>
+    <script src="js/relatorios.js?v=2"></script>
+    <script src="js/relatoriosContas.js?v=2"></script>
   </body>
 </html>
