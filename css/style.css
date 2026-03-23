@@ -1725,21 +1725,31 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 /* FRASE */
 .banner-texto p {
-  font-size: 15px;
-  font-weight: 500;
-  color: #f9fafb; /* branco */
+  font-family: "Poppins", "Segoe UI", sans-serif;
 
-  margin-bottom: 4px;
+  font-size: 16px;
+  font-weight: 400;
 
-  line-height: 1.4;
+  color: #f1f5f9;
+
+  line-height: 1.6;
+
+  letter-spacing: 0.3px;
+
+  margin-bottom: 6px;
 }
 
-/* AUTOR */
 .banner-texto span {
-  font-size: 13px;
-  color: #facc15; /* dourado */
+  font-family: "Poppins", "Segoe UI", sans-serif;
 
+  font-size: 13px;
   font-weight: 600;
+
+  color: #facc15;
+
+  letter-spacing: 0.5px;
+
+  text-transform: uppercase;
 }
 
 /* ANIMAÇÃO SUAVE */
