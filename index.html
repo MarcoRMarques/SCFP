@@ -3011,13 +3011,22 @@ ${formatarMoeda(resultadoDia)}
         let indexBanner = 0;
 
         function atualizarBanner() {
-          const item = frases[indexBanner];
+          const card = document.querySelector(".banner-card");
 
-          document.getElementById("bannerFrase").innerText = `"${item.frase}"`;
-          document.getElementById("bannerAutor").innerText = item.autor;
-          document.getElementById("bannerImg").src = item.img;
+          card.style.opacity = 0;
 
-          indexBanner = (indexBanner + 1) % frases.length;
+          setTimeout(() => {
+            const item = frases[indexBanner];
+
+            document.getElementById("bannerFrase").innerText =
+              `"${item.frase}"`;
+            document.getElementById("bannerAutor").innerText = item.autor;
+            document.getElementById("bannerImg").src = item.img;
+
+            card.style.opacity = 1;
+
+            indexBanner = (indexBanner + 1) % frases.length;
+          }, 300);
         }
 
         atualizarBanner();
@@ -3026,7 +3035,7 @@ ${formatarMoeda(resultadoDia)}
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script src="js/relatorios.js?v=2"></script>
-    <script src="js/relatoriosContas.js?v=2"></script>
+    <script src="js/relatorios.js?v=3"></script>
+    <script src="js/relatoriosContas.js?v=3"></script>
   </body>
 </html>

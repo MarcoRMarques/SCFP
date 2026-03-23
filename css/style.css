@@ -1697,12 +1697,21 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   transition: all 0.4s ease;
 }
 
-.banner-card img {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
+.banner-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 
-  border-radius: 10px;
+  background: linear-gradient(135deg, #0f172a, #1e293b); /* azul petróleo */
+
+  padding: 16px;
+  border-radius: 14px;
+
+  border-left: 5px solid #facc15; /* dourado */
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+
+  transition: all 0.4s ease;
 }
 
 .banner-texto {
@@ -1710,15 +1719,21 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .banner-texto p {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
-  color: #065f46;
+  color: #f9fafb; /* branco elegante */
   margin-bottom: 6px;
+  line-height: 1.5;
 }
 
 .banner-texto span {
   font-size: 13px;
-  color: #047857;
+  color: #facc15; /* dourado destaque */
   font-weight: 600;
+}
+
+.banner-card {
+  opacity: 1;
+  transition: opacity 0.5s ease;
 }
 /* force update */
