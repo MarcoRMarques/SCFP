@@ -961,6 +961,11 @@ canvas {
   font-size: 14px;
 }
 
+/* 🔥 CORREÇÃO PARA INPUT DATE NO TOPO */
+.filtrosTopo input[type="date"] {
+  color-scheme: light;
+}
+
 .filtrosTopo input:focus,
 .filtrosTopo select:focus {
   outline: none;
@@ -975,11 +980,7 @@ canvas {
 
   font-weight: 600;
 }
-input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(64%) sepia(63%) saturate(442%) hue-rotate(95deg)
-    brightness(90%) contrast(90%);
-  cursor: pointer;
-}
+
 .selectMesTopo {
   background: #10b981;
 
@@ -1643,13 +1644,16 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-bottom: 10px;
   }
 }
-/* 🔥 PADRONIZA ÍCONE DO CALENDÁRIO */
-input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(42%) sepia(98%) saturate(386%) hue-rotate(88deg)
-    brightness(90%) contrast(92%);
-  cursor: pointer;
-}
+
 input[type="date"] {
   color-scheme: light;
+}
+
+/* 🔥 COR PADRÃO VERDE - FORÇADO */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(48%) sepia(85%) saturate(400%) hue-rotate(90deg)
+    brightness(95%) contrast(90%);
+  opacity: 1;
+  cursor: pointer;
 }
 /* force update */
