@@ -189,11 +189,19 @@
         <div class="filtroPeriodo">
           <label>Período:</label>
 
-          <input type="date" id="filtroInicio" />
-          <input type="date" id="filtroFim" />
+          <input
+            type="date"
+            id="filtroInicio"
+            onchange="atualizarBotaoRelatorioMov()"
+          />
+          <input
+            type="date"
+            id="filtroFim"
+            onchange="atualizarBotaoRelatorioMov()"
+          />
 
           <!-- 🔥 AQUI -->
-          <select id="filtroContaMov">
+          <select id="filtroContaMov" onchange="atualizarBotaoRelatorioMov()">
             <option value="">Todas as contas</option>
           </select>
 
@@ -205,7 +213,13 @@
             Limpar
           </button>
 
-          <button type="button" class="btnFiltro" onclick="gerarRelatorioMov()">
+          <button
+            id="btnRelatorioMov"
+            type="button"
+            class="btnFiltro"
+            onclick="gerarRelatorioMov()"
+            style="display: none"
+          >
             📄 Relatório
           </button>
         </div>
@@ -1099,6 +1113,7 @@
           criarGrafico();
           criarGraficoMensal();
           criarGraficoSaldo();
+          atualizarBotaoRelatorioMov();
         }
 
         function limparFiltro() {
@@ -1117,6 +1132,7 @@
           criarGrafico();
           criarGraficoMensal();
           criarGraficoSaldo();
+          atualizarBotaoRelatorioMov();
         }
 
         function carregarMov() {
@@ -2241,6 +2257,22 @@ ${formatarMoeda(resultadoDia)}
             (filtroCategoria && filtroCategoria !== "todas");
 
           botao.style.display = temFiltroSelecionado ? "inline-block" : "none";
+        }
+
+        function atualizarBotaoRelatorioMov() {
+          let botao = document.getElementById("btnRelatorioMov");
+          if (!botao) return;
+
+          let inicio = document.getElementById("filtroInicio")?.value || "";
+          let fim = document.getElementById("filtroFim")?.value || "";
+          let conta = document.getElementById("filtroContaMov")?.value || "";
+
+          let temFiltro =
+            (inicio && inicio !== "") ||
+            (fim && fim !== "") ||
+            (conta && conta !== "");
+
+          botao.style.display = temFiltro ? "inline-block" : "none";
         }
 
         function limparFiltroTopo() {
