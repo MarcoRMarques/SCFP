@@ -99,7 +99,7 @@
         const email = document.getElementById("email").value;
 
         if (!email) {
-          alert("Digite seu email");
+          mostrarAviso("Digite seu email");
           return;
         }
 
@@ -138,6 +138,25 @@
         alert("Senha atualizada!");
         window.location.href = "/SCFP/login.html";
       }
+
+      function mostrarAviso(msg) {
+        document.getElementById("popupMensagem").innerText = msg;
+        document.getElementById("popupAviso").classList.remove("hidden");
+      }
+
+      function fecharPopup() {
+        document.getElementById("popupAviso").classList.add("hidden");
+
+        // 🔥 foco automático no email
+        document.getElementById("email").focus();
+      }
     </script>
+
+    <div id="popupAviso" class="popupAviso hidden">
+      <div class="popupBox">
+        <p id="popupMensagem"></p>
+        <button onclick="fecharPopup()">OK</button>
+      </div>
+    </div>
   </body>
 </html>
