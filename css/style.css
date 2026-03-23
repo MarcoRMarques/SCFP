@@ -1757,4 +1757,36 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   opacity: 1;
   transition: opacity 0.5s ease;
 }
+/* =========================
+   BANNER MOTIVACIONAL FIXO (ISOLADO)
+========================= */
+
+.banner-motivacional .banner-card {
+  background: linear-gradient(135deg, #064e3b, #065f46) !important;
+
+  border-left: 4px solid #facc15;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* TEXTO */
+.banner-motivacional .banner-texto p {
+  color: #f1f5f9 !important;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* AUTOR */
+.banner-motivacional .banner-texto span {
+  color: #facc15 !important;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* IMAGEM CONTROLADA */
+.banner-motivacional .banner-card img {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #facc15;
+}
 /* force update */
