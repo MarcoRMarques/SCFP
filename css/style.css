@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap");
 
 body {
   font-family:
@@ -1690,12 +1691,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   align-items: center;
   gap: 16px;
 
-  background: linear-gradient(135deg, #064e3b, #065f46);
-
+  background: linear-gradient(135deg, #dbeafe, #f1f5f9);
   padding: 14px;
   border-radius: 14px;
 
-  border-left: 4px solid #facc15; /* dourado */
+  border-left: 4px solid #64748b;
 
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 
@@ -1711,9 +1711,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
   border-radius: 10px;
 
-  border: 2px solid #facc15;
+  border: 2px solid rgba(100, 116, 139, 0.4);
 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 
   flex-shrink: 0;
 }
@@ -1725,15 +1725,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 /* FRASE */
 .banner-texto p {
-  font-family: "Poppins", "Segoe UI", sans-serif;
-
-  font-size: 16px;
-  font-weight: 400;
-
-  color: #f1f5f9;
+  font-family: "Playfair Display", serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: #0f172a;
 
   line-height: 1.6;
-
   letter-spacing: 0.3px;
 
   margin-bottom: 6px;
@@ -1745,7 +1742,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-size: 13px;
   font-weight: 600;
 
-  color: #facc15;
+  color: #475569;
 
   letter-spacing: 0.5px;
 
@@ -1762,23 +1759,23 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 ========================= */
 
 .banner-motivacional .banner-card {
-  background: linear-gradient(135deg, #064e3b, #065f46) !important;
+  background: linear-gradient(135deg, #dbeafe, #f1f5f9) !important;
 
-  border-left: 4px solid #facc15;
+  border-left: 4px solid #64748b;
 
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 /* TEXTO */
 .banner-motivacional .banner-texto p {
-  color: #f1f5f9 !important;
+  color: #0f172a !important;
   font-size: 16px;
   line-height: 1.6;
 }
 
 /* AUTOR */
 .banner-motivacional .banner-texto span {
-  color: #facc15 !important;
+  color: #475569 !important;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -1787,6 +1784,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .banner-motivacional .banner-card img {
   width: 60px;
   height: 60px;
-  border: 2px solid #facc15;
+  border: 2px solid rgba(100, 116, 139, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 /* force update */
