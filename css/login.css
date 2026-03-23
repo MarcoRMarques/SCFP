@@ -128,3 +128,13 @@ body {
 
   margin: 6px 0 2px;
 }
+/* 🔥 BOTÃO SECUNDÁRIO - RECUPERAR SENHA */
+.loginCard .btn-recuperar {
+  background: rgba(245, 158, 11, 0.15);
+  color: #b45309;
+  border: 1px solid #f59e0b;
+}
+
+.loginCard .btn-recuperar:hover {
+  background: rgba(245, 158, 11, 0.25);
+}
