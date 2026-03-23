@@ -34,9 +34,8 @@ function gerarRelatorioContas() {
 
     linhas += `
       <tr>
-        <td>${formatarDataBR(c.data)}</td>
-        <td>${c.descricao}</td>
-        <td>${c.categoria}</td>
+        <td>${c.conta}</td>
+        <td>${c.categoria}</td>        
         <td style="color:${cor}">${formatarMoeda(valor)}</td>
         <td>${c.status}</td>
       </tr>
@@ -113,8 +112,7 @@ function gerarRelatorioContas() {
 <table>
 <thead>
 <tr>
-<th>Data</th>
-<th>Descrição</th>
+<th>Conta</th>
 <th>Categoria</th>
 <th>Valor</th>
 <th>Status</th>
