@@ -966,6 +966,7 @@
           criarGrafico();
           criarGraficoMensal();
           criarGraficoSaldo();
+          atualizarBotaoRelatorio();
 
           console.log("CARGA INICIAL FINALIZADA");
           console.log("mov:", mov);
@@ -2227,15 +2228,16 @@ ${formatarMoeda(resultadoDia)}
         }
 
         function atualizarBotaoRelatorio() {
-          let filtroMes = document.getElementById("filtroMes").value;
-
+          let filtroMes = document.getElementById("filtroMes")?.value;
           let filtroCategoria =
-            document.getElementById("filtroCategoria").value;
+            document.getElementById("filtroCategoria")?.value;
 
           let botao = document.getElementById("btnRelatorioContas");
 
+          if (!botao) return;
+
           if (filtroMes !== "todos" || filtroCategoria !== "todas") {
-            botao.style.display = "inline-block";
+            botao.style.display = "flex"; // 🔥 TROQUE PARA FLEX
           } else {
             botao.style.display = "none";
           }
