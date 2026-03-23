@@ -1690,7 +1690,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   align-items: center;
   gap: 16px;
 
-  background: linear-gradient(135deg, #0f172a, #1e293b); /* azul petróleo */
+  background: linear-gradient(135deg, #064e3b, #065f46);
 
   padding: 14px;
   border-radius: 14px;
