@@ -3049,7 +3049,10 @@ ${formatarMoeda(resultadoDia)}
       });
 
       let indexBanner = 0;
+
       function atualizarBanner() {
+        if (!frases || frases.length === 0) return;
+
         const card = document.querySelector(".banner-card");
 
         card.style.opacity = 0;
@@ -3061,18 +3064,18 @@ ${formatarMoeda(resultadoDia)}
           document.getElementById("bannerAutor").innerText = item.autor;
           document.getElementById("bannerImg").src = item.img;
 
-          card.style.opacity = 1;
+          // pequena pausa antes de voltar
+          setTimeout(() => {
+            card.style.opacity = 1;
+          }, 200);
 
           indexBanner = (indexBanner + 1) % frases.length;
-        }, 300);
+        }, 1000);
       }
-
-      atualizarBanner();
-      setInterval(atualizarBanner, 5000);
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script src="js/relatorios.js?v=3"></script>
-    <script src="js/relatoriosContas.js?v=3"></script>
+    <script src="js/relatorios.js?v=4"></script>
+    <script src="js/relatoriosContas.js?v=4"></script>
   </body>
 </html>
