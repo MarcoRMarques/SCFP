@@ -2986,8 +2986,10 @@ ${formatarMoeda(resultadoDia)}
 
     <!-- 🔥 Banner Motivacional -->
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const frases = [
+      let frases = [];
+
+      function carregarFrasesLocal() {
+        frases = [
           {
             frase:
               "Não economize o que sobra depois de gastar, gaste o que sobra depois de economizar.",
@@ -3007,31 +3009,57 @@ ${formatarMoeda(resultadoDia)}
             img: "https://i.imgur.com/3Z8XQ.jpg",
           },
         ];
+      }
 
-        let indexBanner = 0;
+      async function carregarFrasesSupabase() {
+        try {
+          const { data, error } = await supabaseClient
+            .from("frases_motivacionais")
+            .select("*")
+            .eq("ativa", true);
 
-        function atualizarBanner() {
-          const card = document.querySelector(".banner-card");
+          if (error || !data || data.length === 0) {
+            carregarFrasesLocal();
+            return;
+          }
 
-          card.style.opacity = 0;
-
-          setTimeout(() => {
-            const item = frases[indexBanner];
-
-            document.getElementById("bannerFrase").innerText =
-              `"${item.frase}"`;
-            document.getElementById("bannerAutor").innerText = item.autor;
-            document.getElementById("bannerImg").src = item.img;
-
-            card.style.opacity = 1;
-
-            indexBanner = (indexBanner + 1) % frases.length;
-          }, 300);
+          frases = data;
+        } catch (err) {
+          carregarFrasesLocal();
         }
+      }
+
+      async function carregarFrases() {
+        await carregarFrasesSupabase();
+      }
+
+      document.addEventListener("DOMContentLoaded", async () => {
+        await carregarFrases();
 
         atualizarBanner();
         setInterval(atualizarBanner, 5000);
       });
+
+      function atualizarBanner() {
+        const card = document.querySelector(".banner-card");
+
+        card.style.opacity = 0;
+
+        setTimeout(() => {
+          const item = frases[indexBanner];
+
+          document.getElementById("bannerFrase").innerText = `"${item.frase}"`;
+          document.getElementById("bannerAutor").innerText = item.autor;
+          document.getElementById("bannerImg").src = item.img;
+
+          card.style.opacity = 1;
+
+          indexBanner = (indexBanner + 1) % frases.length;
+        }, 300);
+      }
+
+      atualizarBanner();
+      setInterval(atualizarBanner, 5000);
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
