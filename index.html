@@ -3035,9 +3035,17 @@ ${formatarMoeda(resultadoDia)}
 
       document.addEventListener("DOMContentLoaded", async () => {
         await carregarFrases();
+        iniciarRotacaoBanner();
 
         atualizarBanner();
-        setInterval(atualizarBanner, 5000);
+        function iniciarRotacaoBanner() {
+          atualizarBanner();
+
+          const tempo = Math.floor(Math.random() * 5000) + 9000;
+          // entre 8000ms (8s) e 12000ms (12s)
+
+          setTimeout(iniciarRotacaoBanner, tempo);
+        }
       });
 
       let indexBanner = 0;
@@ -3064,7 +3072,7 @@ ${formatarMoeda(resultadoDia)}
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script src="js/relatorios.js?v=2"></script>
-    <script src="js/relatoriosContas.js?v=2"></script>
+    <script src="js/relatorios.js?v=3"></script>
+    <script src="js/relatoriosContas.js?v=3"></script>
   </body>
 </html>
