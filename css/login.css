@@ -184,3 +184,17 @@ body {
 .hidden {
   display: none;
 }
+.btn-recuperar {
+  background: transparent;
+  color: #4a90e2;
+  border: none;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-recuperar:hover {
+  color: #6fb3ff;
+  text-decoration: underline;
+}
