@@ -3068,13 +3068,24 @@ ${formatarMoeda(resultadoDia)}
 
           document.getElementById("bannerFrase").innerText = `"${item.frase}"`;
           document.getElementById("bannerAutor").innerText = item.autor;
+          const bannerImg = document.getElementById("bannerImg");
+
+          // 🔥 AQUI (ANTES de limpar)
+          bannerImg.style.opacity = 0;
+
+          // limpa imagem anterior imediatamente
+          bannerImg.src = "";
+
+          // força sincronização correta
           const img = new Image();
 
-          img.src = item.img;
-
           img.onload = () => {
-            document.getElementById("bannerImg").src = item.img;
+            bannerImg.src = item.img;
+            // 🔥 AQUI (DEPOIS de carregar imagem)
+            bannerImg.style.opacity = 1;
           };
+
+          img.src = item.img;
 
           // pequena pausa antes de voltar
           setTimeout(() => {
