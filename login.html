@@ -50,13 +50,11 @@
         const hash = window.location.hash;
 
         if (hash && hash.includes("access_token")) {
-          // 🔥 PASSO CRÍTICO: faz o Supabase processar o token da URL
-          const { error } = await supabaseClient.auth.exchangeCodeForSession(
-            window.location.href,
-          );
+          // 🔥 Supabase já processa automaticamente o token
+          const { data, error } = await supabaseClient.auth.getSession();
 
-          if (error) {
-            mostrarAviso("Erro ao validar recuperação. Tente novamente.");
+          if (error || !data.session) {
+            mostrarAviso("Link inválido ou expirado. Solicite novamente.");
             return;
           }
 
@@ -165,12 +163,15 @@
 
       window.onload = () => {
         const email = document.getElementById("email");
+        const senha = document.getElementById("senha");
         const novaSenha = document.getElementById("novaSenha");
 
         if (novaSenha) {
           novaSenha.focus();
-        } else if (email) {
+        } else if (email && !email.value) {
           email.focus();
+        } else if (senha) {
+          senha.focus();
         }
       };
     </script>
