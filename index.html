@@ -3037,16 +3037,34 @@ ${formatarMoeda(resultadoDia)}
 
       async function carregarFrases() {
         await carregarFrasesSupabase();
+
+        // 🔥 AGORA SIM: depois de carregar e embaralhar
+
+        iniciarBanner(); // primeira renderização correta
+
+        setInterval(atualizarBanner, 8000); // continua o fluxo normal
       }
 
       document.addEventListener("DOMContentLoaded", async () => {
         await carregarFrases();
         iniciarRotacaoBanner();
 
-        atualizarBanner();
-        function iniciarRotacaoBanner() {
-          atualizarBanner();
+        function iniciarBanner() {
+          if (!frases || frases.length === 0) return;
 
+          const item = frases[0];
+
+          document.getElementById("bannerFrase").innerText = `"${item.frase}"`;
+          document.getElementById("bannerAutor").innerText = item.autor;
+
+          const bannerImg = document.getElementById("bannerImg");
+
+          bannerImg.src = item.img;
+
+          indexBanner = 1;
+        }
+
+        function iniciarRotacaoBanner() {
           const tempo = Math.floor(Math.random() * 7000) + 15000;
           // entre 8000ms (8s) e 12000ms (12s)
 
@@ -3105,7 +3123,7 @@ ${formatarMoeda(resultadoDia)}
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script src="js/relatorios.js?v=4"></script>
-    <script src="js/relatoriosContas.js?v=4"></script>
+    <script src="js/relatorios.js?v=3"></script>
+    <script src="js/relatoriosContas.js?v=3"></script>
   </body>
 </html>
