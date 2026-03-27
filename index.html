@@ -3029,6 +3029,7 @@ ${formatarMoeda(resultadoDia)}
           }
 
           frases = data;
+          embaralharArray(frases);
         } catch (err) {
           carregarFrasesLocal();
         }
@@ -3083,10 +3084,17 @@ ${formatarMoeda(resultadoDia)}
           indexBanner = (indexBanner + 1) % frases.length;
         }, 1000);
       }
+
+      function embaralharArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      }
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script src="js/relatorios.js?v=5"></script>
-    <script src="js/relatoriosContas.js?v=5"></script>
+    <script src="js/relatorios.js?v=3"></script>
+    <script src="js/relatoriosContas.js?v=3"></script>
   </body>
 </html>
