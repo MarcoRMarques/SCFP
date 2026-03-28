@@ -7,7 +7,14 @@ const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
 // 🔐 GERAR SENHA
 function gerarSenha() {
-  return Math.floor(1000 + Math.random() * 9000).toString();
+  const tamanho = Math.floor(Math.random() * 3) + 6; // 6, 7 ou 8
+  let senha = "";
+
+  for (let i = 0; i < tamanho; i++) {
+    senha += Math.floor(Math.random() * 10);
+  }
+
+  return senha;
 }
 
 // 🚀 CRIAR USUÁRIO
