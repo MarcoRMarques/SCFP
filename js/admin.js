@@ -42,5 +42,21 @@ async function criarUsuario() {
   <strong>✅ Acesso criado com sucesso</strong><br><br>
   📧 Email: ${email}<br>
   🔑 Senha: ${senha}
+
+<button onclick="copiarAcesso('${email}', '${senha}')">
+    📋 Copiar acesso
+  </button>
+
 `;
+}
+
+function copiarAcesso(email, senha) {
+  const texto = `Acesso ao sistema SCFP:
+
+Email: ${email}
+Senha: ${senha}`;
+
+  navigator.clipboard.writeText(texto);
+
+  alert("Acesso copiado!");
 }

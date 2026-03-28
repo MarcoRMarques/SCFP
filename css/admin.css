@@ -82,3 +82,16 @@ button:hover {
 .logoSistemaLogin {
   margin-bottom: 15px;
 }
+#resultado button {
+  margin-top: 10px;
+  background: #1f2937;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#resultado button:hover {
+  background: #111827;
+}
