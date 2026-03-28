@@ -164,6 +164,8 @@
 
         mostrarAviso("Senha atualizada com sucesso!");
 
+        await supabaseClient.auth.signOut();
+
         // espera 2 segundos antes de redirecionar
         setTimeout(() => {
           window.location.href = "login.html";
@@ -192,7 +194,7 @@
       }
 
       window.onload = () => {
-        const email = document.getElementById("email");
+        const email = document.getElementById("email").value.trim();
         const senha = document.getElementById("senha");
         const novaSenha = document.getElementById("novaSenha");
 
