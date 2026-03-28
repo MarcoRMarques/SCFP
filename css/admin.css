@@ -299,8 +299,9 @@ button:hover {
   font-weight: bold;
   background: #f3f4f6;
   border-radius: 8px;
-}
 
+  margin-bottom: 5px; /* 🔥 respiro */
+}
 .acoes {
   display: flex;
   gap: 10px;
@@ -328,11 +329,16 @@ input {
 .linha {
   display: grid;
   grid-template-columns: 1fr 180px;
-
   align-items: center;
-  padding: 12px 15px;
 
+  padding: 12px 15px;
   border-bottom: 1px solid #e5e7eb;
+
+  transition: 0.2s;
+}
+
+.linha:hover {
+  background: #f1f5f9; /* 🔥 mais visível */
 }
 
 .linha.header {
@@ -341,12 +347,15 @@ input {
   border-radius: 8px;
 }
 
-.linha:hover {
-  background: #f9fafb;
-}
-
 .acoes {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
+}
+.acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+
+  padding-right: 10px; /* 🔥 respiro lateral */
 }

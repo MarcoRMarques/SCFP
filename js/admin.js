@@ -130,7 +130,7 @@ function renderizarLista(usuarios) {
   usuarios.forEach((user) => {
     lista.innerHTML += `
       <div class="linha">
-        <div>${user.email}</div>
+        <div>👤 ${user.email}</div>
 
         <div class="acoes">
           <button class="btn-editar" onclick="editarUsuario('${user.id}')">
