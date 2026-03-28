@@ -48,6 +48,15 @@ async function criarUsuario() {
   </button>
 
 `;
+
+  await supabaseClient.from("usuarios_admin").insert([
+    {
+      email: email,
+      senha: senha,
+    },
+  ]);
+
+  carregarUsuarios();
 }
 
 function copiarAcesso(email, senha) {
@@ -60,3 +69,32 @@ Senha: ${senha}`;
 
   alert("Acesso copiado!");
 }
+async function carregarUsuarios() {
+  const { data, error } = await supabaseClient
+    .from("usuarios_admin")
+    .select("*")
+    .order("criado_em", { ascending: false });
+
+  if (error) {
+    console.log("Erro ao carregar usuários");
+    return;
+  }
+
+  const lista = document.getElementById("listaUsuarios");
+
+  if (!lista) return;
+
+  lista.innerHTML = "";
+
+  data.forEach((user) => {
+    lista.innerHTML += `
+      <div style="margin-top:10px; padding:10px; background:#f1f5f9; border-radius:6px;">
+        📧 ${user.email} <br>
+        🔑 ${user.senha}
+      </div>
+    `;
+  });
+}
+window.onload = () => {
+  carregarUsuarios();
+};
