@@ -184,17 +184,19 @@ body {
 .hidden {
   display: none;
 }
-.btn-recuperar {
-  background: transparent;
-  color: #4a90e2;
+
+.loginCard .btn-recuperar {
+  background: #1f2937; /* 🔥 azul petróleo */
+  color: white;
   border: none;
-  font-size: 0.9rem;
-  margin-top: 10px;
+  padding: 13px;
+  border-radius: 8px;
+  font-weight: 500;
   cursor: pointer;
-  transition: 0.3s;
+  margin-top: 10px;
+  transition: 0.2s;
 }
 
-.btn-recuperar:hover {
-  color: #6fb3ff;
-  text-decoration: underline;
+.loginCard .btn-recuperar:hover {
+  background: #111827;
 }
