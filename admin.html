@@ -42,12 +42,31 @@
 
         <!-- Resultado -->
         <div id="resultado"></div>
-        <h3 style="margin-top: 20px">Usuários criados</h3>
+        <h2 style="margin-top: 20px">Usuários criados</h2>
+        <input
+          type="text"
+          id="buscaUsuario"
+          placeholder="🔍 Buscar por email..."
+          oninput="filtrarUsuarios()"
+        />
         <div id="listaUsuarios" class="lista-usuarios"></div>
       </div>
     </div>
 
     <!-- JS DO PAINEL -->
+    <script src="js/alertas.js"></script>
     <script src="js/admin.js"></script>
+
+    <div id="popupAviso" class="popupExcluir">
+      <div class="boxExcluir">
+        <h3>⚠ Atenção</h3>
+
+        <p id="mensagemAviso"></p>
+
+        <div class="acoesExcluir">
+          <button onclick="fecharAviso()" style="width: 100%">OK</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

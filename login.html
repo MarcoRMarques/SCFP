@@ -183,27 +183,6 @@
         }, 2000);
       }
 
-      function mostrarAviso(msg) {
-        const popup = document.getElementById("popupAviso");
-        const texto = document.getElementById("popupMensagem");
-
-        texto.innerText = msg;
-        popup.classList.remove("hidden");
-
-        // 🔥 foco automático no botão
-        setTimeout(() => {
-          popup.querySelector("button").focus();
-        }, 100);
-      }
-
-      function fecharPopup() {
-        document.getElementById("popupAviso").classList.add("hidden");
-
-        // 🔥 foco automático no email atualizado
-        const emailInput = document.getElementById("email");
-        if (emailInput) emailInput.focus();
-      }
-
       window.onload = () => {
         const emailInput = document.getElementById("email");
         const novaSenha = document.getElementById("novaSenha");
@@ -218,10 +197,17 @@
       };
     </script>
 
-    <div id="popupAviso" class="popupAviso hidden">
-      <div class="popupBox">
-        <p id="popupMensagem"></p>
-        <button onclick="fecharPopup()">OK</button>
+    <script src="js/alertas.js"></script>
+
+    <div id="popupAviso" class="popupExcluir">
+      <div class="boxExcluir">
+        <h3>⚠ Atenção</h3>
+
+        <p id="mensagemAviso"></p>
+
+        <div class="acoesExcluir">
+          <button onclick="fecharAviso()" style="width: 100%">OK</button>
+        </div>
       </div>
     </div>
   </body>

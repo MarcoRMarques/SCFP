@@ -1,3 +1,4 @@
+let listaUsuariosGlobal = [];
 // 🔥 CONFIGURAÇÃO DO SUPABASE
 const supabaseUrl = "https://rjiydewkobfbevzfrxbz.supabase.co";
 const supabaseKey =
@@ -86,23 +87,9 @@ async function carregarUsuarios() {
 
   lista.innerHTML = "";
 
-  data.forEach((user) => {
-    lista.innerHTML += `
-    <div class="usuario-item">
+  listaUsuariosGlobal = data;
 
-      <div class="usuario-info">
-        <span class="usuario-nome">👤 ${user.email}</span>
-        <span class="usuario-email">📧 ${user.email}</span>
-      </div>
-
-      <div class="usuario-acoes">
-        <button class="btn-editar" onclick="editarUsuario('${user.id}')">Editar</button>
-        <button class="btn-excluir" onclick="excluirUsuario('${user.id}')">Excluir</button>
-      </div>
-
-    </div>
-  `;
-  });
+  renderizarLista(data);
 }
 
 async function excluirUsuario(id) {
@@ -123,6 +110,42 @@ async function excluirUsuario(id) {
   alert("Usuário excluído com sucesso!");
 
   carregarUsuarios(); // 🔄 atualiza a lista
+}
+
+function renderizarLista(usuarios) {
+  const lista = document.getElementById("listaUsuarios");
+
+  if (!lista) return;
+
+  lista.innerHTML = "";
+
+  usuarios.forEach((user) => {
+    lista.innerHTML += `
+      <div class="usuario-item">
+
+        <div class="usuario-info">
+          <span class="usuario-nome">👤 ${user.email}</span>
+          <span class="usuario-email">📧 ${user.email}</span>
+        </div>
+
+        <div class="usuario-acoes">
+          <button class="btn-editar" onclick="editarUsuario('${user.id}')">Editar</button>
+          <button class="btn-excluir" onclick="excluirUsuario('${user.id}')">Excluir</button>
+        </div>
+
+      </div>
+    `;
+  });
+}
+
+function filtrarUsuarios() {
+  const termo = document.getElementById("buscaUsuario").value.toLowerCase();
+
+  const filtrados = listaUsuariosGlobal.filter((user) =>
+    user.email.toLowerCase().includes(termo),
+  );
+
+  renderizarLista(filtrados);
 }
 
 window.onload = () => {
