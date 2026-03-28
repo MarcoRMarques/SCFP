@@ -75,7 +75,8 @@ button:hover {
 .iconeTitulo {
   width: 60px;
   height: 60px;
-  margin-bottom: 10px;
+  display: block;
+  margin: 0 auto 10px auto;
 }
 
 .logoSistemaLogin {
