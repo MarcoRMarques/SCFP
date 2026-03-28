@@ -256,3 +256,35 @@ body {
 .loginCard .btn-login:active {
   transform: scale(0.97);
 }
+.boxExcluir {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+
+  width: 280px;
+  text-align: center;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.boxExcluir h3 {
+  margin-bottom: 10px;
+}
+
+.boxExcluir p {
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.acoesExcluir button {
+  width: 100%;
+  padding: 10px;
+
+  background: #10b981;
+  color: white;
+
+  border: none;
+  border-radius: 6px;
+
+  cursor: pointer;
+}
