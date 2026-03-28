@@ -119,7 +119,7 @@ async function excluirUsuario(id) {
     return;
   }
 
-  alert("Usuário excluído com sucesso!");
+  mostrarAviso("Usuário excluído com sucesso!", "sucesso");
 
   carregarUsuarios(); // 🔄 atualiza a lista
 }
