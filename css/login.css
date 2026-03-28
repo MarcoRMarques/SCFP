@@ -128,11 +128,12 @@ body {
   height: 100%;
 
   display: none;
+
   align-items: center;
   justify-content: center;
 
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(4px);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(4px); /* 🔥 DESFOQUE */
 
   z-index: 999;
 }
