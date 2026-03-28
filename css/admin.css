@@ -222,9 +222,13 @@ button:hover {
 }
 .conteudo {
   flex: 1;
-  padding: 30px;
+  padding: 40px;
   overflow-y: auto;
-  background: #f9fafb; /* 🔥 fundo leve */
+  background: #f9fafb;
+
+  display: flex; /* 🔥 ESSENCIAL */
+  justify-content: center; /* 🔥 CENTRALIZA */
+  align-items: flex-start; /* 🔥 COMEÇA DO TOPO */
 }
 .card {
   background: white;
@@ -262,4 +266,10 @@ button:hover {
   display: flex;
   justify-content: center; /* 🔥 CENTRALIZA */
   align-items: flex-start;
+}
+#secaoUsuarios {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 🔥 garante centralização dos cards */
 }
