@@ -55,6 +55,9 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;
+
+  /* 🔥 animação */
+  animation: fadeUp 0.6s ease;
 }
 
 .loginCard input {
@@ -99,11 +102,7 @@ body {
 
 .loginCard button:hover {
   background: #059669;
-}
-
-.logoArea h2 {
-  margin: 6px 0 2px;
-  font-size: 26px;
+  box-shadow: 0 6px 15px rgba(16, 185, 129, 0.3);
 }
 
 .logoArea p {
@@ -119,25 +118,7 @@ body {
   font-size: 13px;
   color: #666;
 }
-.logoArea h2 {
-  font-size: 28px;
 
-  letter-spacing: 1px;
-
-  font-weight: 700;
-
-  margin: 6px 0 2px;
-}
-/* 🔥 BOTÃO SECUNDÁRIO - RECUPERAR SENHA */
-.loginCard .btn-recuperar {
-  background: rgba(245, 158, 11, 0.15);
-  color: #b45309;
-  border: 1px solid #f59e0b;
-}
-
-.loginCard .btn-recuperar:hover {
-  background: rgba(245, 158, 11, 0.25);
-}
 /* 🔥 POPUP PADRÃO SISTEMA */
 .popupAviso {
   position: fixed;
@@ -199,4 +180,78 @@ body {
 
 .loginCard .btn-recuperar:hover {
   background: #111827;
+}
+.logoSistemaLogin {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.iconeTitulo {
+  width: 40px;
+  height: 40px;
+}
+
+/* 🔥 SCFP */
+.tituloSistema {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.tituloPrincipal {
+  font-size: 22px;
+  font-weight: 700;
+  color: #10b981;
+}
+
+/* 🔥 Nome completo */
+.tituloSecundario {
+  font-size: 13px;
+  font-weight: 700;
+  color: #111;
+}
+
+/* 🔥 Boas-vindas */
+.boasVindas {
+  font-size: 14px;
+  color: #111;
+  margin-top: 8px;
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseLogo {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.iconeTitulo {
+  animation: pulseLogo 3s ease-in-out infinite;
+}
+.loginCard .btn-login {
+  transition: all 0.2s ease;
+}
+
+.loginCard .btn-login:hover {
+  background: #059669;
+  box-shadow: 0 6px 15px rgba(16, 185, 129, 0.3);
+}
+
+.loginCard .btn-login:active {
+  transform: scale(0.97);
 }
