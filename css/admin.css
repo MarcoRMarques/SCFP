@@ -301,3 +301,14 @@ button:hover {
 .linha:hover {
   background: #f9fafb;
 }
+input {
+  width: 100%;
+  padding: 12px;
+
+  margin-top: 10px;
+
+  border-radius: 8px;
+  border: 1px solid #ccc;
+
+  box-sizing: border-box; /* 🔥 ESSENCIAL */
+}
