@@ -147,6 +147,12 @@
           return;
         }
 
+        // 🔥 REGRA DE 4 A 6 CARACTERES
+        if (novaSenha.length < 4 || novaSenha.length > 6) {
+          mostrarAviso("A senha deve ter entre 4 e 6 caracteres");
+          return;
+        }
+
         const { error } = await supabaseClient.auth.updateUser({
           password: novaSenha,
         });
