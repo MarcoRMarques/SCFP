@@ -44,7 +44,12 @@
           placeholder="Email"
           autocomplete="email"
         />
-        <input type="password" id="senha" placeholder="Senha" />
+        <input
+          type="password"
+          id="senha"
+          placeholder="Senha"
+          autocomplete="current-password"
+        />
 
         <button class="btn-login" onclick="fazerLogin()">Entrar</button>
         <button class="btn-recuperar" onclick="recuperarSenha()">
@@ -95,7 +100,7 @@
       })();
 
       async function fazerLogin() {
-        const email = document.getElementById("email").value;
+        const email = document.getElementById("email").value.trim();
         const senha = document.getElementById("senha").value;
 
         if (!email || !senha) {
@@ -117,7 +122,7 @@
       }
 
       async function recuperarSenha() {
-        const email = document.getElementById("email").value;
+        const email = document.getElementById("email").value.trim();
 
         if (!email) {
           mostrarAviso("Digite seu email");
@@ -194,17 +199,16 @@
       }
 
       window.onload = () => {
-        const email = document.getElementById("email").value.trim();
-        const senha = document.getElementById("senha");
+        const emailInput = document.getElementById("email");
         const novaSenha = document.getElementById("novaSenha");
 
-        if (novaSenha) {
-          novaSenha.focus();
-        } else if (email && !email.value) {
-          email.focus();
-        } else if (senha) {
-          senha.focus();
-        }
+        setTimeout(() => {
+          if (novaSenha) {
+            novaSenha.focus();
+          } else if (emailInput) {
+            emailInput.focus();
+          }
+        }, 100);
       };
     </script>
 
