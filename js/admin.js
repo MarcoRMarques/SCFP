@@ -22,7 +22,7 @@ async function criarUsuario() {
   const email = document.getElementById("novoEmail").value.trim();
 
   if (!email) {
-    alert("Digite o email");
+    mostrarAviso("Digite o email");
     return;
   }
 
@@ -34,7 +34,7 @@ async function criarUsuario() {
   });
 
   if (error) {
-    alert("Erro ao criar usuário: " + error.message);
+    mostrarAviso("Erro ao criar usuário: " + error.message);
     return;
   }
 
@@ -67,7 +67,7 @@ Senha: ${senha}`;
 
   navigator.clipboard.writeText(texto);
 
-  alert("Acesso copiado!");
+  mostrarAviso("Acesso copiado!");
 }
 async function carregarUsuarios() {
   const { data, error } = await supabaseClient
@@ -88,13 +88,43 @@ async function carregarUsuarios() {
 
   data.forEach((user) => {
     lista.innerHTML += `
-      <div style="margin-top:10px; padding:10px; background:#f1f5f9; border-radius:6px;">
-        📧 ${user.email} <br>
-        🔑 ${user.senha}
+    <div class="usuario-item">
+
+      <div class="usuario-info">
+        <span class="usuario-nome">👤 ${user.email}</span>
+        <span class="usuario-email">📧 ${user.email}</span>
       </div>
-    `;
+
+      <div class="usuario-acoes">
+        <button class="btn-editar" onclick="editarUsuario('${user.id}')">Editar</button>
+        <button class="btn-excluir" onclick="excluirUsuario('${user.id}')">Excluir</button>
+      </div>
+
+    </div>
+  `;
   });
 }
+
+async function excluirUsuario(id) {
+  const confirmar = confirm("Tem certeza que deseja excluir este usuário?");
+
+  if (!confirmar) return;
+
+  const { error } = await supabaseClient
+    .from("usuarios_admin")
+    .delete()
+    .eq("id", id);
+
+  if (error) {
+    mostrarAviso("Erro ao excluir: " + error.message);
+    return;
+  }
+
+  alert("Usuário excluído com sucesso!");
+
+  carregarUsuarios(); // 🔄 atualiza a lista
+}
+
 window.onload = () => {
   carregarUsuarios();
 };

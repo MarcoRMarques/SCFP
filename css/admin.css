@@ -95,3 +95,58 @@ button:hover {
 #resultado button:hover {
   background: #111827;
 }
+.lista-usuarios {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-top: 15px;
+  padding-right: 5px;
+}
+
+.usuario-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e1e2f;
+  border-radius: 10px;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  transition: 0.2s;
+}
+
+.usuario-item:hover {
+  background: #2a2a40;
+}
+
+.usuario-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.usuario-nome {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.usuario-email {
+  font-size: 13px;
+  color: #bbbbbb;
+}
+
+.usuario-acoes button {
+  margin-left: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.btn-editar {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-excluir {
+  background-color: #e53935;
+  color: white;
+}
