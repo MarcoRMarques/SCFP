@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Painel Admin - SCFP</title>
+
+    <!-- CSS do sistema -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Supabase -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  </head>
+
+  <body>
+    <div class="overlay">
+      <div class="loginCard">
+        <!-- Logo -->
+        <div class="logoSistemaLogin">
+          <svg class="iconeTitulo" viewBox="0 0 24 24" fill="#10b981">
+            <path d="M12 2L2 7v2h20V7L12 2z" />
+          </svg>
+        </div>
+
+        <!-- Títulos -->
+        <div class="tituloSistema">
+          <div class="tituloPrincipal">Admin SCFP</div>
+          <div class="tituloSecundario">Controle de usuários</div>
+        </div>
+
+        <!-- Input -->
+        <input id="novoEmail" placeholder="Email do usuário" />
+
+        <!-- Botão -->
+        <button onclick="criarUsuario()">Criar usuário</button>
+
+        <!-- Resultado -->
+        <div id="resultado"></div>
+      </div>
+    </div>
+
+    <!-- JS DO PAINEL -->
+    <script src="js/admin.js"></script>
+  </body>
+</html>

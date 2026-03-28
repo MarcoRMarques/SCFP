@@ -137,8 +137,13 @@
         );
 
         if (error) {
-          console.error("ERRO REAL DO SUPABASE:", error);
-          mostrarAviso(error.message);
+          if (error.message && error.message.includes("rate limit")) {
+            mostrarAviso(
+              "Muitas tentativas. Aguarde alguns minutos e tente novamente.",
+            );
+          } else {
+            mostrarAviso("Erro ao enviar email. Verifique o endereço.");
+          }
           return;
         }
 
