@@ -137,7 +137,8 @@
         );
 
         if (error) {
-          mostrarAviso("Erro ao enviar email. Verifique o endereço.");
+          console.error("ERRO REAL DO SUPABASE:", error);
+          mostrarAviso(error.message);
           return;
         }
 
