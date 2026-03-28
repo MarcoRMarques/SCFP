@@ -93,9 +93,21 @@ async function carregarUsuarios() {
 }
 
 async function excluirUsuario(id) {
-  const confirmar = confirm("Tem certeza que deseja excluir este usuário?");
+  abrirConfirmacao("Tem certeza que deseja excluir este usuário?", async () => {
+    const { error } = await supabaseClient
+      .from("usuarios_admin")
+      .delete()
+      .eq("id", id);
 
-  if (!confirmar) return;
+    if (error) {
+      mostrarAviso("Erro ao excluir: " + error.message);
+      return;
+    }
+
+    mostrarAviso("Usuário excluído com sucesso!", "sucesso");
+
+    carregarUsuarios();
+  });
 
   const { error } = await supabaseClient
     .from("usuarios_admin")
@@ -151,3 +163,64 @@ function filtrarUsuarios() {
 window.onload = () => {
   carregarUsuarios();
 };
+let acaoConfirmada = null;
+
+function abrirConfirmacao(mensagem, callback) {
+  document.getElementById("mensagemConfirmar").innerText = mensagem;
+  document.getElementById("popupConfirmar").style.display = "flex";
+
+  acaoConfirmada = callback;
+}
+
+function confirmarAcao() {
+  if (acaoConfirmada) {
+    acaoConfirmada();
+  }
+  fecharConfirmacao();
+}
+
+function fecharConfirmacao() {
+  document.getElementById("popupConfirmar").style.display = "none";
+  acaoConfirmada = null;
+}
+
+let usuarioEditandoId = null;
+
+function editarUsuario(id) {
+  usuarioEditandoId = id;
+
+  const usuario = listaUsuariosGlobal.find((u) => u.id === id);
+
+  document.getElementById("inputEditarEmail").value = usuario.email;
+
+  document.getElementById("popupEditar").style.display = "flex";
+}
+
+function fecharEditar() {
+  document.getElementById("popupEditar").style.display = "none";
+  usuarioEditandoId = null;
+}
+
+async function salvarEdicao() {
+  const novoEmail = document.getElementById("inputEditarEmail").value.trim();
+
+  if (!novoEmail) {
+    mostrarAviso("Digite um email válido");
+    return;
+  }
+
+  const { error } = await supabaseClient
+    .from("usuarios_admin")
+    .update({ email: novoEmail })
+    .eq("id", usuarioEditandoId);
+
+  if (error) {
+    mostrarAviso("Erro ao atualizar: " + error.message);
+    return;
+  }
+
+  mostrarAviso("Usuário atualizado com sucesso!", "sucesso");
+
+  fecharEditar();
+  carregarUsuarios();
+}

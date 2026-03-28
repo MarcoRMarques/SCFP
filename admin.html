@@ -57,6 +57,7 @@
     <script src="js/alertas.js"></script>
     <script src="js/admin.js"></script>
 
+    <!-- 🔹 POPUP AVISO -->
     <div id="popupAviso" class="popupAviso" style="display: none">
       <div class="popupBox">
         <h3>⚠ Atenção</h3>
@@ -65,6 +66,55 @@
 
         <div class="acoesExcluir">
           <button onclick="fecharAviso()" style="width: 100%">OK</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 🔹 POPUP CONFIRMAÇÃO -->
+    <div id="popupConfirmar" class="popupAviso" style="display: none">
+      <div class="popupBox">
+        <h3>⚠ Confirmação</h3>
+
+        <p id="mensagemConfirmar"></p>
+
+        <div style="display: flex; gap: 10px">
+          <button
+            onclick="confirmarAcao()"
+            style="flex: 1; background: #10b981"
+          >
+            Confirmar
+          </button>
+
+          <button
+            onclick="fecharConfirmacao()"
+            style="flex: 1; background: #e53935"
+          >
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 🔹 POPUP EDITAR -->
+    <div id="popupEditar" class="popupAviso" style="display: none">
+      <div class="popupBox">
+        <h3>✏ Editar usuário</h3>
+
+        <input
+          type="text"
+          id="inputEditarEmail"
+          placeholder="Novo email"
+          style="width: 100%; padding: 10px; margin: 10px 0"
+        />
+
+        <div style="display: flex; gap: 10px">
+          <button onclick="salvarEdicao()" style="flex: 1; background: #10b981">
+            Salvar
+          </button>
+
+          <button onclick="fecharEditar()" style="flex: 1; background: #e53935">
+            Cancelar
+          </button>
         </div>
       </div>
     </div>
