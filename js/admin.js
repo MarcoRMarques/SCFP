@@ -131,9 +131,15 @@ function renderizarLista(usuarios) {
     lista.innerHTML += `
       <div class="linha">
         <div>${user.email}</div>
+
         <div class="acoes">
-          <button class="btn-editar" onclick="editarUsuario('${user.id}')">Editar</button>
-          <button class="btn-excluir" onclick="excluirUsuario('${user.id}')">Excluir</button>
+          <button class="btn-editar" onclick="editarUsuario('${user.id}')">
+            Editar
+          </button>
+
+          <button class="btn-excluir" onclick="excluirUsuario('${user.id}')">
+            Excluir
+          </button>
         </div>
       </div>
     `;

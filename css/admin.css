@@ -154,14 +154,23 @@ button:hover {
 }
 
 .btn-editar {
-  background-color: #4caf50;
+  background: #4caf50;
   color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 .btn-excluir {
-  background-color: #e53935;
+  background: #e53935;
   color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
 }
+
 #buscaUsuario {
   width: 100%;
   padding: 8px;
@@ -311,4 +320,33 @@ input {
   border: 1px solid #ccc;
 
   box-sizing: border-box; /* 🔥 ESSENCIAL */
+}
+.tabela {
+  margin-top: 15px;
+}
+
+.linha {
+  display: grid;
+  grid-template-columns: 1fr 180px;
+
+  align-items: center;
+  padding: 12px 15px;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.linha.header {
+  font-weight: bold;
+  background: #f3f4f6;
+  border-radius: 8px;
+}
+
+.linha:hover {
+  background: #f9fafb;
+}
+
+.acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
 }
