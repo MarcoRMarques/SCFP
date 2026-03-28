@@ -3068,9 +3068,11 @@ ${formatarMoeda(resultadoDia)}
 
         function iniciarRotacaoBanner() {
           const tempo = Math.floor(Math.random() * 7000) + 15000;
-          // entre 8000ms (8s) e 12000ms (12s)
 
-          setTimeout(iniciarRotacaoBanner, tempo);
+          setTimeout(() => {
+            atualizarBanner();
+            iniciarRotacaoBanner();
+          }, tempo);
         }
       });
 
@@ -3095,7 +3097,7 @@ ${formatarMoeda(resultadoDia)}
           // só depois que estiver tudo pronto, começa o ciclo
           indexBanner = 1;
 
-          setInterval(atualizarBanner, 8000);
+          iniciarRotacaoBanner();
         };
 
         img.src = item.img;
@@ -3150,7 +3152,7 @@ ${formatarMoeda(resultadoDia)}
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script src="js/relatorios.js?v=8"></script>
-    <script src="js/relatoriosContas.js?v=8"></script>
+    <script src="js/relatorios.js?v=9"></script>
+    <script src="js/relatoriosContas.js?v=9"></script>
   </body>
 </html>
