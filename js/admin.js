@@ -118,22 +118,23 @@ function renderizarLista(usuarios) {
 
   if (!lista) return;
 
-  lista.innerHTML = "";
+  lista.innerHTML = `
+    <div class="tabela">
+      <div class="linha header">
+        <div>Email</div>
+        <div>Ações</div>
+      </div>
+    </div>
+  `;
 
   usuarios.forEach((user) => {
     lista.innerHTML += `
-      <div class="usuario-item">
-
-        <div class="usuario-info">
-          <span class="usuario-nome">👤 ${user.email}</span>
-          <span class="usuario-email">📧 ${user.email}</span>
-        </div>
-
-        <div class="usuario-acoes">
+      <div class="linha">
+        <div>${user.email}</div>
+        <div class="acoes">
           <button class="btn-editar" onclick="editarUsuario('${user.id}')">Editar</button>
           <button class="btn-excluir" onclick="excluirUsuario('${user.id}')">Excluir</button>
         </div>
-
       </div>
     `;
   });
