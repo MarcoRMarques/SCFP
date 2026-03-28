@@ -58,6 +58,9 @@ async function criarUsuario() {
   ]);
 
   carregarUsuarios();
+
+  document.getElementById("novoEmail").value = "";
+  document.getElementById("novoEmail").focus();
 }
 
 function copiarAcesso(email, senha) {
@@ -159,10 +162,13 @@ function abrirConfirmacao(mensagem, callback) {
 }
 
 function confirmarAcao() {
-  if (acaoConfirmada) {
-    acaoConfirmada();
-  }
+  if (!acaoConfirmada) return;
+
+  const callback = acaoConfirmada;
+
   fecharConfirmacao();
+
+  callback();
 }
 
 function fecharConfirmacao() {
@@ -210,3 +216,9 @@ async function salvarEdicao() {
   fecharEditar();
   carregarUsuarios();
 }
+document.getElementById("novoEmail").addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    e.preventDefault(); // evita comportamento estranho
+    criarUsuario();
+  }
+});
