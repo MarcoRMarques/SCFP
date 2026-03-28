@@ -12,44 +12,70 @@
   </head>
 
   <body>
-    <div class="overlay">
-      <div class="loginCard">
-        <!-- Logo -->
-        <div class="logoSistemaLogin">
-          <svg
-            class="iconeTitulo"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="#10b981"
-          >
-            <path
-              d="M12 2L2 7v2h20V7L12 2zm-7 9v7h2v-7H5zm4 0v7h2v-7H9zm4 0v7h2v-7h-2zm4 0v7h2v-7h-2zM2 20h20v2H2z"
-            />
-          </svg>
-        </div>
+    <div class="layout">
+      <!-- MENU -->
+      <div class="sidebar">
+        <h2>SCFP</h2>
 
-        <!-- Títulos -->
-        <div class="tituloSistema">
+        <button onclick="mostrarSecao('usuarios')">👥 Usuários</button>
+        <button onclick="mostrarSecao('frases')">💬 Frases</button>
+      </div>
+
+      <!-- CONTEÚDO -->
+      <div class="conteudo">
+        
+          <div id="secaoUsuarios">
+
+  <div class="card">
+
+    <div class="tituloPrincipal">Admin SCFP</div>
+    <div class="tituloSecundario">Controle de usuários</div>
+
+    <input id="novoEmail" placeholder="Email do usuário" />
+    <button onclick="criarUsuario()">Criar usuário</button>
+
+    <div id="resultado"></div>
+
+    <h2 style="margin-top: 20px">Usuários criados</h2>
+
+    <input
+      type="text"
+      id="buscaUsuario"
+      placeholder="🔍 Buscar por email..."
+      oninput="filtrarUsuarios()"
+    />
+
+    <div id="listaUsuarios" class="lista-usuarios"></div>
+
+  </div>
+
+</div>
+
+          <!-- 🔹 MANTEMOS SEU CONTEÚDO AQUI DENTRO -->
           <div class="tituloPrincipal">Admin SCFP</div>
           <div class="tituloSecundario">Controle de usuários</div>
+
+          <input id="novoEmail" placeholder="Email do usuário" />
+
+          <button onclick="criarUsuario()">Criar usuário</button>
+
+          <div id="resultado"></div>
+
+          <h2 style="margin-top: 20px">Usuários criados</h2>
+
+          <input
+            type="text"
+            id="buscaUsuario"
+            placeholder="🔍 Buscar por email..."
+            oninput="filtrarUsuarios()"
+          />
+
+          <div id="listaUsuarios" class="lista-usuarios"></div>
         </div>
 
-        <!-- Input -->
-        <input id="novoEmail" placeholder="Email do usuário" />
-
-        <!-- Botão -->
-        <button onclick="criarUsuario()">Criar usuário</button>
-
-        <!-- Resultado -->
-        <div id="resultado"></div>
-        <h2 style="margin-top: 20px">Usuários criados</h2>
-        <input
-          type="text"
-          id="buscaUsuario"
-          placeholder="🔍 Buscar por email..."
-          oninput="filtrarUsuarios()"
-        />
-        <div id="listaUsuarios" class="lista-usuarios"></div>
+        <div id="secaoFrases" style="display: none">
+          <h2>Gerenciar frases</h2>
+        </div>
       </div>
     </div>
 
