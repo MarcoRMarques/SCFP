@@ -38,6 +38,9 @@ async function criarUsuario() {
     return;
   }
 
-  document.getElementById("resultado").innerHTML =
-    `Usuário criado!<br>Email: ${email}<br>Senha: ${senha}`;
+  resultado.innerHTML = `
+  <strong>✅ Acesso criado com sucesso</strong><br><br>
+  📧 Email: ${email}<br>
+  🔑 Senha: ${senha}
+`;
 }
