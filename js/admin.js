@@ -108,20 +108,6 @@ async function excluirUsuario(id) {
 
     carregarUsuarios();
   });
-
-  const { error } = await supabaseClient
-    .from("usuarios_admin")
-    .delete()
-    .eq("id", id);
-
-  if (error) {
-    mostrarAviso("Erro ao excluir: " + error.message);
-    return;
-  }
-
-  mostrarAviso("Usuário excluído com sucesso!", "sucesso");
-
-  carregarUsuarios(); // 🔄 atualiza a lista
 }
 
 function renderizarLista(usuarios) {
