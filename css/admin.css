@@ -169,3 +169,54 @@ button:hover {
   border-radius: 8px;
   border: none;
 }
+/* 🔥 POPUP PADRÃO SISTEMA (IGUAL LOGIN) */
+.popupAviso {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(4px);
+
+  z-index: 999;
+}
+
+.popupBox {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+
+  width: 280px;
+  text-align: center;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.popupBox h3 {
+  margin-bottom: 10px;
+}
+
+.popupBox p {
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.acoesExcluir button {
+  width: 100%;
+  padding: 10px;
+
+  background: #10b981;
+  color: white;
+
+  border: none;
+  border-radius: 6px;
+
+  cursor: pointer;
+}
