@@ -459,7 +459,7 @@ input {
   background: #059669;
 }
 .container-lista {
-  max-height: 300px;
+  max-height: 200px;
   overflow-y: auto;
   margin-top: 10px;
   position: relative;
