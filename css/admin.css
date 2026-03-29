@@ -48,15 +48,11 @@ input {
 
 /* BOTÃO */
 button {
-  width: 100%;
   padding: 12px;
-  margin-top: 15px;
-  background: #10b981;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
+}
+
+.acoes button {
+  width: auto; /* 🔥 ESSENCIAL */
 }
 
 button:hover {
@@ -290,15 +286,6 @@ button:hover {
   margin-top: 15px;
 }
 
-.linha {
-  display: grid;
-  grid-template-columns: 1fr 120px 200px;
-  align-items: center;
-
-  padding: 10px 15px;
-  border-bottom: 1px solid #e5e7eb;
-}
-
 .acoes {
   display: flex;
   gap: 10px;
@@ -356,6 +343,12 @@ input {
   gap: 10px;
 
   padding-right: 10px; /* 🔥 respiro lateral */
+}
+
+.acoes button {
+  padding: 5px 8px;
+  font-size: 12px;
+  border-radius: 6px;
 }
 .status {
   padding: 4px 10px;
