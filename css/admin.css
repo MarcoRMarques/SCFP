@@ -96,13 +96,12 @@ button:hover {
 #resultado button:hover {
   background: #111827;
 }
+
 .lista-usuarios {
-  max-height: 350px;
-  overflow-y: auto;
   margin-top: 15px;
   padding-right: 5px;
 
-  scrollbar-width: thin; /* Firefox */
+  overflow: visible; /* 🔥 garante que não cria scroll */
 }
 
 /* Chrome / Edge */
@@ -241,16 +240,7 @@ button:hover {
 
   cursor: pointer;
 }
-.conteudo {
-  flex: 1;
-  padding: 40px;
-  overflow-y: auto;
-  background: #f9fafb;
 
-  display: flex; /* 🔥 ESSENCIAL */
-  justify-content: center; /* 🔥 CENTRALIZA */
-  align-items: flex-start; /* 🔥 COMEÇA DO TOPO */
-}
 .card {
   background: white;
   padding: 25px;
@@ -285,8 +275,10 @@ button:hover {
   background: #f1f5f9;
 
   display: flex;
-  justify-content: center; /* 🔥 CENTRALIZA */
+  justify-content: center;
   align-items: flex-start;
+
+  overflow: hidden; /* 🔥 AGORA SIM */
 }
 #secaoUsuarios {
   width: 100%;
@@ -306,13 +298,7 @@ button:hover {
   padding: 10px 15px;
   border-bottom: 1px solid #e5e7eb;
 }
-.linha.header {
-  font-size: 13px;
-  font-weight: 500; /* antes era bold */
-  color: #6b7280; /* cinza elegante */
-  background: #f9fafb;
-  border-radius: 8px;
-}
+
 .acoes {
   display: flex;
   gap: 10px;
@@ -353,9 +339,15 @@ input {
 }
 
 .linha.header {
-  font-weight: bold;
-  background: #f3f4f6;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+  background: #f9fafb;
   border-radius: 8px;
+
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .acoes {
@@ -382,11 +374,6 @@ input {
   background: #fee2e2;
   color: #7f1d1d;
 }
-.container-lista {
-  max-height: 150px; /* 🔥 controla altura */
-  overflow-y: auto;
-  margin-top: 10px;
-}
 
 /* 🔥 SCROLL BONITO */
 .container-lista::-webkit-scrollbar {
@@ -405,15 +392,6 @@ input {
   position: relative;
 }
 
-.linha.header {
-  font-weight: bold;
-  background: #f3f4f6;
-  border-radius: 8px;
-
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
 .tabela {
   display: block; /* 🔥 força comportamento correto */
 }
@@ -428,4 +406,10 @@ input {
   font-size: 16px;
   font-weight: 600 !important;
   color: #10b981 !important;
+}
+.titulo-lista {
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #10b981;
 }
