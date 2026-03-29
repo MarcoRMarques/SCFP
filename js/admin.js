@@ -132,6 +132,24 @@ async function excluirUsuario(id) {
   });
 }
 
+async function toggleStatus(id, statusAtual) {
+  const novoStatus = statusAtual === "ativo" ? "inativo" : "ativo";
+
+  const { error } = await supabaseClient
+    .from("usuarios_admin")
+    .update({ status: novoStatus })
+    .eq("id", id);
+
+  if (error) {
+    mostrarAviso("Erro ao atualizar status");
+    return;
+  }
+
+  mostrarAviso("Status atualizado com sucesso!", "sucesso");
+
+  carregarUsuarios();
+}
+
 function renderizarLista(usuarios) {
   const lista = document.getElementById("listaUsuarios");
 
@@ -141,6 +159,7 @@ function renderizarLista(usuarios) {
     <div class="tabela">
       <div class="linha header">
         <div>Email</div>
+        <div>Status</div>
         <div>Ações</div>
       </div>
     </div>
@@ -151,7 +170,17 @@ function renderizarLista(usuarios) {
       <div class="linha">
         <div>👤 ${user.email}</div>
 
+        <div>
+          <span class="status ${user.status}">
+            ${user.status}
+          </span>
+        </div>
+
         <div class="acoes">
+          <button onclick="toggleStatus('${user.id}', '${user.status}')">
+            ${user.status === "ativo" ? "Desativar" : "Ativar"}
+          </button>
+
           <button class="btn-editar" onclick="editarUsuario('${user.id}')">
             Editar
           </button>

@@ -354,3 +354,20 @@ input {
 
   padding-right: 10px; /* 🔥 respiro lateral */
 }
+.status {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.status.ativo {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status.inativo {
+  background: #fee2e2;
+  color: #7f1d1d;
+}
