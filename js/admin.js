@@ -169,7 +169,10 @@ function renderizarLista(usuarios) {
         </div>
 
         <div class="acoes">
-          <button class="btn-toggle" onclick="toggleStatus('${user.id}', '${user.status}')">
+          <button 
+  class="btn-toggle ${user.status}" 
+  onclick="toggleStatus('${user.id}', '${user.status}')"
+>
   ${user.status === "ativo" ? "Desativar" : "Ativar"}
 </button>
 

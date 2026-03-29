@@ -319,10 +319,10 @@ input {
 
 .linha {
   display: grid;
-  grid-template-columns: 1fr 120px 200px;
+  grid-template-columns: 1fr 90px 170px;
   align-items: center;
 
-  padding: 12px 15px;
+  padding: 6px 10px;
   border-bottom: 1px solid #e5e7eb;
 
   transition: 0.2s;
@@ -353,14 +353,14 @@ input {
 }
 
 .acoes button {
-  padding: 5px 8px;
+  padding: 3px 6px;
   font-size: 12px;
   border-radius: 6px;
 }
 .status {
-  padding: 4px 10px;
+  padding: 2px 6px;
   border-radius: 20px;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -420,4 +420,35 @@ input {
 
 .btn-toggle:hover {
   background: #059669;
+}
+.btn-principal {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+
+  background: #10b981;
+  color: white;
+
+  border: none;
+  border-radius: 8px;
+
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-principal:hover {
+  background: #059669;
+}
+.btn-toggle.ativo {
+  background: #10b981;
+  color: white;
+}
+
+.btn-toggle.inativo {
+  background: #9ca3af;
+  color: white;
+}
+
+.btn-toggle:hover {
+  opacity: 0.9;
 }
