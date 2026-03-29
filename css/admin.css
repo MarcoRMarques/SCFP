@@ -3,6 +3,7 @@ body {
   font-family: "Poppins", sans-serif;
   background: linear-gradient(135deg, #0f172a, #1e293b);
   height: 100vh;
+  overflow: hidden; /* 🔥 ESSENCIAL */
 }
 
 /* CENTRALIZA TUDO */
@@ -421,4 +422,10 @@ input {
   font-size: 16px;
   font-weight: 600; /* mais destaque */
   color: #10b981; /* mesma cor do título principal */
+}
+.titulo-lista {
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: 600 !important;
+  color: #10b981 !important;
 }
