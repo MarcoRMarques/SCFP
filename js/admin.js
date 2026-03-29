@@ -155,15 +155,7 @@ function renderizarLista(usuarios) {
 
   if (!lista) return;
 
-  let html = `
-    <div class="tabela">
-
-      <div class="linha header">
-        <div>Email</div>
-        <div>Status</div>
-        <div>Ações</div>
-      </div>
-  `;
+  let html = "";
 
   usuarios.forEach((user) => {
     html += `
@@ -192,8 +184,6 @@ function renderizarLista(usuarios) {
       </div>
     `;
   });
-
-  html += `</div>`;
 
   lista.innerHTML = html;
 }

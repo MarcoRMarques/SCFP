@@ -371,11 +371,9 @@ input {
   color: #7f1d1d;
 }
 .container-lista {
-  max-height: 150px; /* 🔥 controla altura */
+  max-height: 300px; /* 🔥 controla altura */
   overflow-y: auto;
   margin-top: 10px;
-
-  position: relative; /* 🔥 ESSENCIAL pro header sticky */
 }
 
 /* 🔥 SCROLL BONITO */
