@@ -328,7 +328,7 @@ input {
 
 .linha {
   display: grid;
-  grid-template-columns: 1fr 180px;
+  grid-template-columns: 1fr 120px 200px;
   align-items: center;
 
   padding: 12px 15px;
@@ -389,4 +389,14 @@ input {
 
 .container-lista::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
+}
+.tabela {
+  position: relative;
+}
+
+.linha.header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #f3f4f6;
 }
