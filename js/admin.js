@@ -167,30 +167,47 @@ function renderizarLista(usuarios) {
 
   usuarios.forEach((user) => {
     lista.innerHTML += `
-      <div class="linha">
-        <div>👤 ${user.email}</div>
+    <div class="linha" style="display:flex; align-items:center; padding:10px 12px; border-bottom:1px solid #eee;">
 
-        <div>
-          <span class="status ${user.status}">
-            ${user.status}
-          </span>
-        </div>
-
-        <div class="acoes">
-          <button onclick="toggleStatus('${user.id}', '${user.status}')">
-            ${user.status === "ativo" ? "Desativar" : "Ativar"}
-          </button>
-
-          <button class="btn-editar" onclick="editarUsuario('${user.id}')">
-            Editar
-          </button>
-
-          <button class="btn-excluir" onclick="excluirUsuario('${user.id}')">
-            Excluir
-          </button>
-        </div>
+      <!-- EMAIL -->
+      <div style="flex:2; font-size:14px;">
+        👤 ${user.email}
       </div>
-    `;
+
+      <!-- STATUS -->
+      <div style="flex:1; text-align:center;">
+        <span class="status ${user.status}">
+          ${user.status}
+        </span>
+      </div>
+
+      <!-- AÇÕES -->
+      <div style="flex:2; display:flex; justify-content:flex-end; gap:8px;">
+        
+        <button 
+          style="padding:6px 10px; font-size:12px; border-radius:6px; background:#10b981; color:white; border:none; cursor:pointer;"
+          onclick="toggleStatus('${user.id}', '${user.status}')"
+        >
+          ${user.status === "ativo" ? "Desativar" : "Ativar"}
+        </button>
+
+        <button 
+          style="padding:6px 10px; font-size:12px; border-radius:6px; background:#4caf50; color:white; border:none; cursor:pointer;"
+          onclick="editarUsuario('${user.id}')"
+        >
+          Editar
+        </button>
+
+        <button 
+          style="padding:6px 10px; font-size:12px; border-radius:6px; background:#e53935; color:white; border:none; cursor:pointer;"
+          onclick="excluirUsuario('${user.id}')"
+        >
+          Excluir
+        </button>
+
+      </div>
+    </div>
+  `;
   });
 }
 
