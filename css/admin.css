@@ -418,8 +418,7 @@ input {
 }
 .titulo-lista {
   margin-top: 15px;
-
   font-size: 16px;
-  font-weight: 500;
-  color: #374151;
+  font-weight: 600; /* mais destaque */
+  color: #10b981; /* mesma cor do título principal */
 }
