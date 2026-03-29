@@ -173,10 +173,21 @@ button:hover {
 
 #buscaUsuario {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   margin: 10px 0;
+
+  border: 1px solid #d1d5db; /* mesma linha do input */
   border-radius: 8px;
-  border: none;
+
+  font-size: 14px;
+
+  outline: none;
+  transition: 0.2s;
+}
+
+#buscaUsuario:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.1);
 }
 /* 🔥 POPUP PADRÃO SISTEMA (IGUAL LOGIN) */
 .popupAviso {
@@ -295,11 +306,11 @@ button:hover {
   border-bottom: 1px solid #e5e7eb;
 }
 .linha.header {
-  font-weight: bold;
-  background: #f3f4f6;
+  font-size: 13px;
+  font-weight: 500; /* antes era bold */
+  color: #6b7280; /* cinza elegante */
+  background: #f9fafb;
   border-radius: 8px;
-
-  margin-bottom: 5px; /* 🔥 respiro */
 }
 .acoes {
   display: flex;
@@ -404,4 +415,11 @@ input {
 }
 .tabela {
   display: block; /* 🔥 força comportamento correto */
+}
+.titulo-lista {
+  margin-top: 15px;
+
+  font-size: 16px;
+  font-weight: 500;
+  color: #374151;
 }
