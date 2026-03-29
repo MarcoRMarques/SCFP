@@ -375,6 +375,8 @@ input {
   max-height: 300px; /* 🔥 controla altura */
   overflow-y: auto;
   margin-top: 10px;
+
+  position: relative; /* 🔥 ESSENCIAL pro header sticky */
 }
 
 /* 🔥 SCROLL BONITO */
@@ -395,8 +397,11 @@ input {
 }
 
 .linha.header {
+  font-weight: bold;
+  background: #f3f4f6;
+  border-radius: 8px;
+
   position: sticky;
   top: 0;
-  z-index: 2;
-  background: #f3f4f6;
+  z-index: 10;
 }
