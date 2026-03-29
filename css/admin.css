@@ -371,3 +371,22 @@ input {
   background: #fee2e2;
   color: #7f1d1d;
 }
+.container-lista {
+  max-height: 300px; /* 🔥 controla altura */
+  overflow-y: auto;
+  margin-top: 10px;
+}
+
+/* 🔥 SCROLL BONITO */
+.container-lista::-webkit-scrollbar {
+  width: 8px;
+}
+
+.container-lista::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+.container-lista::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

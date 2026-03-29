@@ -156,14 +156,16 @@ function renderizarLista(usuarios) {
   if (!lista) return;
 
   lista.innerHTML = `
-    <div class="tabela">
-      <div class="linha header">
-        <div>Email</div>
-        <div>Status</div>
-        <div>Ações</div>
-      </div>
+  <div class="tabela">
+
+    <div class="linha header" style="display:flex; padding:10px 12px; font-weight:bold;">
+      <div style="flex:2;">Email</div>
+      <div style="flex:1; text-align:center;">Status</div>
+      <div style="flex:2; text-align:right;">Ações</div>
     </div>
-  `;
+
+  </div>
+`;
 
   usuarios.forEach((user) => {
     lista.innerHTML += `
@@ -182,7 +184,7 @@ function renderizarLista(usuarios) {
       </div>
 
       <!-- AÇÕES -->
-      <div style="flex:2; display:flex; justify-content:flex-end; gap:8px;">
+      <div style="flex:2; display:flex; justify-content:flex-end; gap:6px;">
         
         <button 
           style="padding:6px 10px; font-size:12px; border-radius:6px; background:#10b981; color:white; border:none; cursor:pointer;"
