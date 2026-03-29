@@ -102,6 +102,8 @@ async function carregarUsuarios() {
   }
 
   const lista = document.getElementById("listaUsuarios");
+  const total = document.getElementById("totalUsuarios");
+  if (total) total.textContent = data.length;
 
   if (!lista) return;
 
