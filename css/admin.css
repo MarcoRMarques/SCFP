@@ -104,7 +104,7 @@ button:hover {
   margin-top: 15px;
   padding-right: 5px;
 
-  overflow: visible; /* 🔥 garante que não cria scroll */
+  overflow: hidden; /* 🔥 garante que não cria scroll */
 }
 
 /* Chrome / Edge */
@@ -457,4 +457,10 @@ input {
 }
 .btn-toggle.ativo:hover {
   background: #059669;
+}
+.container-lista {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 10px;
+  position: relative;
 }
