@@ -155,62 +155,47 @@ function renderizarLista(usuarios) {
 
   if (!lista) return;
 
-  lista.innerHTML = `
-  <div class="tabela">
+  let html = `
+    <div class="tabela">
 
-    <div class="linha header" style="display:flex; padding:10px 12px; font-weight:bold;">
-      <div style="flex:2;">Email</div>
-      <div style="flex:1; text-align:center;">Status</div>
-      <div style="flex:2; text-align:right;">Ações</div>
-    </div>
-
-  </div>
-`;
+      <div class="linha header">
+        <div>Email</div>
+        <div>Status</div>
+        <div>Ações</div>
+      </div>
+  `;
 
   usuarios.forEach((user) => {
-    lista.innerHTML += `
-    <div class="linha" style="display:flex; align-items:center; padding:10px 12px; border-bottom:1px solid #eee;">
+    html += `
+      <div class="linha">
+        <div>👤 ${user.email}</div>
 
-      <!-- EMAIL -->
-      <div style="flex:2; font-size:14px;">
-        👤 ${user.email}
+        <div>
+          <span class="status ${user.status}">
+            ${user.status}
+          </span>
+        </div>
+
+        <div class="acoes">
+          <button onclick="toggleStatus('${user.id}', '${user.status}')">
+            ${user.status === "ativo" ? "Desativar" : "Ativar"}
+          </button>
+
+          <button class="btn-editar" onclick="editarUsuario('${user.id}')">
+            Editar
+          </button>
+
+          <button class="btn-excluir" onclick="excluirUsuario('${user.id}')">
+            Excluir
+          </button>
+        </div>
       </div>
-
-      <!-- STATUS -->
-      <div style="flex:1; text-align:center;">
-        <span class="status ${user.status}">
-          ${user.status}
-        </span>
-      </div>
-
-      <!-- AÇÕES -->
-      <div style="flex:2; display:flex; justify-content:flex-end; gap:6px;">
-        
-        <button 
-          style="padding:6px 10px; font-size:12px; border-radius:6px; background:#10b981; color:white; border:none; cursor:pointer;"
-          onclick="toggleStatus('${user.id}', '${user.status}')"
-        >
-          ${user.status === "ativo" ? "Desativar" : "Ativar"}
-        </button>
-
-        <button 
-          style="padding:6px 10px; font-size:12px; border-radius:6px; background:#4caf50; color:white; border:none; cursor:pointer;"
-          onclick="editarUsuario('${user.id}')"
-        >
-          Editar
-        </button>
-
-        <button 
-          style="padding:6px 10px; font-size:12px; border-radius:6px; background:#e53935; color:white; border:none; cursor:pointer;"
-          onclick="excluirUsuario('${user.id}')"
-        >
-          Excluir
-        </button>
-
-      </div>
-    </div>
-  `;
+    `;
   });
+
+  html += `</div>`;
+
+  lista.innerHTML = html;
 }
 
 function filtrarUsuarios() {
