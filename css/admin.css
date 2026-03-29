@@ -351,11 +351,6 @@ input {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-}
-.acoes {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
 
   padding-right: 10px; /* 🔥 respiro lateral */
 }

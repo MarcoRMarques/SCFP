@@ -19,6 +19,7 @@ function gerarSenha() {
 }
 
 // 🚀 CRIAR USUÁRIO
+// 🚀 CRIAR USUÁRIO
 async function criarUsuario() {
   const email = document.getElementById("novoEmail").value.trim();
 
@@ -29,6 +30,7 @@ async function criarUsuario() {
 
   const senha = gerarSenha();
 
+  // 🔥 cria no AUTH
   const { data, error } = await supabaseClient.auth.signUp({
     email: email,
     password: senha,
@@ -39,30 +41,45 @@ async function criarUsuario() {
     return;
   }
 
+  // 🔥 GARANTE QUE PEGAMOS O ID REAL
+  const userId = data?.user?.id;
+
+  if (!userId) {
+    mostrarAviso("Erro: ID do usuário não retornado");
+    return;
+  }
+
+  // 🔥 MOSTRA RESULTADO
   resultado.innerHTML = `
-  <strong>✅ Acesso criado com sucesso</strong><br><br>
-  📧 Email: ${email}<br>
-  🔑 Senha: ${senha}
+    <strong>✅ Acesso criado com sucesso</strong><br><br>
+    📧 Email: ${email}<br>
+    🔑 Senha: ${senha}
+    <button onclick="copiarAcesso('${email}', '${senha}')">
+      📋 Copiar acesso
+    </button>
+  `;
 
-<button onclick="copiarAcesso('${email}', '${senha}')">
-    📋 Copiar acesso
-  </button>
+  // 🔥 SALVA NO BANCO COM ID CORRETO
+  const { error: errorInsert } = await supabaseClient
+    .from("usuarios_admin")
+    .insert([
+      {
+        id: userId,
+        email: email,
+        senha: senha,
+      },
+    ]);
 
-`;
-
-  await supabaseClient.from("usuarios_admin").insert([
-    {
-      email: email,
-      senha: senha,
-    },
-  ]);
+  if (errorInsert) {
+    mostrarAviso("Erro ao salvar no banco: " + errorInsert.message);
+    return;
+  }
 
   carregarUsuarios();
 
   document.getElementById("novoEmail").value = "";
   document.getElementById("novoEmail").focus();
 }
-
 function copiarAcesso(email, senha) {
   const texto = `Acesso ao sistema SCFP:
 
