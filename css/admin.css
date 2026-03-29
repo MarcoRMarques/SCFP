@@ -372,7 +372,7 @@ input {
 
 .status.inativo {
   background: #fee2e2;
-  color: #7f1d1d;
+  color: #991b1b;
 }
 
 /* 🔥 SCROLL BONITO */
@@ -445,10 +445,16 @@ input {
 }
 
 .btn-toggle.inativo {
-  background: #9ca3af;
+  background: #6b7280; /* mais forte */
   color: white;
 }
 
 .btn-toggle:hover {
   opacity: 0.9;
+}
+.btn-toggle.inativo:hover {
+  background: #4b5563;
+}
+.btn-toggle.ativo:hover {
+  background: #059669;
 }
