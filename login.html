@@ -108,13 +108,39 @@
           return;
         }
 
-        const { error } = await supabaseClient.auth.signInWithPassword({
+        const { data, error } = await supabaseClient.auth.signInWithPassword({
           email,
           password: senha,
         });
 
         if (error) {
           mostrarAviso("Email ou senha inválidos");
+          return;
+        }
+
+        // 🔥 VERIFICA STATUS DO USUÁRIO
+        const userId = data?.user?.id;
+
+        if (!userId) {
+          mostrarAviso("Erro ao validar usuário");
+          return;
+        }
+
+        const { data: usuario, error: erroUsuario } = await supabaseClient
+          .from("usuarios_admin")
+          .select("status")
+          .eq("id", userId)
+          .single();
+
+        if (erroUsuario || !usuario) {
+          mostrarAviso("Erro ao buscar status do usuário");
+          return;
+        }
+
+        if (usuario.status !== "ativo") {
+          mostrarAviso("Usuário inativo. Acesso bloqueado.");
+
+          await supabaseClient.auth.signOut();
           return;
         }
 

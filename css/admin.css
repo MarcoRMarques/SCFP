@@ -371,7 +371,7 @@ input {
   color: #7f1d1d;
 }
 .container-lista {
-  max-height: 300px; /* 🔥 controla altura */
+  max-height: 150px; /* 🔥 controla altura */
   overflow-y: auto;
   margin-top: 10px;
 }
