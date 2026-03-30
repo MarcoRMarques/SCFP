@@ -283,6 +283,7 @@ button:hover {
 
   overflow: hidden; /* 🔥 AGORA SIM */
   width: 100%;
+  min-height: 100vh;
 }
 #secaoUsuarios {
   width: 100%;
