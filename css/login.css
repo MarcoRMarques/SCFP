@@ -325,3 +325,8 @@ body {
 .btn-limpar:hover {
   background: #d1d5db;
 }
+button.btn-limpar {
+  background: #e5e7eb;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
