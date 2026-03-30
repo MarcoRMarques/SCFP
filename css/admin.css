@@ -104,7 +104,7 @@ button:hover {
   margin-top: 15px;
   padding-right: 5px;
 
-  overflow: hidden; /* 🔥 garante que não cria scroll */
+  /* 🔥 garante que não cria scroll */
 }
 
 /* Chrome / Edge */
@@ -459,8 +459,7 @@ input {
   background: #059669;
 }
 .container-lista {
-  max-height: 200px;
+  height: 300px; /* 🔥 FORÇA O SCROLL */
   overflow-y: auto;
   margin-top: 10px;
-  position: relative;
 }
