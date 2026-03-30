@@ -282,6 +282,7 @@ button:hover {
   align-items: flex-start;
 
   overflow: hidden; /* 🔥 AGORA SIM */
+  width: 100%;
 }
 #secaoUsuarios {
   width: 100%;
@@ -457,4 +458,10 @@ input:focus {
   box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.1);
   outline: none; /* 🔥 remove borda preta padrão */
   transition: all 0.2s ease;
+}
+.sidebar {
+  display: none;
+}
+.layout {
+  display: block;
 }
