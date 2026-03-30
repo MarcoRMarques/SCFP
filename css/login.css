@@ -306,3 +306,22 @@ body {
 .btn-limpar:hover {
   background: #6b7280;
 }
+.btn-limpar {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+
+  background: #e5e7eb; /* cinza claro elegante */
+  color: #374151; /* texto escuro */
+
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* 🔥 força sobrescrever qualquer herança */
+.btn-limpar:hover {
+  background: #d1d5db;
+}
