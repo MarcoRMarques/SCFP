@@ -288,3 +288,21 @@ body {
 
   cursor: pointer;
 }
+.btn-limpar {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+
+  background: #9ca3af;
+  color: white;
+
+  border: none;
+  border-radius: 8px;
+
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-limpar:hover {
+  background: #6b7280;
+}
