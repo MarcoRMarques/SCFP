@@ -265,3 +265,34 @@
   text-align: center;
   margin-top: 20px;
 }
+
+/* ============================= */
+/* MICROCOPY DO BOTÃO */
+/* ============================= */
+
+.pagina-vendas .microcopy {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #cbd5e1;
+  text-align: center;
+  opacity: 0.9;
+}
+/* ============================= */
+/* REFORÇO PSICOLÓGICO */
+/* ============================= */
+
+.pagina-vendas .reforco {
+  font-size: 14px;
+  color: #94a3b8;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* ============================= */
+/* BOTÃO PRINCIPAL (TOPO) */
+/* ============================= */
+
+.pagina-vendas .hero .botao-cta {
+  font-size: 18px;
+  padding: 18px 36px;
+}
