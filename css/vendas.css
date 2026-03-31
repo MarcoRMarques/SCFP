@@ -388,7 +388,7 @@
 }
 
 /* QUANDO PASSAR O MOUSE */
-.pagina-vendas .card:hover .descricao-hover {
+.pagina-vendas .imagem-hover:hover + .descricao-hover {
   max-height: 300px;
   opacity: 1;
   margin-top: 15px;
