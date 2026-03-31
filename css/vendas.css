@@ -192,8 +192,8 @@
 }
 
 .pagina-vendas .icone-titulo {
-  width: 36px; /* menor = mais elegante */
-  height: 36px;
+  width: 42px; /* menor = mais elegante */
+  height: 42px;
   object-fit: contain;
   transform: translateY(-1px);
 }
