@@ -314,3 +314,21 @@
 .pagina-vendas .botao-cta:hover {
   background: linear-gradient(135deg, #00e695, #00c97a);
 }
+/* ============================= */
+/* CARDS DOS PRINTS */
+/* ============================= */
+
+.pagina-vendas .card img {
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+
+.pagina-vendas .card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.pagina-vendas .card p {
+  font-size: 14px;
+  color: #cbd5e1;
+}
