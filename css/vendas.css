@@ -1,76 +1,171 @@
-body {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  background: #f1f5f9;
-  color: #1f2937;
+/* ============================= */
+/* BASE DA PÁGINA DE VENDAS */
+/* ============================= */
+
+.pagina-vendas {
+  background: linear-gradient(135deg, #2b2d42, #4e54c8);
+  color: #fff;
+  font-family: Arial, sans-serif;
 }
 
-/* SEÇÕES */
-section {
-  padding: 60px 20px;
-  text-align: center;
+/* CONTAINER PADRÃO */
+.pagina-vendas .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 
 /* HERO */
-.hero {
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  color: white;
-  padding: 80px 20px;
+.pagina-vendas .hero {
+  text-align: center;
 }
 
-.hero-box {
-  max-width: 700px;
-  margin: 0 auto;
+.pagina-vendas .hero h1 {
+  font-size: 2rem;
+  margin-bottom: 15px;
 }
 
-.hero h1 {
-  font-size: 32px;
-  line-height: 1.3;
+.pagina-vendas .hero p {
+  color: #ddd;
   margin-bottom: 20px;
 }
 
-.hero p {
-  font-size: 16px;
-  margin-bottom: 25px;
+/* BOTÃO */
+.pagina-vendas .btn {
+  display: inline-block;
+  padding: 12px 25px;
+  background: #00d4ff;
+  color: #000;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
-/* BOTÕES */
-button {
-  background: #10b981;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+.pagina-vendas .btn:hover {
+  transform: scale(1.05);
+}
+
+/* GRID */
+.pagina-vendas .grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* CARDS */
+.pagina-vendas .card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+/* IMAGENS */
+.pagina-vendas img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+}
+
+/* RESPONSIVO */
+@media (min-width: 768px) {
+  .pagina-vendas .grid {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .pagina-vendas .grid > div {
+    flex: 1;
+  }
+
+  .pagina-vendas .hero h1 {
+    font-size: 2.5rem;
+  }
+}
+/* ============================= */
+/* FUNDO PREMIUM */
+/* ============================= */
+
+.pagina-vendas {
+  background: linear-gradient(135deg, #1a1c2c, #2e2f4f, #4e54c8);
+  min-height: 100vh;
+}
+
+/* ============================= */
+/* TIPOGRAFIA MAIS PROFISSIONAL*/
+/* ============================= */
+
+.pagina-vendas h1 {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.pagina-vendas h2 {
   font-weight: 600;
 }
 
-button:hover {
-  background: #059669;
+.pagina-vendas p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #cfcfe8;
 }
 
-/* BLOCO CLARO */
-.problema,
-.solucao,
-.beneficios,
-.preco {
-  background: white;
-  margin: 20px;
-  border-radius: 10px;
+/* ============================= */
+/* CARDS MAIS BONITOS */
+/* ============================= */
+
+.pagina-vendas .card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
 }
 
-/* LISTAS */
-ul {
-  list-style: none;
-  padding: 0;
+.pagina-vendas .card:hover {
+  transform: translateY(-5px);
 }
 
-ul li {
-  margin: 10px 0;
+/* ============================= */
+/* BOTÃO NÍVEL PROFISSIONAL */
+/* ============================= */
+
+.pagina-vendas .btn {
+  background: linear-gradient(135deg, #00d4ff, #5b8cff);
+  color: #000;
+  font-weight: bold;
+  border-radius: 40px;
+  padding: 14px 28px;
+  box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
 }
 
-/* VÍDEO */
-iframe {
-  max-width: 600px;
-  border-radius: 10px;
+.pagina-vendas .btn:hover {
+  transform: scale(1.07);
+  box-shadow: 0 8px 30px rgba(0, 212, 255, 0.6);
+}
+
+/* ============================= */
+/* IMAGENS MAIS PREMIUM */
+/* ============================= */
+
+.pagina-vendas img {
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+}
+
+.pagina-vendas img:hover {
+  transform: scale(1.02);
+}
+
+/* ============================= */
+/* ESPAÇAMENTO MELHOR (CONFORTO MOBILE) */
+/* ============================= */
+.pagina-vendas section {
+  margin-bottom: 20px;
+}
+
+.pagina-vendas .container {
+  padding-top: 50px;
+  padding-bottom: 50px;
 }

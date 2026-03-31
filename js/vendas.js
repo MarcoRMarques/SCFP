@@ -1,19 +1,28 @@
-// 🔥 CAPTURA INDICADOR
-const urlParams = new URLSearchParams(window.location.search);
-const vendedor = urlParams.get("vendedor");
+// =============================
+// 🔥 CAPTURA DO INDICADOR
+// =============================
+document.addEventListener("DOMContentLoaded", function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  const vendedorURL = urlParams.get("vendedor");
 
-if (vendedor) {
-  localStorage.setItem("vendedor", vendedor);
-}
+  const vendedorSalvo = localStorage.getItem("vendedor");
 
-// 🔥 BOTÃO DE COMPRA
+  // Só salva se vier da URL e ainda não existir
+  if (vendedorURL && !vendedorSalvo) {
+    localStorage.setItem("vendedor", vendedorURL);
+  }
+});
+
+// =============================
+// 🔥 REDIRECIONAMENTO PARA LOGIN
+// =============================
 function irParaCompra() {
   const vendedor = localStorage.getItem("vendedor");
 
   let url = "login.html";
 
   if (vendedor) {
-    url += "?vendedor=" + vendedor;
+    url += "?vendedor=" + encodeURIComponent(vendedor);
   }
 
   window.location.href = url;

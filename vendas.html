@@ -2,85 +2,94 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SCFP - Controle Financeiro</title>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="css/vendas.css" />
-    <script src="js/vendas.js"></script>
   </head>
 
-  <body>
+  <body class="pagina-vendas">
     <!-- HERO -->
-    <section class="hero">
-      <div class="hero-box">
-        <h1>
-          Pare de perder dinheiro sem perceber.<br />
-          Assuma o controle da sua vida financeira hoje.
-        </h1>
+    <section class="hero container">
+      <h1>Chega de ver seu dinheiro sumir todo mês</h1>
+      <p>
+        Assuma o controle da sua vida financeira de forma simples e inteligente.
+      </p>
 
-        <p>
-          Um sistema simples para você saber exatamente para onde seu dinheiro
-          está indo — sem complicação.
-        </p>
-
-        <button onclick="irParaCompra()">Começar agora</button>
-      </div>
+      <a href="#" class="btn">QUERO CONTROLAR MEU DINHEIRO</a>
     </section>
 
     <!-- PROBLEMA -->
-    <section class="problema">
-      <h2>Se o dinheiro some e você não sabe para onde foi...</h2>
-      <p>Você não está sozinho.</p>
-    </section>
+    <section class="container">
+      <div class="grid">
+        <div>
+          <img src="img/vendas/problema.jpg" alt="Problemas financeiros" />
+        </div>
 
-    <!-- EDUCAÇÃO -->
-    <section class="educacao">
-      <h2>Entenda por que o controle financeiro é essencial</h2>
-
-      <iframe
-        width="100%"
-        height="315"
-        src="https://www.youtube.com/embed/VIDEO_ID"
-        frameborder="0"
-        allowfullscreen
-      >
-      </iframe>
-    </section>
-
-    <!-- TRANSIÇÃO -->
-    <section class="transicao">
-      <h2>Agora imagine ter tudo isso sob controle...</h2>
+        <div>
+          <h2>Você trabalha, recebe… e o dinheiro desaparece?</h2>
+          <p>
+            Se você não sabe exatamente para onde seu dinheiro está indo, você
+            não tem controle. E isso gera ansiedade, dívidas e frustração.
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- SOLUÇÃO -->
-    <section class="solucao">
-      <h2>Conheça o SCFP</h2>
-
-      <ul>
-        <li>Controle total das suas finanças</li>
-        <li>Interface simples e intuitiva</li>
-        <li>Organização automática</li>
-      </ul>
+    <section class="container">
+      <div class="card">
+        <h2>Conheça o SCFP</h2>
+        <p>
+          O Sistema Inteligente de Controle Financeiro Pessoal que organiza sua
+          vida financeira e te dá clareza total.
+        </p>
+      </div>
     </section>
 
     <!-- BENEFÍCIOS -->
-    <section class="beneficios">
-      <h2>O que você vai conquistar:</h2>
+    <section class="container">
+      <div class="grid">
+        <div class="card">
+          <h3>🚀 Simplicidade</h3>
+          <p>Registre gastos e ganhos em segundos.</p>
+        </div>
 
-      <ul>
-        <li>Clareza financeira</li>
-        <li>Menos estresse com dinheiro</li>
-        <li>Decisões mais inteligentes</li>
-      </ul>
+        <div class="card">
+          <h3>📊 Relatórios</h3>
+          <p>Veja exatamente para onde seu dinheiro vai.</p>
+        </div>
+
+        <div class="card">
+          <h3>🎯 Metas</h3>
+          <p>Planeje seu futuro com segurança.</p>
+        </div>
+      </div>
     </section>
 
-    <!-- PREÇO -->
-    <section class="preco">
-      <h2>Por menos de um café por dia</h2>
-      <p>Acesso completo por apenas <strong>R$ 9,90/mês</strong></p>
+    <!-- PRINTS -->
+    <section class="container">
+      <h2 style="text-align: center">Veja na prática</h2>
 
-      <button onclick="irParaCompra()">Quero começar agora</button>
+      <div class="grid">
+        <div>
+          <img src="img/prints/print1.png" alt="Sistema financeiro" />
+        </div>
+
+        <div>
+          <img src="img/prints/print2.png" alt="Dashboard financeiro" />
+        </div>
+      </div>
     </section>
 
+    <!-- CTA FINAL -->
+    <section class="container hero">
+      <h2>Assuma o controle da sua vida financeira agora</h2>
+      <a href="#" class="btn">COMEÇAR AGORA</a>
+    </section>
+
+    <!-- JS -->
     <script src="js/vendas.js"></script>
   </body>
 </html>
