@@ -238,19 +238,19 @@
 }
 
 /* ============================= */
-/* ANIMAÇÃO SUAVE (PULSE) */
+/* ANIMAÇÃO PREMIUM CTA */
 /* ============================= */
 
 .pagina-vendas .botao-cta {
-  animation: pulse 2s infinite;
+  animation: pulseSoft 2.5s infinite;
 }
 
-@keyframes pulse {
+@keyframes pulseSoft {
   0% {
-    box-shadow: 0 0 0 0 rgba(0, 208, 132, 0.4);
+    box-shadow: 0 0 0 0 rgba(0, 208, 132, 0.3);
   }
   70% {
-    box-shadow: 0 0 0 12px rgba(0, 208, 132, 0);
+    box-shadow: 0 0 0 18px rgba(0, 208, 132, 0);
   }
   100% {
     box-shadow: 0 0 0 0 rgba(0, 208, 132, 0);
@@ -295,4 +295,22 @@
 .pagina-vendas .hero .botao-cta {
   font-size: 18px;
   padding: 18px 36px;
+}
+/* ============================= */
+/* MICROCOPY SEGURANÇA */
+/* ============================= */
+
+.pagina-vendas .microcopy-seguranca {
+  font-size: 12px;
+  color: #94a3b8;
+  text-align: center;
+  margin-top: 5px;
+  opacity: 0.8;
+}
+/* ============================= */
+/* BRILHO NO BOTÃO */
+/* ============================= */
+
+.pagina-vendas .botao-cta:hover {
+  background: linear-gradient(135deg, #00e695, #00c97a);
 }
