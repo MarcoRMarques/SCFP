@@ -375,3 +375,32 @@
 .pagina-vendas .imagem-hover:hover .overlay {
   opacity: 1;
 }
+/* ============================= */
+/* DESCRIÇÃO ABAIXO DO PRINT */
+/* ============================= */
+
+.pagina-vendas .descricao-hover {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+
+  transition: all 0.4s ease;
+}
+
+/* QUANDO PASSAR O MOUSE */
+.pagina-vendas .card:hover .descricao-hover {
+  max-height: 300px;
+  opacity: 1;
+  margin-top: 15px;
+}
+
+/* TEXTO */
+.pagina-vendas .descricao-hover ul {
+  padding-left: 15px;
+}
+
+.pagina-vendas .descricao-hover li {
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #e2e8f0;
+}
