@@ -359,6 +359,7 @@
 /* ============================= */
 
 .pagina-vendas .descricao-hover {
+  margin-top: 10px;
   max-height: 0;
   overflow: hidden;
   opacity: 0;
@@ -367,7 +368,9 @@
 
 /* espaço mínimo fixo evita "pulo" */
 .pagina-vendas .card {
-  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 /* QUANDO PASSAR O MOUSE */
