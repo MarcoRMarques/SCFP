@@ -48,9 +48,10 @@
 
 /* GRID */
 .pagina-vendas .grid {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  align-items: stretch;
 }
 
 /* CARDS */
@@ -59,6 +60,9 @@
   padding: 20px;
   border-radius: 12px;
   backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 /* IMAGENS */
@@ -361,6 +365,11 @@
   transition: all 0.4s ease;
 }
 
+/* espaço mínimo fixo evita "pulo" */
+.pagina-vendas .card {
+  min-height: 420px;
+}
+
 /* QUANDO PASSAR O MOUSE */
 .pagina-vendas .imagem-hover:hover + .descricao-hover {
   max-height: 500px;
@@ -377,4 +386,18 @@
   font-size: 14px;
   margin-bottom: 6px;
   color: #e2e8f0;
+}
+.pagina-vendas .imagem-hover::after {
+  content: "🔍 Passe o mouse";
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 4px 8px;
+  border-radius: 6px;
+  opacity: 0.8;
+}
+.pagina-vendas .imagem-hover:hover::after {
+  opacity: 0;
 }
