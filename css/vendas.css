@@ -435,3 +435,11 @@
   flex-direction: column;
   justify-content: space-between;
 }
+/* ============================= */
+/* TÍTULOS DOS PRINTS (DESTAQUE) */
+/* ============================= */
+
+.pagina-vendas .grid-prints h3 {
+  color: #00c896; /* verde padrão */
+  text-shadow: 0 0 8px rgba(0, 200, 150, 0.3);
+}
