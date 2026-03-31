@@ -47,11 +47,11 @@
 }
 
 /* GRID */
+
 .pagina-vendas .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 /* CARDS */
@@ -388,16 +388,43 @@
   color: #e2e8f0;
 }
 .pagina-vendas .imagem-hover::after {
-  content: "🔍 Passe o mouse";
+  content: "🔍 Passe o mouse para ver detalhes";
   position: absolute;
   bottom: 10px;
   left: 10px;
-  font-size: 12px;
+  font-size: 11px;
+
   background: rgba(0, 0, 0, 0.6);
   padding: 4px 8px;
   border-radius: 6px;
-  opacity: 0.8;
+
+  opacity: 0.7;
+  backdrop-filter: blur(4px);
+
+  transition: opacity 0.3s ease;
 }
 .pagina-vendas .imagem-hover:hover::after {
   opacity: 0;
+}
+
+/* ============================= */
+/* GRID EXCLUSIVO DOS PRINTS */
+/* ============================= */
+
+.pagina-vendas .grid-prints {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+@media (max-width: 900px) {
+  .pagina-vendas .grid-prints {
+    grid-template-columns: 1fr;
+  }
+}
+.pagina-vendas .grid-prints .card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
