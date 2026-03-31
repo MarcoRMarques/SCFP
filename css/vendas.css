@@ -351,31 +351,6 @@
 }
 
 /* ============================= */
-/* OVERLAY PROFISSIONAL */
-/* ============================= */
-
-.pagina-vendas .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.4));
-
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-
-  padding: 20px;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.pagina-vendas .imagem-hover:hover .overlay {
-  opacity: 1;
-}
-/* ============================= */
 /* DESCRIÇÃO ABAIXO DO PRINT */
 /* ============================= */
 
@@ -383,13 +358,12 @@
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-
   transition: all 0.4s ease;
 }
 
 /* QUANDO PASSAR O MOUSE */
 .pagina-vendas .imagem-hover:hover + .descricao-hover {
-  max-height: 300px;
+  max-height: 500px;
   opacity: 1;
   margin-top: 15px;
 }
