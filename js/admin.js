@@ -203,6 +203,7 @@ function filtrarUsuarios() {
 
 window.onload = () => {
   carregarUsuarios();
+  carregarLeads();
 };
 let acaoConfirmada = null;
 
@@ -274,3 +275,21 @@ document.getElementById("novoEmail").addEventListener("keydown", function (e) {
     criarUsuario();
   }
 });
+
+/* ============================= */
+/* LISTAR LEADS DE VENDAS */
+/* ============================= */
+
+async function carregarLeads() {
+  const { data, error } = await supabaseClient
+    .from("leads_vendas")
+    .select("*")
+    .order("data", { ascending: false });
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  console.log("Leads:", data);
+}
