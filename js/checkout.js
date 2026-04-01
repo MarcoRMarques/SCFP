@@ -12,7 +12,7 @@ if (vendedorUrl) {
   localStorage.setItem("vendedor", vendedorUrl);
 }
 
-async function gerarPagamento() {
+window.gerarPagamento = async function () {
   const nome = document.getElementById("nome").value;
   const cpf = document.getElementById("cpf").value;
   const email = document.getElementById("email").value;
@@ -74,13 +74,13 @@ async function gerarPagamento() {
   }
 
   document.getElementById("pix-area").style.display = "block";
-}
+};
 
 /* ============================= */
 /* CONFIRMAÇÃO DE PAGAMENTO */
 /* ============================= */
 
-async function confirmarPagamento() {
+window.confirmarPagamento = async function () {
   const email = document.getElementById("email").value;
 
   if (!email) {
@@ -100,4 +100,4 @@ async function confirmarPagamento() {
   }
 
   alert("Pagamento informado com sucesso! Em breve você receberá acesso.");
-}
+};
