@@ -76,7 +76,7 @@ window.addEventListener("load", function () {
     ]);
 
     if (error) {
-      alert("Erro ao salvar");
+      alert("Erro ao salvar: " + error.message);
       console.error(error);
       return;
     }
