@@ -4,12 +4,27 @@ const SUPABASE_KEY =
 
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+// 🔥 CAPTURAR VENDEDOR DA URL
+const params = new URLSearchParams(window.location.search);
+const vendedorUrl = params.get("vendedor");
+
+if (vendedorUrl) {
+  localStorage.setItem("vendedor", vendedorUrl);
+}
+
 async function gerarPagamento() {
   const nome = document.getElementById("nome").value;
   const cpf = document.getElementById("cpf").value;
   const email = document.getElementById("email").value;
   const whatsapp = document.getElementById("whatsapp").value;
   const plano = document.getElementById("plano").value;
+  let valor = 0;
+
+  if (plano === "mensal") {
+    valor = 39.9;
+  } else if (plano === "anual") {
+    valor = 297;
+  }
   const cupom = document.getElementById("cupom").value;
   const aceite = document.getElementById("aceite").checked;
 
@@ -24,6 +39,7 @@ async function gerarPagamento() {
   }
 
   const vendedor = localStorage.getItem("vendedor");
+  const vendedorFinal = vendedor || "direto";
 
   const hoje = new Date();
   let proxima = new Date();
@@ -40,12 +56,13 @@ async function gerarPagamento() {
       cpf,
       email,
       whatsapp,
-      vendedor,
+      vendedor: vendedorFinal,
       cupom,
       status_pagamento: "pendente",
       aceitou_termos: true,
       data: hoje,
       plano,
+      valor: valor,
       proxima_cobranca: proxima,
     },
   ]);

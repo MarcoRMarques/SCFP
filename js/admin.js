@@ -284,12 +284,42 @@ async function carregarLeads() {
   const { data, error } = await supabaseClient
     .from("leads_vendas")
     .select("*")
-    .order("data", { ascending: false });
+    .order("created_at", { ascending: false });
 
   if (error) {
-    console.error(error);
+    console.error("Erro ao buscar leads:", error);
     return;
   }
 
   console.log("Leads:", data);
+
+  renderizarLeads(data); // 🔥 ESSENCIAL AGORA
+}
+
+function renderizarLeads(leads) {
+  const container = document.getElementById("lista-leads");
+
+  if (!container) {
+    console.warn("Elemento #lista-leads não encontrado");
+    return;
+  }
+
+  container.innerHTML = "";
+
+  leads.forEach((lead) => {
+    const linha = document.createElement("div");
+    linha.classList.add("linha-lead");
+
+    linha.innerHTML = `
+      <div>${lead.nome || "-"}</div>
+      <div>${lead.email || "-"}</div>
+      <div>${lead.whatsapp || "-"}</div>
+      <div>${lead.vendedor || "-"}</div>
+      <div class="status ${lead.status_pagamento || "pendente"}">
+        ${lead.status_pagamento || "pendente"}
+      </div>
+    `;
+
+    container.appendChild(linha);
+  });
 }
