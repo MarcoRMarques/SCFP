@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function irParaCompra() {
   const vendedor = localStorage.getItem("vendedor");
 
-  let url = "login.html";
+  let url = "checkout.html";
 
   if (vendedor) {
     url += "?vendedor=" + encodeURIComponent(vendedor);
