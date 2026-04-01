@@ -1,3 +1,4 @@
+console.log("CHECKOUT JS CARREGADO");
 const SUPABASE_URL = "https://rjiydewkobfbevzfrxbz.supabase.co";
 const SUPABASE_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqaXlkZXdrb2JmYmV2emZyeGJ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM0ODEyOTksImV4cCI6MjA4OTA1NzI5OX0.QvooykPpjtAptqIYG2cIsnTv7yZeNyNFQ5QirgaKeQ8";
@@ -12,7 +13,11 @@ if (vendedorUrl) {
   localStorage.setItem("vendedor", vendedorUrl);
 }
 
-window.gerarPagamento = async function () {
+function gerarPagamento() {
+  return window._gerarPagamento();
+}
+
+window._gerarPagamento = async function () {
   const nome = document.getElementById("nome").value;
   const cpf = document.getElementById("cpf").value;
   const email = document.getElementById("email").value;
@@ -80,7 +85,11 @@ window.gerarPagamento = async function () {
 /* CONFIRMAÇÃO DE PAGAMENTO */
 /* ============================= */
 
-window.confirmarPagamento = async function () {
+function confirmarPagamento() {
+  return window._confirmarPagamento();
+}
+
+window._confirmarPagamento = async function () {
   const email = document.getElementById("email").value;
 
   if (!email) {
