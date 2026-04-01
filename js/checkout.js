@@ -13,9 +13,9 @@ if (vendedorUrl) {
   localStorage.setItem("vendedor", vendedorUrl);
 }
 
-function gerarPagamento() {
+window.gerarPagamento = function () {
   return window._gerarPagamento();
-}
+};
 
 window._gerarPagamento = async function () {
   const nome = document.getElementById("nome").value;
@@ -85,9 +85,9 @@ window._gerarPagamento = async function () {
 /* CONFIRMAÇÃO DE PAGAMENTO */
 /* ============================= */
 
-function confirmarPagamento() {
+window.confirmarPagamento = function () {
   return window._confirmarPagamento();
-}
+};
 
 window._confirmarPagamento = async function () {
   const email = document.getElementById("email").value;
