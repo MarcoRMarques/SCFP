@@ -272,19 +272,27 @@ button:hover {
   background: #374151;
   color: white;
 }
+
+/* ============================= */
+/* CONTEÚDO PRINCIPAL */
+/* ============================= */
+
 .conteudo {
   flex: 1;
   padding: 40px;
   background: #f1f5f9;
 
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column; /* 🔥 AQUI ESTÁ A SOLUÇÃO */
+
+  justify-content: flex-start;
+  align-items: center;
 
   overflow-y: auto;
   width: 100%;
   min-height: 100vh;
 }
+
 #secaoUsuarios {
   width: 100%;
   display: flex;
