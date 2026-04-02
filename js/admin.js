@@ -284,11 +284,10 @@ async function carregarLeads() {
   const { data, error } = await supabaseClient
     .from("leads_vendas")
     .select("*")
-    .order("data", { ascending: false });
+    .order("created_at", { ascending: false });
 
   if (error) {
-    console.error("Erro REAL:", error.message, error);
-    alert("Erro: " + error.message);
+    console.error("Erro ao buscar leads:", error);
     return;
   }
 
@@ -312,36 +311,15 @@ function renderizarLeads(leads) {
     linha.classList.add("linha-lead");
 
     linha.innerHTML = `
-  <div><strong>${lead.nome || "-"}</strong></div>
-  <div>${lead.email || "-"}</div>
-  <div>${lead.whatsapp || "-"}</div>
-  <div>${lead.plano || "-"}</div>
-  <div>R$ ${lead.valor || "0"}</div>
-  <div>${lead.vendedor || "-"}</div>
-  <div class="status ${lead.status_pagamento || "pendente"}">
-    ${lead.status_pagamento || "pendente"}
-  </div>
-`;
+      <div>${lead.nome || "-"}</div>
+      <div>${lead.email || "-"}</div>
+      <div>${lead.whatsapp || "-"}</div>
+      <div>${lead.vendedor || "-"}</div>
+      <div class="status ${lead.status_pagamento || "pendente"}">
+        ${lead.status_pagamento || "pendente"}
+      </div>
+    `;
 
     container.appendChild(linha);
   });
 }
-
-window.mostrarSecao = function (secao) {
-  document.getElementById("secaoUsuarios").style.display = "none";
-  document.getElementById("secaoFrases").style.display = "none";
-  document.getElementById("secaoLeads").style.display = "none";
-
-  if (secao === "usuarios") {
-    document.getElementById("secaoUsuarios").style.display = "flex";
-  }
-
-  if (secao === "frases") {
-    document.getElementById("secaoFrases").style.display = "flex";
-  }
-
-  if (secao === "leads") {
-    document.getElementById("secaoLeads").style.display = "flex";
-    carregarLeads(); // 🔥 ADICIONE APENAS ISSO
-  }
-};
