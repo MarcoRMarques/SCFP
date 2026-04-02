@@ -12,10 +12,6 @@ window.addEventListener("load", function () {
   const params = new URLSearchParams(window.location.search);
   const vendedorUrl = params.get("vendedor");
 
-  if (vendedorUrl) {
-    localStorage.setItem("vendedor", vendedorUrl);
-  }
-
   window.gerarPagamento = function () {
     return window._gerarPagamento();
   };
@@ -46,8 +42,10 @@ window.addEventListener("load", function () {
       return;
     }
 
-    const vendedor = localStorage.getItem("vendedor");
-    const vendedorFinal = vendedor || "direto";
+    const params = new URLSearchParams(window.location.search);
+    const vendedorUrl = params.get("vendedor");
+
+    const vendedorFinal = vendedorUrl ? vendedorUrl : "direto";
 
     const hoje = new Date();
     let proxima = new Date();
