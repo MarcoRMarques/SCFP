@@ -327,7 +327,7 @@ function renderizarLeads(leads) {
   });
 }
 
-function mostrarSecao(secao) {
+window.mostrarSecao = function (secao) {
   document.getElementById("secaoUsuarios").style.display = "none";
   document.getElementById("secaoFrases").style.display = "none";
   document.getElementById("secaoLeads").style.display = "none";
@@ -343,4 +343,4 @@ function mostrarSecao(secao) {
   if (secao === "leads") {
     document.getElementById("secaoLeads").style.display = "block";
   }
-}
+};
