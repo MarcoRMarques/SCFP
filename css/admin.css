@@ -332,10 +332,16 @@ input {
   margin-top: 15px;
 }
 
+/* ============================= */
+/* GRID USUÁRIOS (ESTÁVEL) */
+/* ============================= */
+
 .linha {
   display: grid;
-  grid-template-columns: 1fr 90px 170px;
+  grid-template-columns: minmax(0, 1fr) 90px 170px;
   align-items: center;
+
+  width: 100%; /* 🔥 ESSENCIAL */
 
   padding: 6px 10px;
   border-bottom: 1px solid #e5e7eb;
