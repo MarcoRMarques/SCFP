@@ -469,3 +469,25 @@ input:focus {
 body {
   overflow-x: hidden;
 }
+
+/* ============================= */
+/* PADRÃO DE EXIBIÇÃO DAS SEÇÕES */
+/* ============================= */
+
+#secaoUsuarios,
+#secaoFrases,
+#secaoLeads {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ============================= */
+/* GARANTE QUE LEADS NÃO FIQUE OCULTO */
+/* ============================= */
+
+#secaoLeads {
+  position: relative;
+  z-index: 1;
+}
