@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Leads - SCFP</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/leads.css" />
+
+    <!-- Supabase -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="tituloPrincipal">Leads de Vendas</div>
+        <div class="tituloSecundario">Controle de pagamentos</div>
+
+        <!-- TABELA -->
+        <div class="tabela">
+          <!-- HEADER -->
+          <div class="linha-lead header-leads">
+            <div>Nome</div>
+            <div>Email</div>
+            <div>WhatsApp</div>
+            <div>Plano</div>
+            <div>Valor</div>
+            <div>Vendedor</div>
+            <div>Status</div>
+          </div>
+
+          <!-- LISTA -->
+          <div class="container-lista-leads">
+            <div id="lista-leads"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/leads.js"></script>
+  </body>
+</html>
