@@ -342,5 +342,6 @@ window.mostrarSecao = function (secao) {
 
   if (secao === "leads") {
     document.getElementById("secaoLeads").style.display = "block";
+    carregarLeads(); // 🔥 ADICIONE APENAS ISSO
   }
 };

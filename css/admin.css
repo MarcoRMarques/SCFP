@@ -466,3 +466,6 @@ input:focus {
 .layout {
   display: block;
 }
+body {
+  overflow-x: hidden;
+}
