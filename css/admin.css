@@ -469,3 +469,65 @@ input:focus {
 body {
   overflow-x: hidden;
 }
+/* ============================= */
+/* LEADS - ESTILO EXCLUSIVO */
+/* ============================= */
+
+.linha-lead {
+  display: grid;
+  grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr 1fr 1fr;
+
+  align-items: center;
+  padding: 8px 10px;
+
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 13px;
+}
+
+.linha-lead:hover {
+  background: #f9fafb;
+}
+
+.linha-lead strong {
+  color: #111827;
+}
+
+.container-lista-leads {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+
+/* Scroll bonito */
+.container-lista-leads::-webkit-scrollbar {
+  width: 8px;
+}
+
+.container-lista-leads::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+.container-lista-leads::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ============================= */
+/* HEADER DOS LEADS (ALINHADO COM GRID) */
+/* ============================= */
+
+.header-leads {
+  display: grid;
+  grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr 1fr 1fr;
+
+  font-size: 14px;
+  font-weight: 700;
+  color: #444;
+
+  background: #f9fafb;
+  border-radius: 8px;
+
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
