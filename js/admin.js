@@ -311,15 +311,35 @@ function renderizarLeads(leads) {
     linha.classList.add("linha-lead");
 
     linha.innerHTML = `
-      <div>${lead.nome || "-"}</div>
-      <div>${lead.email || "-"}</div>
-      <div>${lead.whatsapp || "-"}</div>
-      <div>${lead.vendedor || "-"}</div>
-      <div class="status ${lead.status_pagamento || "pendente"}">
-        ${lead.status_pagamento || "pendente"}
-      </div>
-    `;
+  <div><strong>${lead.nome || "-"}</strong></div>
+  <div>${lead.email || "-"}</div>
+  <div>${lead.whatsapp || "-"}</div>
+  <div>${lead.plano || "-"}</div>
+  <div>R$ ${lead.valor || "0"}</div>
+  <div>${lead.vendedor || "-"}</div>
+  <div class="status ${lead.status_pagamento || "pendente"}">
+    ${lead.status_pagamento || "pendente"}
+  </div>
+`;
 
     container.appendChild(linha);
   });
+}
+
+function mostrarSecao(secao) {
+  document.getElementById("secaoUsuarios").style.display = "none";
+  document.getElementById("secaoFrases").style.display = "none";
+  document.getElementById("secaoLeads").style.display = "none";
+
+  if (secao === "usuarios") {
+    document.getElementById("secaoUsuarios").style.display = "block";
+  }
+
+  if (secao === "frases") {
+    document.getElementById("secaoFrases").style.display = "block";
+  }
+
+  if (secao === "leads") {
+    document.getElementById("secaoLeads").style.display = "block";
+  }
 }

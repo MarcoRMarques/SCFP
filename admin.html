@@ -16,9 +16,9 @@
       <!-- MENU -->
       <div class="sidebar">
         <h2>SCFP</h2>
-
         <button onclick="mostrarSecao('usuarios')">👥 Usuários</button>
         <button onclick="mostrarSecao('frases')">💬 Frases</button>
+        <button onclick="mostrarSecao('leads')">💰 Leads</button>
       </div>
 
       <!-- CONTEÚDO -->
@@ -70,6 +70,30 @@
         <div id="secaoFrases" style="display: none">
           <h2>Gerenciar frases</h2>
         </div>
+        <div id="secaoLeads" style="display: none">
+  <div class="card">
+    <div class="tituloPrincipal">Leads de Vendas</div>
+
+    <div class="tabela">
+
+      <div class="linha header">
+        <div>Nome</div>
+        <div>Email</div>
+        <div>WhatsApp</div>
+        <div>Plano</div>
+        <div>Valor</div>
+        <div>Vendedor</div>
+        <div>Status</div>
+      </div>
+
+      <div class="container-lista">
+        <div id="lista-leads"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
       </div>
     </div>
 
