@@ -81,6 +81,7 @@ window.addEventListener("load", function () {
       return;
     }
 
+    console.log("CHEGOU NO FINAL");
     document.getElementById("pix-area").style.display = "block";
   };
 
