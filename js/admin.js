@@ -287,7 +287,8 @@ async function carregarLeads() {
     .order("created_at", { ascending: false });
 
   if (error) {
-    console.error("Erro ao buscar leads:", error);
+    console.error("Erro REAL:", error.message, error);
+    alert("Erro: " + error.message);
     return;
   }
 
