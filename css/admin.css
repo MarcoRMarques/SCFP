@@ -301,9 +301,14 @@ button:hover {
   justify-content: flex-end;
 }
 
-.linha:hover {
-  background: #f9fafb;
+/* ============================= */
+/* HOVER SOMENTE NAS LINHAS (EXCLUI HEADER) */
+/* ============================= */
+
+.linha:not(.header):hover {
+  background: #f1f5f9;
 }
+
 input {
   width: 100%;
   padding: 12px;

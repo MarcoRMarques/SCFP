@@ -333,15 +333,15 @@ window.mostrarSecao = function (secao) {
   document.getElementById("secaoLeads").style.display = "none";
 
   if (secao === "usuarios") {
-    document.getElementById("secaoUsuarios").style.display = "block";
+    document.getElementById("secaoUsuarios").style.display = "flex";
   }
 
   if (secao === "frases") {
-    document.getElementById("secaoFrases").style.display = "block";
+    document.getElementById("secaoFrases").style.display = "flex";
   }
 
   if (secao === "leads") {
-    document.getElementById("secaoLeads").style.display = "block";
+    document.getElementById("secaoLeads").style.display = "flex";
     carregarLeads(); // 🔥 ADICIONE APENAS ISSO
   }
 };
