@@ -1,0 +1,60 @@
+const supabaseUrl = "https://rjiydewkobfbevzfrxbz.supabase.co";
+const supabaseKey =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqaXlkZXdrb2JmYmV2emZyeGJ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM0ODEyOTksImV4cCI6MjA4OTA1NzI5OX0.QvooykPpjtAptqIYG2cIsnTv7yZeNyNFQ5QirgaKeQ8";
+
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+async function carregarLeads() {
+  const { data, error } = await supabase
+    .from("leads")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error("Erro ao carregar leads:", error);
+    return;
+  }
+
+  const lista = document.getElementById("lista-leads");
+  lista.innerHTML = "";
+
+  data.forEach((lead) => {
+    const linha = document.createElement("div");
+    linha.className = "linha-lead";
+
+    linha.innerHTML = `
+  <div>${lead.nome}</div>
+  <div>${lead.email}</div>
+  <div>${lead.whatsapp}</div>
+  <div>${lead.plano}</div>
+  <div>R$ ${lead.valor}</div>
+  <div>${lead.vendedor}</div>
+  <div>
+    <button class="btn-status" onclick="alternarStatus('${lead.id}', '${lead.status}')">
+      ${lead.status}
+    </button>
+  </div>
+`;
+
+    lista.appendChild(linha);
+  });
+}
+
+carregarLeads();
+
+async function alternarStatus(id, statusAtual) {
+  const novoStatus = statusAtual === "PAGO" ? "PENDENTE" : "PAGO";
+
+  const { error } = await supabase
+    .from("leads")
+    .update({ status: novoStatus })
+    .eq("id", id);
+
+  if (error) {
+    alert("Erro ao atualizar status");
+    console.error(error);
+    return;
+  }
+
+  carregarLeads();
+}

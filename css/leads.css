@@ -1,10 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
 /* ============================= */
 /* LEADS - ESTILO EXCLUSIVO */
 /* ============================= */
 
 .linha-lead {
   display: grid;
-  grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1.5fr 2fr 1.5fr 1fr 1fr 1fr 1fr;
 
   align-items: center;
   padding: 8px 10px;
@@ -67,9 +71,30 @@
 .container-lista-leads {
   position: relative;
 }
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
 
-/* DEBUG VISUAL (REMOVER DEPOIS) */
+.card {
+  width: 100%;
+  max-width: 1100px;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
 
-.linha-lead {
-  background: rgba(255, 0, 0, 0.05);
+.btn-status {
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  background: #e5e7eb;
+}
+
+.btn-status:hover {
+  opacity: 0.9;
 }
