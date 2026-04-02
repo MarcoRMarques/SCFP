@@ -284,7 +284,7 @@ async function carregarLeads() {
   const { data, error } = await supabaseClient
     .from("leads_vendas")
     .select("*")
-    .order("created_at", { ascending: false });
+    .order("data", { ascending: false });
 
   if (error) {
     console.error("Erro REAL:", error.message, error);
