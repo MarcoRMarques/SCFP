@@ -286,7 +286,7 @@ button:hover {
   flex-direction: column; /* 🔥 AQUI ESTÁ A SOLUÇÃO */
 
   justify-content: flex-start;
-  align-items: center;
+  align-items: stretch;
 
   overflow-y: auto;
   width: 100%;
@@ -516,4 +516,10 @@ body {
 #secaoLeads {
   position: relative;
   z-index: 1;
+}
+
+#secaoUsuarios,
+#secaoLeads,
+#secaoFrases {
+  width: 100%;
 }
