@@ -463,9 +463,16 @@ input:focus {
 .sidebar {
   display: none;
 }
+
+/* ============================= */
+/* LAYOUT PRINCIPAL DO SISTEMA */
+/* ============================= */
+
 .layout {
-  display: block;
+  display: flex;
+  min-height: 100vh;
 }
+
 body {
   overflow-x: hidden;
 }
