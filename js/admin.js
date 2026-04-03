@@ -204,6 +204,7 @@ function filtrarUsuarios() {
 window.onload = () => {
   carregarUsuarios();
   carregarLeads();
+  carregarPlanos(); // 🔥 ESSENCIAL
 };
 let acaoConfirmada = null;
 
@@ -317,6 +318,45 @@ function renderizarLeads(leads) {
       <div>${lead.vendedor || "-"}</div>
       <div class="status ${lead.status_pagamento || "pendente"}">
         ${lead.status_pagamento || "pendente"}
+      </div>
+    `;
+
+    container.appendChild(linha);
+  });
+}
+/* ============================= */
+/* 🔥 CARREGAR PLANOS */
+/* ============================= */
+
+async function carregarPlanos() {
+  const { data, error } = await supabaseClient
+    .from("planos")
+    .select("*")
+    .order("id", { ascending: true });
+
+  if (error) {
+    console.error("Erro ao carregar planos:", error);
+    return;
+  }
+
+  const container = document.getElementById("lista-planos");
+
+  if (!container) {
+    console.warn("Elemento lista-planos não encontrado");
+    return;
+  }
+
+  container.innerHTML = "";
+
+  data.forEach((plano) => {
+    const linha = document.createElement("div");
+    linha.classList.add("linha");
+
+    linha.innerHTML = `
+      <div><strong>${plano.nome}</strong></div>
+      <div>R$ ${plano.valor}</div>
+      <div>
+        <button onclick="editarPlano(${plano.id})">Editar</button>
       </div>
     `;
 
