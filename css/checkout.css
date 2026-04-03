@@ -249,3 +249,53 @@ h1 {
 .botao-cta:hover {
   transform: scale(1.04);
 }
+
+/* ============================= */
+/* 🔥 SUBTÍTULO DO VÍDEO */
+/* ============================= */
+
+.subtitulo-video {
+  font-size: 14px;
+  color: #bbb;
+  margin-top: -5px;
+  margin-bottom: 10px;
+}
+/* ============================= */
+/* 🔥 TOPO LADO A LADO */
+/* ============================= */
+
+.bloco-topo {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.video-box {
+  flex: 1;
+}
+
+.imagem-lateral {
+  flex: 1;
+}
+
+.imagem-lateral img {
+  width: 100%;
+  border-radius: 12px;
+}
+/* ============================= */
+/* 🔥 CORREÇÃO ESTOURO FORM */
+/* ============================= */
+
+.card {
+  max-width: 600px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.card input,
+.card select {
+  width: 100%;
+  box-sizing: border-box;
+}
