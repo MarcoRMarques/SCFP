@@ -299,3 +299,43 @@ h1 {
   width: 100%;
   box-sizing: border-box;
 }
+/* ============================= */
+/* 🔥 CHECKBOX LINHA ÚNICA */
+/* ============================= */
+
+.termos-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.termos-check label {
+  white-space: nowrap;
+  font-size: 14px;
+}
+/* ============================= */
+/* 🔥 IMAGEM SEM CORTE */
+/* ============================= */
+
+.img-checkout {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ============================= */
+/* 🔥 BLOCO DECISÃO */
+/* ============================= */
+
+.reforco-decisao {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+}
+
+.frase-impacto {
+  margin-top: 10px;
+  font-size: 15px;
+  text-align: center;
+}

@@ -34,6 +34,12 @@ window.addEventListener("load", function () {
   const { createClient } = window.supabase;
   const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
+  /* ============================= */
+  /* 🔥 INICIAR CARREGAMENTO PLANOS */
+  /* ============================= */
+
+  carregarPlanos();
+
   // 🔥 CAPTURAR VENDEDOR DA URL
   const params = new URLSearchParams(window.location.search);
   const vendedorUrl = params.get("vendedor");
@@ -61,6 +67,34 @@ window.addEventListener("load", function () {
     }
   });
 
+  /* ============================= */
+  /* 🔥 CARREGAR PLANOS DINÂMICOS */
+  /* ============================= */
+
+  async function carregarPlanos() {
+    const { data, error } = await supabase
+      .from("planos")
+      .select("*")
+      .eq("ativo", true);
+
+    if (error) {
+      console.error("Erro ao carregar planos:", error);
+      return;
+    }
+
+    const select = document.getElementById("plano");
+    select.innerHTML = '<option value="">Selecione o plano</option>';
+
+    data.forEach((plano) => {
+      const option = document.createElement("option");
+      option.value = plano.nome;
+      option.textContent = `${plano.nome} - R$ ${plano.valor}`;
+      option.dataset.valor = plano.valor;
+
+      select.appendChild(option);
+    });
+  }
+
   window.gerarPagamento = function () {
     return window._gerarPagamento();
   };
@@ -71,13 +105,17 @@ window.addEventListener("load", function () {
     const email = document.getElementById("email").value;
     const whatsapp = document.getElementById("whatsapp").value;
     const plano = document.getElementById("plano").value;
-    let valor = 0;
 
-    if (plano === "mensal") {
-      valor = 39.9;
-    } else if (plano === "anual") {
-      valor = 297;
-    }
+    /* ============================= */
+    /* 🔥 VALOR DINÂMICO DO PLANO */
+    /* ============================= */
+
+    const selectPlano = document.getElementById("plano");
+
+    const valor = parseFloat(
+      selectPlano.options[selectPlano.selectedIndex].dataset.valor,
+    );
+
     const cupom = document.getElementById("cupom").value;
     const aceite = document.getElementById("aceite").checked;
 
