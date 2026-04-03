@@ -241,9 +241,11 @@ function editarUsuario(id) {
 
   document.getElementById("inputEditarEmail").value = usuario.email;
 
+  // 🔥 GARANTE TÍTULO CORRETO
+  document.querySelector("#popupEditar h3").innerText = "✏ Editar usuário";
+
   document.getElementById("popupEditar").style.display = "flex";
 }
-
 function fecharEditar() {
   document.getElementById("popupEditar").style.display = "none";
   usuarioEditandoId = null;
@@ -401,6 +403,10 @@ function editarPlano(id) {
 
   input.value = "";
   input.placeholder = "Digite o novo valor (ex: 39.90)";
+
+  // 🔥 ALTERA TÍTULO DO POPUP
+  document.querySelector("#popupEditar h3").innerText =
+    "💰 Alterar valor do plano";
 
   document.getElementById("popupEditar").style.display = "flex";
 }

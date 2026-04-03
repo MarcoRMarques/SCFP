@@ -470,35 +470,16 @@ input:focus {
 /* 🔥 ESPAÇAMENTO ENTRE CARDS */
 /* ============================= */
 
-.conteudo .card {
-  margin-bottom: 25px;
-}
 /* ============================= */
 /* 🔥 CARD PLANOS AJUSTE */
 /* ============================= */
 
-#lista-planos .linha {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 10px 15px;
-  margin-top: 10px;
-
-  background: #f9fafb;
-  border-radius: 8px;
-}
 /* ============================= */
 /* 🔥 ESPAÇO ENTRE CARDS */
 /* ============================= */
 
 .conteudo .card {
   margin-bottom: 25px;
-}
-
-/* espaço extra só para planos */
-#lista-planos {
-  margin-top: 10px;
 }
 
 /* evitar grudar no fim da tela */
@@ -509,28 +490,14 @@ body {
 /* ============================= */
 /* 🔥 CARD PLANOS - COMPACTO */
 /* ============================= */
-
 #lista-planos {
-  max-height: 180px; /* controla altura */
-  overflow-y: auto; /* scroll interno */
+  max-height: 110px;
+  overflow-y: auto;
 
-  margin-top: 10px;
-  padding-right: 5px;
+  margin-top: 5px; /* 🔥 AJUSTE */
+  padding-right: 3px; /* opcional: mais fino */
 }
-#lista-planos .linha {
-  display: grid;
-  grid-template-columns: 1fr 100px 80px;
 
-  align-items: center;
-
-  padding: 6px 8px;
-  margin-top: 6px;
-
-  font-size: 13px;
-
-  background: #f9fafb;
-  border-radius: 6px;
-}
 #lista-planos .tituloPrincipal {
   font-size: 16px;
 }
@@ -538,9 +505,29 @@ body {
 #lista-planos .tituloSecundario {
   font-size: 12px;
 }
-.card {
-  margin-bottom: 20px;
+
+/* ============================= */
+/* 🔥 PLANOS FINAL COMPACTO */
+/* ============================= */
+
+/* linhas bem enxutas */
+#lista-planos .linha {
+  display: grid;
+  grid-template-columns: 1fr 70px 60px;
+
+  align-items: center;
+
+  padding: 4px 6px;
+  margin-top: 4px;
+
+  font-size: 11px;
+
+  background: #f9fafb;
+  border-radius: 5px;
 }
-body {
-  padding-bottom: 50px;
+
+/* botão menor */
+#lista-planos button {
+  font-size: 10px;
+  padding: 2px 5px;
 }
