@@ -466,3 +466,25 @@ input:focus {
 .layout {
   display: block;
 }
+/* ============================= */
+/* 🔥 ESPAÇAMENTO ENTRE CARDS */
+/* ============================= */
+
+.conteudo .card {
+  margin-bottom: 25px;
+}
+/* ============================= */
+/* 🔥 CARD PLANOS AJUSTE */
+/* ============================= */
+
+#lista-planos .linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 15px;
+  margin-top: 10px;
+
+  background: #f9fafb;
+  border-radius: 8px;
+}

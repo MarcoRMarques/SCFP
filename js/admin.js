@@ -1,4 +1,5 @@
 let listaUsuariosGlobal = [];
+let planoEditandoId = null;
 // 🔥 CONFIGURAÇÃO DO SUPABASE
 const supabaseUrl = "https://rjiydewkobfbevzfrxbz.supabase.co";
 const supabaseKey =
@@ -250,6 +251,34 @@ function fecharEditar() {
 
 async function salvarEdicao() {
   const novoEmail = document.getElementById("inputEditarEmail").value.trim();
+  // =============================
+  // 🔥 SE FOR EDIÇÃO DE PLANO
+  // =============================
+  if (planoEditandoId) {
+    const valorNumerico = parseFloat(novoEmail);
+
+    if (isNaN(valorNumerico)) {
+      mostrarAviso("Valor inválido");
+      return;
+    }
+
+    const { error } = await supabaseClient
+      .from("planos")
+      .update({ valor: valorNumerico })
+      .eq("id", planoEditandoId);
+
+    if (error) {
+      mostrarAviso("Erro ao atualizar plano");
+      return;
+    }
+
+    mostrarAviso("Plano atualizado com sucesso!", "sucesso");
+
+    planoEditandoId = null;
+    fecharEditar();
+    carregarPlanos();
+    return;
+  }
 
   if (!novoEmail) {
     mostrarAviso("Digite um email válido");
@@ -363,4 +392,35 @@ async function carregarPlanos() {
 
     container.appendChild(linha);
   });
+}
+/* ============================= */
+/* 🔥 EDITAR PLANO */
+/* ============================= */
+
+async function editarPlano(id) {
+  const novoValor = prompt("Digite o novo valor:");
+
+  if (!novoValor) return;
+
+  const valorNumerico = parseFloat(novoValor);
+
+  if (isNaN(valorNumerico)) {
+    alert("Valor inválido");
+    return;
+  }
+
+  const { error } = await supabaseClient
+    .from("planos")
+    .update({ valor: valorNumerico })
+    .eq("id", id);
+
+  if (error) {
+    alert("Erro ao atualizar plano");
+    console.error(error);
+    return;
+  }
+
+  alert("Plano atualizado com sucesso!");
+
+  carregarPlanos(); // 🔥 recarrega lista
 }
