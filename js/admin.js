@@ -201,11 +201,12 @@ function filtrarUsuarios() {
   renderizarLista(filtrados);
 }
 
-window.onload = () => {
+document.addEventListener("DOMContentLoaded", function () {
   carregarUsuarios();
   carregarLeads();
   carregarPlanos(); // 🔥 ESSENCIAL
-};
+});
+
 let acaoConfirmada = null;
 
 function abrirConfirmacao(mensagem, callback) {
