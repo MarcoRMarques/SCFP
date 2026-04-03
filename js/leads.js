@@ -2,10 +2,9 @@ const supabaseUrl = "https://rjiydewkobfbevzfrxbz.supabase.co";
 const supabaseKey =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqaXlkZXdrb2JmYmV2emZyeGJ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM0ODEyOTksImV4cCI6MjA4OTA1NzI5OX0.QvooykPpjtAptqIYG2cIsnTv7yZeNyNFQ5QirgaKeQ8";
 
-const supabase = supabase.createClient(supabaseUrl, supabaseKey);
-
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 async function carregarLeads() {
-  const { data, error } = await supabase
+  const { data, error } = await supabaseClient
     .from("leads")
     .select("*")
     .order("created_at", { ascending: false });
@@ -45,7 +44,7 @@ carregarLeads();
 async function alternarStatus(id, statusAtual) {
   const novoStatus = statusAtual === "PAGO" ? "PENDENTE" : "PAGO";
 
-  const { error } = await supabase
+  const { error } = await supabaseClient
     .from("leads")
     .update({ status: novoStatus })
     .eq("id", id);
