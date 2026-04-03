@@ -1,4 +1,30 @@
 window.addEventListener("load", function () {
+  /* ============================= */
+  /* 🔥 MÁSCARA CPF */
+  /* ============================= */
+
+  document.getElementById("cpf").addEventListener("input", function (e) {
+    let v = e.target.value.replace(/\D/g, "");
+
+    v = v.replace(/(\d{3})(\d)/, "$1.$2");
+    v = v.replace(/(\d{3})(\d)/, "$1.$2");
+    v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+
+    e.target.value = v;
+  });
+
+  /* ============================= */
+  /* 🔥 MÁSCARA WHATSAPP */
+  /* ============================= */
+
+  document.getElementById("whatsapp").addEventListener("input", function (e) {
+    let v = e.target.value.replace(/\D/g, "");
+
+    v = v.replace(/^(\d{2})(\d)/g, "($1) $2");
+    v = v.replace(/(\d{5})(\d)/, "$1-$2");
+
+    e.target.value = v;
+  });
   console.log("VERSAO NOVA CHECKOUT 123");
 
   const SUPABASE_URL = "https://rjiydewkobfbevzfrxbz.supabase.co";
@@ -11,6 +37,29 @@ window.addEventListener("load", function () {
   // 🔥 CAPTURAR VENDEDOR DA URL
   const params = new URLSearchParams(window.location.search);
   const vendedorUrl = params.get("vendedor");
+
+  /* ============================= */
+  /* 🔥 BLOQUEIO DO BOTÃO ATÉ ACEITE */
+  /* ============================= */
+
+  const btn = document.getElementById("btn-gerar");
+  const check = document.getElementById("aceite");
+
+  btn.disabled = true;
+  btn.style.opacity = "0.5";
+  btn.style.cursor = "not-allowed";
+
+  check.addEventListener("change", function () {
+    if (check.checked) {
+      btn.disabled = false;
+      btn.style.opacity = "1";
+      btn.style.cursor = "pointer";
+    } else {
+      btn.disabled = true;
+      btn.style.opacity = "0.5";
+      btn.style.cursor = "not-allowed";
+    }
+  });
 
   window.gerarPagamento = function () {
     return window._gerarPagamento();
@@ -32,8 +81,32 @@ window.addEventListener("load", function () {
     const cupom = document.getElementById("cupom").value;
     const aceite = document.getElementById("aceite").checked;
 
-    if (!nome || !cpf || !email || !whatsapp || !plano) {
-      alert("Preencha todos os campos");
+    /* ============================= */
+    /* 🔥 VALIDAÇÃO PROFISSIONAL */
+    /* ============================= */
+
+    if (!nome) {
+      alert("Digite seu nome completo");
+      return;
+    }
+
+    if (cpf.length < 14) {
+      alert("Digite um CPF válido");
+      return;
+    }
+
+    if (!email.includes("@")) {
+      alert("Digite um e-mail válido");
+      return;
+    }
+
+    if (whatsapp.length < 14) {
+      alert("Digite um WhatsApp válido");
+      return;
+    }
+
+    if (!plano) {
+      alert("Selecione um plano");
       return;
     }
 
@@ -41,9 +114,6 @@ window.addEventListener("load", function () {
       alert("Aceite os termos");
       return;
     }
-
-    const params = new URLSearchParams(window.location.search);
-    const vendedorUrl = params.get("vendedor");
 
     const vendedorFinal = vendedorUrl ? vendedorUrl : "direto";
 
@@ -70,6 +140,10 @@ window.addEventListener("load", function () {
         plano,
         valor: valor,
         proxima_cobranca: proxima,
+        /* ============================= */
+        /* 🔥 REGISTRO DE ACEITE */
+        /* ============================= */
+        data_aceite: new Date(),
       },
     ]);
 
@@ -80,7 +154,12 @@ window.addEventListener("load", function () {
     }
 
     console.log("CHEGOU NO FINAL");
-    document.getElementById("pix-area").style.display = "block";
+    /* ============================= */
+    /* 🔥 TRANSIÇÃO PARA PAGAMENTO */
+    /* ============================= */
+
+    document.getElementById("form-card").style.display = "none"; // esconde formulário
+    document.getElementById("pix-area").style.display = "block"; // mostra PIX
   };
 
   /* ============================= */

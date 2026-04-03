@@ -508,3 +508,63 @@
   left: 0;
   top: 0;
 }
+
+/* ============================= */
+/* 🔥 INPUTS PROFISSIONAIS CHECKOUT */
+/* ============================= */
+
+.pagina-vendas input,
+.pagina-vendas select {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.pagina-vendas input:focus,
+.pagina-vendas select:focus {
+  border-color: #00d084;
+  box-shadow: 0 0 0 2px rgba(0, 208, 132, 0.2);
+}
+/* ============================= */
+/* 🔥 QR CODE AJUSTADO (PIX) */
+/* ============================= */
+
+.qrcode-img {
+  width: 220px;
+  max-width: 80%;
+  display: block;
+  margin: 20px auto;
+  border-radius: 12px;
+}
+
+/* ============================= */
+/* 🔥 TERMOS COM SCROLL */
+/* ============================= */
+
+.termos-box {
+  margin-top: 15px;
+  text-align: left;
+}
+
+.termos-container {
+  max-height: 160px;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 13px;
+  color: #ddd;
+}
+
+.termos-check {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
