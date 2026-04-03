@@ -5,7 +5,7 @@ const supabaseKey =
 const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 async function carregarLeads() {
   const { data, error } = await supabaseClient
-    .from("leads")
+    .from("leads_vendas")
     .select("*")
     .order("created_at", { ascending: false });
 
@@ -45,7 +45,7 @@ async function alternarStatus(id, statusAtual) {
   const novoStatus = statusAtual === "PAGO" ? "PENDENTE" : "PAGO";
 
   const { error } = await supabaseClient
-    .from("leads")
+    .from("leads_vendas")
     .update({ status: novoStatus })
     .eq("id", id);
 
