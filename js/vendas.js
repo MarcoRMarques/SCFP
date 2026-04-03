@@ -8,8 +8,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const vendedorSalvo = localStorage.getItem("vendedor");
 
   // Só salva se vier da URL e ainda não existir
-  if (vendedorURL && !vendedorSalvo) {
+  /* ============================= */
+  /* 🔥 CAPTURA CONTROLADA DE VENDEDOR */
+  /* ============================= */
+
+  if (vendedorURL) {
     localStorage.setItem("vendedor", vendedorURL);
+  } else {
+    localStorage.removeItem("vendedor"); // 🔥 limpa se não houver parâmetro
   }
 });
 
