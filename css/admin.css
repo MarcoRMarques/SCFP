@@ -505,3 +505,42 @@ input:focus {
 body {
   padding-bottom: 40px;
 }
+
+/* ============================= */
+/* 🔥 CARD PLANOS - COMPACTO */
+/* ============================= */
+
+#lista-planos {
+  max-height: 180px; /* controla altura */
+  overflow-y: auto; /* scroll interno */
+
+  margin-top: 10px;
+  padding-right: 5px;
+}
+#lista-planos .linha {
+  display: grid;
+  grid-template-columns: 1fr 100px 80px;
+
+  align-items: center;
+
+  padding: 6px 8px;
+  margin-top: 6px;
+
+  font-size: 13px;
+
+  background: #f9fafb;
+  border-radius: 6px;
+}
+#lista-planos .tituloPrincipal {
+  font-size: 16px;
+}
+
+#lista-planos .tituloSecundario {
+  font-size: 12px;
+}
+.card {
+  margin-bottom: 20px;
+}
+body {
+  padding-bottom: 50px;
+}

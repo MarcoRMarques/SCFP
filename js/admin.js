@@ -386,7 +386,7 @@ async function carregarPlanos() {
       <div><strong>${plano.nome}</strong></div>
       <div>R$ ${plano.valor}</div>
       <div>
-        <button onclick="editarPlano(${plano.id})">Editar</button>
+        <button onclick="editarPlano('${plano.id}')">Editar</button>
       </div>
     `;
 
