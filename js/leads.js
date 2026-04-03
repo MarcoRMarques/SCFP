@@ -29,9 +29,9 @@ async function carregarLeads() {
   <div>R$ ${lead.valor}</div>
   <div>${lead.vendedor}</div>
   <div>
-    <button class="btn-status" onclick="alternarStatus('${lead.id}', '${lead.status}')">
-      ${lead.status}
-    </button>
+    <button class="btn-status" onclick="alternarStatus('${lead.id}', '${lead.status_pagamento}')">
+  ${lead.status_pagamento}
+</button>
   </div>
 `;
 
@@ -42,11 +42,12 @@ async function carregarLeads() {
 carregarLeads();
 
 async function alternarStatus(id, statusAtual) {
-  const novoStatus = statusAtual === "PAGO" ? "PENDENTE" : "PAGO";
+  const novoStatus =
+    statusAtual.toLowerCase() === "pendente" ? "pago" : "pendente";
 
   const { error } = await supabaseClient
     .from("leads_vendas")
-    .update({ status: novoStatus })
+    .update({ status_pagamento: novoStatus })
     .eq("id", id);
 
   if (error) {
