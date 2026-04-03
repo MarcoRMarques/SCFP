@@ -393,34 +393,14 @@ async function carregarPlanos() {
     container.appendChild(linha);
   });
 }
-/* ============================= */
-/* 🔥 EDITAR PLANO */
-/* ============================= */
 
-async function editarPlano(id) {
-  const novoValor = prompt("Digite o novo valor:");
+function editarPlano(id) {
+  planoEditandoId = id;
 
-  if (!novoValor) return;
+  const input = document.getElementById("inputEditarEmail");
 
-  const valorNumerico = parseFloat(novoValor);
+  input.value = "";
+  input.placeholder = "Digite o novo valor (ex: 39.90)";
 
-  if (isNaN(valorNumerico)) {
-    alert("Valor inválido");
-    return;
-  }
-
-  const { error } = await supabaseClient
-    .from("planos")
-    .update({ valor: valorNumerico })
-    .eq("id", id);
-
-  if (error) {
-    alert("Erro ao atualizar plano");
-    console.error(error);
-    return;
-  }
-
-  alert("Plano atualizado com sucesso!");
-
-  carregarPlanos(); // 🔥 recarrega lista
+  document.getElementById("popupEditar").style.display = "flex";
 }

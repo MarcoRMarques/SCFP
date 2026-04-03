@@ -488,3 +488,20 @@ input:focus {
   background: #f9fafb;
   border-radius: 8px;
 }
+/* ============================= */
+/* 🔥 ESPAÇO ENTRE CARDS */
+/* ============================= */
+
+.conteudo .card {
+  margin-bottom: 25px;
+}
+
+/* espaço extra só para planos */
+#lista-planos {
+  margin-top: 10px;
+}
+
+/* evitar grudar no fim da tela */
+body {
+  padding-bottom: 40px;
+}
