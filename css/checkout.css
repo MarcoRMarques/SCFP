@@ -286,3 +286,32 @@ h1 {
   margin-top: 20px;
   text-align: center;
 }
+/* 🔥 TÍTULO DOS TERMOS */
+.termos-titulo {
+  font-size: 16px;
+  font-weight: bold;
+  color: #facc15; /* amarelo destaque */
+  margin-bottom: 10px;
+}
+
+/* 🔥 TEXTO */
+.termos-texto {
+  max-height: 120px;
+  overflow-y: auto;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+/* 🔥 CHECKBOX FINAL */
+.termos-final {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+
+  margin-top: 8px;
+}
