@@ -108,18 +108,6 @@ select {
 /* 🔥 CHECKBOX ALINHADO */
 /* ============================= */
 
-.termos-check {
-  display: flex;
-  align-items: center;
-  gap: 6px; /* 🔥 antes 10px → agora mais próximo */
-}
-
-.termos-check label {
-  white-space: nowrap;
-  font-size: 14px;
-  margin: 0;
-}
-
 h1 {
   margin-bottom: 20px;
 }
@@ -280,12 +268,14 @@ h1 {
 }
 
 .termos-check {
-  margin-bottom: 10px;
+  display: inline-flex; /* 🔥 muda tudo */
+  align-items: center;
+  gap: 6px;
 }
-
 .termos-check label {
-  display: inline; /* 🔥 isso resolve o afastamento */
+  display: inline;
   margin: 0;
+  white-space: nowrap;
 }
 .termos-check input {
   margin: 0;
