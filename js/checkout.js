@@ -87,9 +87,12 @@ window.addEventListener("load", function () {
 
     data.forEach((plano) => {
       const option = document.createElement("option");
-      option.value = plano.nome;
+
+      option.value = plano.id; // 🔥 AGORA USA O ID
+      option.dataset.nome = plano.nome; // 🔥 GUARDA O NOME
+      option.dataset.valor = plano.valor; // 🔥 GUARDA O VALOR
+
       option.textContent = `${plano.nome} - R$ ${plano.valor}`;
-      option.dataset.valor = plano.valor;
 
       select.appendChild(option);
     });
@@ -104,17 +107,18 @@ window.addEventListener("load", function () {
     const cpf = document.getElementById("cpf").value;
     const email = document.getElementById("email").value;
     const whatsapp = document.getElementById("whatsapp").value;
-    const plano = document.getElementById("plano").value;
+    const selectPlano = document.getElementById("plano");
+
+    const planoId = selectPlano.value;
+    const planoNome =
+      selectPlano.options[selectPlano.selectedIndex].dataset.nome;
+    const valor = parseFloat(
+      selectPlano.options[selectPlano.selectedIndex].dataset.valor,
+    );
 
     /* ============================= */
     /* 🔥 VALOR DINÂMICO DO PLANO */
     /* ============================= */
-
-    const selectPlano = document.getElementById("plano");
-
-    const valor = parseFloat(
-      selectPlano.options[selectPlano.selectedIndex].dataset.valor,
-    );
 
     const cupom = document.getElementById("cupom").value;
     const aceite = document.getElementById("aceite").checked;
@@ -143,7 +147,7 @@ window.addEventListener("load", function () {
       return;
     }
 
-    if (!plano) {
+    if (!planoId) {
       alert("Selecione um plano");
       return;
     }
@@ -158,7 +162,7 @@ window.addEventListener("load", function () {
     const hoje = new Date();
     let proxima = new Date();
 
-    if (plano === "mensal") {
+    if (planoNome === "mensal") {
       proxima.setMonth(proxima.getMonth() + 1);
     } else {
       proxima.setFullYear(proxima.getFullYear() + 1);
@@ -175,7 +179,8 @@ window.addEventListener("load", function () {
         status_pagamento: "pendente",
         aceitou_termos: true,
         data: hoje,
-        plano,
+        plano_id: planoId,
+        plano_nome: planoNome,
         valor: valor,
         proxima_cobranca: proxima,
         /* ============================= */
