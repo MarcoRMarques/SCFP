@@ -252,7 +252,7 @@ function fecharEditar() {
 }
 
 async function salvarEdicao() {
-  const novoEmail = document.getElementById("inputEditarEmail").value.trim();
+  const valorNumerico = parseFloat(novoEmail.replace(",", "."));
   // =============================
   // 🔥 SE FOR EDIÇÃO DE PLANO
   // =============================
