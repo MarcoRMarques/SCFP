@@ -536,7 +536,7 @@ body {
 /* ============================= */
 
 .card-planos {
-  padding: 12px 15px; /* 🔥 reduz altura */
+  padding: 8px 12px; /* 🔥 reduz altura */
 }
 
 .card-planos .tituloPrincipal {
@@ -548,4 +548,22 @@ body {
   font-size: 12.5px;
   margin-bottom: 5px;
   padding: 5px 6px; /* 🔥 leve aumento */
+}
+
+/* ============================= */
+/* 🔥 REDUÇÃO HEADER PLANOS */
+/* ============================= */
+
+.card-planos {
+  padding: 10px 15px; /* 🔥 menor altura */
+}
+
+.card-planos .tituloPrincipal {
+  font-size: 16px; /* 🔥 menor */
+  margin-bottom: 2px;
+}
+
+.card-planos .tituloSecundario {
+  font-size: 11px;
+  margin-bottom: 4px;
 }
