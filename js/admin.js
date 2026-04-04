@@ -385,12 +385,12 @@ async function carregarPlanos() {
     linha.classList.add("linha");
 
     linha.innerHTML = `
-      <div><strong>${plano.nome}</strong></div>
-      <div>R$ ${plano.valor}</div>
-      <div>
-        <button onclick="editarPlano('${plano.id}')">Editar</button>
-      </div>
-    `;
+  <div><strong>${plano.nome}</strong></div>
+  <div>R$ ${Number(plano.valor).toFixed(2).replace(".", ",")}</div>
+  <div>
+    <button onclick="editarPlano('${plano.id}')">Editar</button>
+  </div>
+`;
 
     container.appendChild(linha);
   });
