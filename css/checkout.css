@@ -381,3 +381,32 @@ h1 {
   transform: scale(0.98);
   box-shadow: 0 5px 15px rgba(0, 208, 132, 0.3);
 }
+
+/* ============================= */
+/* 🔥 SELECT - PLANO */
+/* ============================= */
+
+#plano {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+
+  background-color: #374151; /* cinza médio (melhor contraste) */
+  color: #ffffff;
+
+  border: 1px solid #4b5563;
+
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* 🔥 TEXTO DO OPTION PADRÃO */
+#plano option {
+  color: #000000; /* texto preto */
+  background-color: #ffffff; /* fundo branco */
+}
+#plano:focus {
+  outline: none;
+  border-color: #22c55e;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.3);
+}
