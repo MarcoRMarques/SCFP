@@ -252,12 +252,13 @@ function fecharEditar() {
 }
 
 async function salvarEdicao() {
-  const valorNumerico = parseFloat(novoEmail.replace(",", "."));
   // =============================
   // 🔥 SE FOR EDIÇÃO DE PLANO
   // =============================
   if (planoEditandoId) {
-    const valorNumerico = parseFloat(novoEmail);
+    const valorInput = document.getElementById("inputEditarEmail").value.trim();
+
+    const valorNumerico = parseFloat(valorInput.replace(",", "."));
 
     if (isNaN(valorNumerico)) {
       mostrarAviso("Valor inválido");
@@ -282,6 +283,11 @@ async function salvarEdicao() {
     return;
   }
 
+  // =============================
+  // 🔥 SE FOR USUÁRIO
+  // =============================
+  const novoEmail = document.getElementById("inputEditarEmail").value.trim();
+
   if (!novoEmail) {
     mostrarAviso("Digite um email válido");
     return;
@@ -302,13 +308,6 @@ async function salvarEdicao() {
   fecharEditar();
   carregarUsuarios();
 }
-document.getElementById("novoEmail").addEventListener("keydown", function (e) {
-  if (e.key === "Enter") {
-    e.preventDefault(); // evita comportamento estranho
-    criarUsuario();
-  }
-});
-
 /* ============================= */
 /* LISTAR LEADS DE VENDAS */
 /* ============================= */
