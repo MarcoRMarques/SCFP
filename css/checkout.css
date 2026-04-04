@@ -278,3 +278,7 @@ h1 {
 .termos-box {
   margin-bottom: 20px; /* 🔥 resolve de verdade */
 }
+
+.bloco-botao {
+  margin-top: 20px; /* 🔥 espaçamento REAL e isolado */
+}
