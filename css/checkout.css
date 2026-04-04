@@ -282,3 +282,7 @@ h1 {
 .bloco-botao {
   margin-top: 20px; /* 🔥 espaçamento REAL e isolado */
 }
+.bloco-final {
+  margin-top: 20px;
+  text-align: center;
+}
