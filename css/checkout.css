@@ -111,13 +111,17 @@ select {
 .termos-check {
   display: flex;
   align-items: center;
-  gap: 10px;
-  flex-wrap: nowrap;
+  gap: 6px; /* 🔥 antes 10px → agora mais próximo */
+}
+
+.termos-check input {
+  margin: 0; /* 🔥 remove espaço extra padrão */
 }
 
 .termos-check label {
   white-space: nowrap;
   font-size: 14px;
+  margin: 0;
 }
 
 h1 {
