@@ -63,9 +63,6 @@ select {
   border: none;
 }
 
-.subtitulo-video {
-  font-size: 13px;
-}
 /* ============================= */
 /* 🔥 FORMULÁRIO PREMIUM */
 /* ============================= */
@@ -103,10 +100,6 @@ select {
 
   font-size: 13px;
 }
-
-/* ============================= */
-/* 🔥 CHECKBOX ALINHADO */
-/* ============================= */
 
 h1 {
   margin-bottom: 20px;
@@ -255,7 +248,7 @@ h1 {
   cursor: pointer;
   transition: 0.2s;
   box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
-  margin-top: 15px;
+  margin-top: 15px; /* 👈 escolha esse */
 }
 
 .botao-cta:hover {
@@ -282,10 +275,6 @@ h1 {
   transform: translateY(1px);
 }
 
-.termos-check {
-  margin-bottom: 16px; /* 🔥 aumenta o respiro abaixo */
-}
-
-.botao-cta {
-  margin-top: 10px; /* 🔥 reforça separação */
+.termos-box {
+  margin-bottom: 20px; /* 🔥 resolve de verdade */
 }
