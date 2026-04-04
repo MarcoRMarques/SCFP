@@ -281,3 +281,30 @@ h1 {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.termos-check input {
+  margin: 0;
+  transform: translateY(1px); /* 🔥 ajuste fino vertical */
+}
+.botao-cta {
+  margin-top: 15px; /* 🔥 cria respiro acima do botão */
+}
+.termos-check {
+  margin-bottom: 12px;
+}
+.termos-check {
+  margin-bottom: 10px;
+}
+
+.botao-cta {
+  margin-top: 15px;
+}
+
+.termos-check label {
+  display: inline; /* 🔥 isso resolve o afastamento */
+  margin: 0;
+}
+.termos-check input {
+  margin: 0;
+  transform: translateY(1px);
+}
