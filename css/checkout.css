@@ -114,10 +114,6 @@ select {
   gap: 6px; /* 🔥 antes 10px → agora mais próximo */
 }
 
-.termos-check input {
-  margin: 0; /* 🔥 remove espaço extra padrão */
-}
-
 .termos-check label {
   white-space: nowrap;
   font-size: 14px;
@@ -271,6 +267,7 @@ h1 {
   cursor: pointer;
   transition: 0.2s;
   box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+  margin-top: 15px;
 }
 
 .botao-cta:hover {
@@ -282,22 +279,8 @@ h1 {
   cursor: not-allowed;
 }
 
-.termos-check input {
-  margin: 0;
-  transform: translateY(1px); /* 🔥 ajuste fino vertical */
-}
-.botao-cta {
-  margin-top: 15px; /* 🔥 cria respiro acima do botão */
-}
-.termos-check {
-  margin-bottom: 12px;
-}
 .termos-check {
   margin-bottom: 10px;
-}
-
-.botao-cta {
-  margin-top: 15px;
 }
 
 .termos-check label {
