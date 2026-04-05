@@ -248,6 +248,43 @@ window.addEventListener("load", function () {
     // 🔥 MOSTRA PIX
     document.getElementById("pix-area").style.display = "block";
 
+    // =============================
+    // ⏱️ CONTADOR + AUTO VERIFICAÇÃO
+    // =============================
+
+    let tempo = 120;
+    const contadorEl = document.getElementById("contador");
+
+    const intervalo = setInterval(async () => {
+      tempo--;
+
+      const minutos = String(Math.floor(tempo / 60)).padStart(2, "0");
+      const segundos = String(tempo % 60).padStart(2, "0");
+
+      contadorEl.textContent = `Tempo restante: ${minutos}:${segundos}`;
+
+      // 🔥 CONSULTA STATUS
+      const { data, error } = await supabase
+        .from("leads_vendas")
+        .select("status_pagamento")
+        .eq("id", leadId)
+        .single();
+
+      if (!error && data?.status_pagamento === "pago") {
+        clearInterval(intervalo);
+
+        window.location.href = "obrigado.html";
+        return;
+      }
+
+      // ⛔ TEMPO ESGOTADO
+      if (tempo <= 0) {
+        clearInterval(intervalo);
+
+        window.location.href = "index.html";
+      }
+    }, 3000);
+
     // 🔥 ATUALIZA QR CODE DINÂMICO
     document.querySelector(".qrcode-img").src =
       "data:image/png;base64," + pixData.qr_base64;
