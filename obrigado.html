@@ -26,6 +26,13 @@
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
       }
 
+      .logo {
+        font-size: 22px;
+        font-weight: bold;
+        color: #22c55e;
+        margin-bottom: 15px;
+      }
+
       h1 {
         color: #22c55e;
         margin-bottom: 20px;
@@ -33,7 +40,19 @@
 
       p {
         font-size: 16px;
-        margin-bottom: 10px;
+        margin: 10px 0;
+        color: #cbd5f5;
+      }
+
+      .destaque {
+        color: #ffffff;
+        font-weight: bold;
+      }
+
+      .frase {
+        margin-top: 15px;
+        font-style: italic;
+        color: #94a3b8;
       }
 
       .info {
@@ -58,17 +77,47 @@
 
   <body>
     <div class="box">
-      <h1>🎉 Pagamento Confirmado!</h1>
+      <div class="logo">💚 SCFP</div>
 
-      <p>Obrigado pela sua confiança.</p>
-      <p>Seu acesso está sendo preparado.</p>
+      <h1>✅ Pagamento confirmado!</h1>
+
+      <p class="destaque">
+        Parabéns pela decisão que pode transformar o seu futuro.
+      </p>
+
+      <p>
+        Seja bem-vindo ao <span class="destaque">SCFP</span>. Você acaba de dar
+        um passo importante rumo ao controle total da sua vida financeira.
+      </p>
+
+      <p>
+        Agora você terá mais clareza, segurança nas decisões e um caminho sólido
+        para construir sua estabilidade financeira.
+      </p>
+
+      <p class="frase">
+        "Alguém está sentado na sombra hoje porque alguém plantou uma árvore há
+        muito tempo."
+        <br /><strong>— Warren Buffett</strong>
+      </p>
 
       <div class="info">
-        <p><strong>📩 Você receberá seus dados de acesso em breve.</strong></p>
-        <p>Prazo médio: até alguns minutos.</p>
+        <p><strong>📩 Seu acesso está sendo preparado.</strong></p>
+        <p>Você receberá as instruções no seu e-mail ou WhatsApp.</p>
+        <p><strong>Prazo médio: até 30 minutos.</strong></p>
       </div>
 
-      <a href="index.html" class="btn">Voltar ao início</a>
+      <p class="destaque">Estamos felizes em ter você com a gente 🚀</p>
+
+      <a href="#" id="btn-voltar" class="btn">Voltar ao início</a>
+
+      <script>
+        const params = new URLSearchParams(window.location.search);
+        const vendedor = params.get("vendedor") || "direto";
+
+        document.getElementById("btn-voltar").href =
+          `/SCFP/vendas.html?vendedor=${vendedor}`;
+      </script>
     </div>
   </body>
 </html>
