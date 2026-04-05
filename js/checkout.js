@@ -106,6 +106,8 @@ window.addEventListener("load", function () {
     const nome = document.getElementById("nome").value;
     const cpf = document.getElementById("cpf").value;
     const email = document.getElementById("email").value;
+    // 🔥 ID ÚNICO DO LEAD (NÃO ALTERA NADA EXISTENTE)
+    const leadId = crypto.randomUUID();
     const whatsapp = document.getElementById("whatsapp").value;
     const selectPlano = document.getElementById("plano");
 
@@ -170,6 +172,7 @@ window.addEventListener("load", function () {
 
     const { error } = await supabase.from("leads_vendas").insert([
       {
+        id: leadId,
         nome,
         cpf,
         email,
@@ -211,6 +214,7 @@ window.addEventListener("load", function () {
           nome: nome,
           email: email,
           valor: valor,
+          leadId: leadId, // 🔥 ligação do sistema
         }),
       },
     );
