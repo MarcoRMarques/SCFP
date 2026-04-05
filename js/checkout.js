@@ -273,7 +273,7 @@ window.addEventListener("load", function () {
         clearInterval(timer);
         clearInterval(verificacao);
 
-        window.location.href = "leads.html"; // AJUSTE AQUI se necessário
+        window.location.replace("/SCFP/checkout.html"); // AJUSTE AQUI se necessário
       }
     }, 1000);
 
@@ -289,7 +289,7 @@ window.addEventListener("load", function () {
         clearInterval(timer);
         clearInterval(verificacao);
 
-        window.location.href = "obrigado.html";
+        window.location.href = "/SCFP/obrigado.html";
       }
     }, 3000);
 
