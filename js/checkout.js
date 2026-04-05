@@ -218,8 +218,10 @@ window.addEventListener("load", function () {
     const pixData = await response.json();
 
     if (!pixData.qr_base64) {
-      alert("Erro ao gerar PIX");
-      console.error(pixData);
+      console.error("ERRO COMPLETO:", pixData);
+
+      alert("Erro ao gerar PIX:\n\n" + JSON.stringify(pixData, null, 2));
+
       return;
     }
     /* ============================= */
