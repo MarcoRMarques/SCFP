@@ -196,13 +196,48 @@ window.addEventListener("load", function () {
       return;
     }
 
-    console.log("CHEGOU NO FINAL");
+    // =============================
+    // 🔥 GERAR PIX DINÂMICO (SUPABASE FUNCTION)
+    // =============================
+
+    const response = await fetch(
+      "https://rjiydewkobfbevzfrxbz.supabase.co/functions/v1/criar-pix",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nome: nome,
+          email: email,
+          valor: valor,
+        }),
+      },
+    );
+
+    const pixData = await response.json();
+
+    if (!pixData.qr_base64) {
+      alert("Erro ao gerar PIX");
+      console.error(pixData);
+      return;
+    }
     /* ============================= */
     /* 🔥 TRANSIÇÃO PARA PAGAMENTO */
     /* ============================= */
 
-    document.getElementById("form-card").style.display = "none"; // esconde formulário
-    document.getElementById("pix-area").style.display = "block"; // mostra PIX
+    // 🔥 ESCONDE FORM
+    document.getElementById("form-card").style.display = "none";
+
+    // 🔥 MOSTRA PIX
+    document.getElementById("pix-area").style.display = "block";
+
+    // 🔥 ATUALIZA QR CODE DINÂMICO
+    document.querySelector(".qrcode-img").src =
+      "data:image/png;base64," + pixData.qr_base64;
+
+    // 🔥 (OPCIONAL - PRÓXIMO PASSO) copiar código PIX
+    console.log("PIX copia e cola:", pixData.qr_code);
   };
 
   /* ============================= */
