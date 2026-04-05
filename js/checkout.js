@@ -249,21 +249,36 @@ window.addEventListener("load", function () {
     document.getElementById("pix-area").style.display = "block";
 
     // =============================
-    // ⏱️ CONTADOR + AUTO VERIFICAÇÃO
+    // ⏱️ CONTADOR REAL + VERIFICAÇÃO
     // =============================
 
-    let tempo = 120;
+    let tempo = 60; // 1 minuto
     const contadorEl = document.getElementById("contador");
 
-    const intervalo = setInterval(async () => {
+    // ⏱️ CONTADOR REAL (1s)
+    const timer = setInterval(() => {
       tempo--;
 
       const minutos = String(Math.floor(tempo / 60)).padStart(2, "0");
       const segundos = String(tempo % 60).padStart(2, "0");
 
       contadorEl.textContent = `Tempo restante: ${minutos}:${segundos}`;
+      // 🔥 ALERTA VISUAL (URGÊNCIA)
+      if (tempo <= 15) {
+        contadorEl.style.color = "#ef4444"; // vermelho
+        contadorEl.style.transform = "scale(1.1)";
+      }
 
-      // 🔥 CONSULTA STATUS
+      if (tempo <= 0) {
+        clearInterval(timer);
+        clearInterval(verificacao);
+
+        window.location.href = "leads.html"; // AJUSTE AQUI se necessário
+      }
+    }, 1000);
+
+    // 🔁 VERIFICAÇÃO PAGAMENTO (3s)
+    const verificacao = setInterval(async () => {
       const { data, error } = await supabase
         .from("leads_vendas")
         .select("status_pagamento")
@@ -271,17 +286,10 @@ window.addEventListener("load", function () {
         .single();
 
       if (!error && data?.status_pagamento === "pago") {
-        clearInterval(intervalo);
+        clearInterval(timer);
+        clearInterval(verificacao);
 
         window.location.href = "obrigado.html";
-        return;
-      }
-
-      // ⛔ TEMPO ESGOTADO
-      if (tempo <= 0) {
-        clearInterval(intervalo);
-
-        window.location.href = "index.html";
       }
     }, 3000);
 
