@@ -104,7 +104,16 @@ window.addEventListener("load", function () {
 
   window._gerarPagamento = async function () {
     const nome = document.getElementById("nome").value;
-    const cpf = document.getElementById("cpf").value;
+    const cpfInput = document.getElementById("cpf");
+
+    if (!cpfInput) {
+      alert("Erro interno: campo CPF não encontrado");
+      return;
+    }
+
+    const cpf = cpfInput.value;
+
+    console.log("CPF DIGITADO:", cpf);
     const email = document.getElementById("email").value;
     // 🔥 ID ÚNICO DO LEAD (NÃO ALTERA NADA EXISTENTE)
     const leadId = crypto.randomUUID();
@@ -202,7 +211,7 @@ window.addEventListener("load", function () {
     // =============================
     // 🔥 GERAR PIX DINÂMICO (SUPABASE FUNCTION)
     // =============================
-
+    console.log("CPF DIGITADO:", cpf);
     const response = await fetch(
       "https://rjiydewkobfbevzfrxbz.supabase.co/functions/v1/criar-pix",
       {
@@ -215,6 +224,7 @@ window.addEventListener("load", function () {
           email: email,
           valor: valor,
           leadId: leadId, // 🔥 ligação do sistema
+          cpf: cpf.replace(/\D/g, ""), // 🔥 CPF LIMPO (SEM MÁSCARA)
         }),
       },
     );
