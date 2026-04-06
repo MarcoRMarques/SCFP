@@ -65,12 +65,18 @@
       .btn {
         margin-top: 25px;
         display: inline-block;
-        padding: 12px 20px;
+        padding: 14px 22px;
         background: #22c55e;
         color: #000;
         font-weight: bold;
-        border-radius: 6px;
+        border-radius: 8px;
         text-decoration: none;
+        transition: 0.2s;
+      }
+
+      .btn:hover {
+        transform: scale(1.05);
+        background: #16a34a;
       }
       .logo {
         display: flex;
@@ -85,8 +91,12 @@
       }
 
       .logo-img {
-        width: 22px;
-        height: 22px;
+        width: 55px;
+        height: 55px;
+        object-fit: contain;
+      }
+      .logo {
+        gap: 12px;
       }
     </style>
   </head>
@@ -118,6 +128,9 @@
       <p class="destaque">Estamos felizes em ter você com a gente 🚀</p>
 
       <a href="#" id="btn-voltar" class="btn">Voltar ao início</a>
+      <div class="seguranca">🔒 Pagamento 100% seguro via Mercado Pago</div>
+
+      <p class="info-seguro">Seus dados estão protegidos e criptografados.</p>
 
       <script>
         const params = new URLSearchParams(window.location.search);
