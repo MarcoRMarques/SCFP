@@ -101,7 +101,7 @@ async function alternarAcesso(id, statusAtual) {
     .eq("id", id);
 
   if (error) {
-    alert("Erro ao atualizar acesso");
+    mostrarAviso("Erro ao atualizar acesso");
     console.error(error);
     return;
   }
@@ -152,5 +152,5 @@ Qualquer dúvida estou à disposição 👍
 `;
 
   navigator.clipboard.writeText(mensagem);
-  alert("Mensagem copiada!");
+  mostrarAviso("Mensagem copiada!");
 }

@@ -202,3 +202,47 @@ body {
 .btn-acesso:hover {
   transform: scale(1.05);
 }
+.resumo-leads {
+  margin-top: 20px; /* 👈 espaço acima */
+
+  padding: 15px 18px;
+
+  border-radius: 8px;
+
+  background: #f3f4f6;
+
+  font-size: 14px;
+  color: #374151;
+
+  display: flex;
+  justify-content: space-between;
+}
+.btn-msg {
+  padding: 7px 12px;
+
+  border-radius: 6px;
+  border: none;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  background: #22c55e;
+  color: #ffffff;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.btn-msg:hover {
+  background: #16a34a;
+  transform: scale(1.05);
+}
+
+.btn-msg:active {
+  transform: scale(0.98);
+}
+
+.btn-msg {
+  box-shadow: 0 4px 10px rgba(34, 197, 94, 0.3);
+}
