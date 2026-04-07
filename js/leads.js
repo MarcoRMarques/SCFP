@@ -152,5 +152,5 @@ Qualquer dúvida estou à disposição 👍
 `;
 
   navigator.clipboard.writeText(mensagem);
-  mostrarAviso("Mensagem copiada!");
+  mostrarAviso("Mensagem copiada!", "sucesso");
 }
