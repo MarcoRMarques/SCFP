@@ -76,6 +76,12 @@ async function criarUsuario() {
     return;
   }
 
+  // 🔥 ATUALIZA O LEAD COMO ACESSO CRIADO
+  await supabaseClient
+    .from("leads_vendas")
+    .update({ acesso_criado: true })
+    .eq("email", email);
+
   carregarUsuarios();
 
   document.getElementById("novoEmail").value = "";
