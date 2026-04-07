@@ -47,6 +47,12 @@ onclick="alternarStatus('${lead.id}', '${lead.status_pagamento}')">
   ${lead.status_pagamento}
 </button>
   </div>
+  <div>
+  <button class="btn-acesso ${lead.acesso_criado ? "ok" : "pendente"}"
+    onclick="alternarAcesso('${lead.id}', ${lead.acesso_criado})">
+    ${lead.acesso_criado ? "criado" : "pendente"}
+  </button>
+</div>
 `;
 
     lista.appendChild(linha);
@@ -66,6 +72,22 @@ async function alternarStatus(id, statusAtual) {
 
   if (error) {
     alert("Erro ao atualizar status");
+    console.error(error);
+    return;
+  }
+
+  carregarLeads();
+}
+async function alternarAcesso(id, statusAtual) {
+  const novoStatus = !statusAtual;
+
+  const { error } = await supabaseClient
+    .from("leads_vendas")
+    .update({ acesso_criado: novoStatus })
+    .eq("id", id);
+
+  if (error) {
+    alert("Erro ao atualizar acesso");
     console.error(error);
     return;
   }
