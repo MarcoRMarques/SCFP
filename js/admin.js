@@ -78,23 +78,28 @@ async function criarUsuario() {
 
   // 🔥 ATUALIZA O LEAD COMO ACESSO CRIADO
   // 🔥 ATUALIZA O LEAD CORRETO PELO EMAIL
+  // 🔥 ATUALIZA O LEAD PELO ID (FORMA SEGURA)
   const { data: leads } = await supabaseClient
     .from("leads_vendas")
     .select("id, email")
-    .ilike("email", email.trim())
     .order("data", { ascending: false });
 
-  console.log("🔥 LEADS ENCONTRADOS:", leads);
+  const leadEncontrado = leads.find(
+    (l) =>
+      l.email && l.email.trim().toLowerCase() === email.trim().toLowerCase(),
+  );
 
-  if (leads && leads.length > 0) {
-    const ultimoLead = leads[0];
+  console.log("🔥 LEAD ENCONTRADO:", leadEncontrado);
 
+  if (leadEncontrado) {
     const { error: erroUpdate } = await supabaseClient
       .from("leads_vendas")
       .update({ acesso_criado: true })
-      .eq("id", ultimoLead.id);
+      .eq("id", leadEncontrado.id);
 
-    console.log("🔥 ATUALIZOU ESTE ID:", ultimoLead.id);
+    console.log("🔥 ATUALIZOU ID:", leadEncontrado.id);
+  } else {
+    console.log("❌ NÃO ENCONTROU LEAD PARA ESSE EMAIL");
   }
 
   carregarUsuarios();
