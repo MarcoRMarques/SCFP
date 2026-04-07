@@ -77,11 +77,12 @@ async function criarUsuario() {
   }
 
   // 🔥 ATUALIZA O LEAD COMO ACESSO CRIADO
+  // 🔥 ATUALIZA O LEAD CORRETO PELO EMAIL
   const { data: leads } = await supabaseClient
     .from("leads_vendas")
-    .select("id")
-    .order("data", { ascending: false })
-    .limit(1);
+    .select("id, email")
+    .ilike("email", email.trim())
+    .order("data", { ascending: false });
 
   console.log("🔥 LEADS ENCONTRADOS:", leads);
 
@@ -93,7 +94,7 @@ async function criarUsuario() {
       .update({ acesso_criado: true })
       .eq("id", ultimoLead.id);
 
-    console.log("🔥 RESULTADO UPDATE:", erroUpdate);
+    console.log("🔥 ATUALIZOU ESTE ID:", ultimoLead.id);
   }
 
   carregarUsuarios();
