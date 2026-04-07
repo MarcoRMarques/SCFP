@@ -62,7 +62,7 @@ body {
 
 .header-leads {
   display: grid;
-  grid-template-columns: 1.5fr 2fr 1.5fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1.5fr 2fr 1.5fr 1fr 1fr 1fr 1fr 1fr;
 
   font-size: 13px;
   font-weight: bold;
@@ -150,18 +150,6 @@ body {
 
   background: #ffffff;
   border-radius: 8px;
-}
-.linha-lead {
-  display: grid;
-  grid-template-columns: 1.5fr 2fr 1.5fr 1fr 1fr 1fr 1fr;
-
-  align-items: center;
-  padding: 10px 12px;
-
-  border-bottom: 1px solid #e5e7eb;
-  font-size: 13px;
-
-  color: #1f2937;
 }
 
 .linha-lead:hover {
