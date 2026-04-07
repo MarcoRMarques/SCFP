@@ -17,7 +17,20 @@ async function carregarLeads() {
   const lista = document.getElementById("lista-leads");
   lista.innerHTML = "";
 
+  let total = data.length;
+  let pagos = 0;
+  let pendentes = 0;
+
   data.forEach((lead) => {
+    if ((lead.status_pagamento || "").toLowerCase() === "pago") {
+      pagos++;
+    } else {
+      pendentes++;
+    }
+
+    document.getElementById("total-leads").textContent = total;
+    document.getElementById("total-pagos").textContent = pagos;
+    document.getElementById("total-pendentes").textContent = pendentes;
     const linha = document.createElement("div");
     linha.className = "linha-lead";
 
