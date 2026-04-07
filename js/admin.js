@@ -77,12 +77,24 @@ async function criarUsuario() {
   }
 
   // 🔥 ATUALIZA O LEAD COMO ACESSO CRIADO
-  await supabaseClient
+  // 🔥 BUSCA O LEAD MAIS RECENTE PELO EMAIL
+  const { data: leads } = await supabaseClient
     .from("leads_vendas")
-    .update({ acesso_criado: true })
-    .eq("email", email);
+    .select("id")
+    .eq("email", email)
+    .order("data", { ascending: false });
+
+  if (leads && leads.length > 0) {
+    const ultimoLead = leads[0];
+
+    await supabaseClient
+      .from("leads_vendas")
+      .update({ acesso_criado: true })
+      .eq("id", ultimoLead.id);
+  }
 
   carregarUsuarios();
+  carregarLeads();
 
   document.getElementById("novoEmail").value = "";
   document.getElementById("novoEmail").focus();
