@@ -91,6 +91,7 @@ async function criarUsuario() {
       .from("leads_vendas")
       .update({ acesso_criado: true })
       .eq("id", ultimoLead.id);
+    console.log("🔥 RESULTADO UPDATE:", erroUpdate);
   }
 
   carregarUsuarios();
