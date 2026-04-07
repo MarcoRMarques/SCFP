@@ -35,7 +35,7 @@ async function carregarLeads() {
   <div>${lead.nome}</div>
   <div>${lead.email}</div>
   <div>${lead.whatsapp}</div>
-  <div>${lead.plano}</div>
+ <div>${lead.plano_nome ? lead.plano_nome.toUpperCase() : "---"}</div>
   <div>R$ ${lead.valor}</div>
   <div>${lead.vendedor}</div>
   <div>
@@ -56,7 +56,7 @@ onclick="alternarStatus('${lead.id}', '${lead.status_pagamento}')">
   '${lead.nome}', 
   '${lead.email}', 
   '${lead.whatsapp}', 
-  '${lead.plano}', 
+  '${lead.plano_nome}',
   '${lead.valor}',
   '${lead.data}'
 )">
@@ -85,7 +85,7 @@ async function alternarStatus(id, statusAtual) {
     .eq("id", id);
 
   if (error) {
-    alert("Erro ao atualizar status");
+    mostrarAviso("Erro ao atualizar status");
     console.error(error);
     return;
   }
@@ -142,7 +142,7 @@ Seu acesso foi liberado com sucesso.
 📧 Login: ${email}
 🔑 Senha: (informada pelo suporte)
 
-📦 Plano: ${plano || "---"}
+📦 Plano: ${plano ? plano : "Plano não informado"}
 💰 Valor: R$ ${valor}
 ${infoPlano}
 
