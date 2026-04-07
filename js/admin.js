@@ -77,20 +77,22 @@ async function criarUsuario() {
   }
 
   // 🔥 ATUALIZA O LEAD COMO ACESSO CRIADO
-  // 🔥 BUSCA O LEAD MAIS RECENTE (SEM DEPENDER DO EMAIL)
   const { data: leads } = await supabaseClient
     .from("leads_vendas")
     .select("id")
-    .order("created_at", { ascending: false })
+    .order("data", { ascending: false })
     .limit(1);
+
+  console.log("🔥 LEADS ENCONTRADOS:", leads);
 
   if (leads && leads.length > 0) {
     const ultimoLead = leads[0];
 
-    await supabaseClient
+    const { error: erroUpdate } = await supabaseClient
       .from("leads_vendas")
       .update({ acesso_criado: true })
       .eq("id", ultimoLead.id);
+
     console.log("🔥 RESULTADO UPDATE:", erroUpdate);
   }
 
@@ -335,7 +337,7 @@ async function carregarLeads() {
   const { data, error } = await supabaseClient
     .from("leads_vendas")
     .select("*")
-    .order("created_at", { ascending: false });
+    .order("data", { ascending: false });
 
   if (error) {
     console.error("Erro ao buscar leads:", error);
