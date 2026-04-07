@@ -19,13 +19,14 @@ body {
   align-items: center;
   padding: 10px 12px;
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid #e5e7eb;
   font-size: 13px;
-  color: #e5e7eb;
+
+  color: #1f2937;
 }
 
 .linha-lead:hover {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(34, 197, 94, 0.08);
 }
 
 .linha-lead strong {
@@ -68,10 +69,12 @@ body {
   color: #374151;
 
   background: #ffffff;
-  border-radius: 8px 8px 0 0;
-
   padding: 10px 12px;
   border-bottom: 1px solid #e5e7eb;
+}
+
+.header-leads:hover {
+  background: rgba(34, 197, 94, 0.08);
 }
 /* ============================= */
 /* CORREÇÃO DE CONTEXTO DO HEADER */
@@ -80,17 +83,12 @@ body {
 .container-lista-leads {
   position: relative;
 }
-.container {
-  display: flex;
-  justify-content: center;
-  padding: 40px;
-}
 
 .card {
   width: 100%;
   max-width: 1200px;
 
-  background: #f9fafb; /* quase branco */
+  background: #ffffff; /* branco real */
   padding: 25px;
   border-radius: 12px;
 
@@ -104,6 +102,7 @@ body {
   cursor: pointer;
   font-size: 12px;
   color: white;
+  transition: 0.2s;
 }
 
 .btn-status.pago {
@@ -115,11 +114,15 @@ body {
 }
 
 .btn-status.pago:hover {
-  background: #16a34a; /* verde mais escuro */
+  background: #16a34a;
 }
 
 .btn-status.pendente:hover {
-  background: #dc2626; /* vermelho mais escuro */
+  background: #dc2626;
+}
+
+.btn-status:hover {
+  transform: scale(1.05);
 }
 .tituloPrincipal {
   font-size: 22px;
@@ -132,6 +135,12 @@ body {
   font-size: 14px;
   color: #6b7280;
   margin-bottom: 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
 }
 
 .container-lista-leads {
@@ -172,4 +181,15 @@ body {
 }
 .tabela {
   box-shadow: inset 0 0 0 1px #e5e7eb;
+}
+.tabela {
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px #e5e7eb;
+}
+.container-lista-leads {
+  max-height: 300px;
+  overflow-y: auto;
+  background: #ffffff;
 }
