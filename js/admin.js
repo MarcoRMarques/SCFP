@@ -81,7 +81,7 @@ async function criarUsuario() {
   const { data: leads } = await supabaseClient
     .from("leads_vendas")
     .select("id")
-    .order("data", { ascending: false })
+    .order("created_at", { ascending: false })
     .limit(1);
 
   if (leads && leads.length > 0) {
