@@ -26,8 +26,6 @@
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
       }
 
-      
-
       h1 {
         color: #22c55e;
         margin-bottom: 20px;
@@ -73,7 +71,6 @@
         transform: scale(1.05);
         background: #16a34a;
       }
-      
 
       .logo-img {
         width: 55px;
@@ -81,55 +78,83 @@
         object-fit: contain;
       }
 
-
       .logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
 
-  font-size: 22px;
-  font-weight: bold;
-  color: #22c55e;
-  margin-bottom: 15px;
-}
-      
-.seguranca {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+        font-size: 22px;
+        font-weight: bold;
+        color: #22c55e;
+        margin-bottom: 15px;
+      }
 
-  margin-top: 20px;
-  font-size: 14px;
-  color: #94a3b8;
-}
+      .seguranca {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
 
-.mp-logo {
-  height: 48px;
-  width: auto;
-  object-fit: contain;
-}
+        margin-top: 20px;
+        font-size: 14px;
+        color: #94a3b8;
+      }
 
-.info-seguro {
-  font-size: 12px;
-  color: #6b7280;
-  margin-top: 5px;
-}
+      .mp-logo {
+        height: 48px;
+        width: auto;
+        object-fit: contain;
+      }
 
-.seguranca {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+      .info-seguro {
+        font-size: 12px;
+        color: #6b7280;
+        margin-top: 5px;
+      }
 
-  margin-top: 20px;
-  font-size: 14px;
-  color: #94a3b8;
+      .seguranca {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
 
-  opacity: 0.9;
-}
+        margin-top: 20px;
+        font-size: 14px;
+        color: #94a3b8;
 
+        opacity: 0.9;
+      }
+      .seguranca-box {
+        margin-top: 25px;
+        padding: 15px 18px;
+
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        backdrop-filter: blur(6px);
+      }
+
+      .seguranca-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        font-size: 14px;
+        color: #cbd5f5;
+      }
+
+      .mp-logo {
+        height: 26px;
+        width: auto;
+        object-fit: contain;
+      }
     </style>
   </head>
 
@@ -160,13 +185,17 @@
       <p class="destaque">Estamos felizes em ter você com a gente 🚀</p>
 
       <a href="#" id="btn-voltar" class="btn">Voltar ao início</a>
-      <div class="seguranca">
-        <div class="seguranca">
-  <img src="img/mercado-pago.png" alt="Mercado Pago" class="mp-logo" />
-  <span>Pagamento seguro via Mercado Pago</span>
-</div>
 
-      <p class="info-seguro">Seus dados estão protegidos e criptografados.</p>
+      <div class="seguranca-box">
+        <div class="seguranca-item">
+          <img src="img/mercado-pago.png" class="mp-logo" />
+          <span>Pagamento seguro via Mercado Pago</span>
+        </div>
+
+        <div class="seguranca-item">
+          🔒 Seus dados estão protegidos e criptografados
+        </div>
+      </div>
 
       <script>
         const params = new URLSearchParams(window.location.search);

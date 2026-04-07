@@ -1,3 +1,9 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #1a1c2c, #2e2f4f);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -11,14 +17,15 @@
   grid-template-columns: 1.5fr 2fr 1.5fr 1fr 1fr 1fr 1fr;
 
   align-items: center;
-  padding: 8px 10px;
+  padding: 10px 12px;
 
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 13px;
+  color: #e5e7eb;
 }
 
 .linha-lead:hover {
-  background: #f9fafb;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .linha-lead strong {
@@ -51,18 +58,16 @@
 
 .header-leads {
   display: grid;
-  grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1.5fr 2fr 1.5fr 1fr 1fr 1fr 1fr;
 
-  font-size: 14px;
-  font-weight: 700;
-  color: #444;
+  font-size: 13px;
+  font-weight: bold;
+  color: #9ca3af;
 
-  background: #f9fafb;
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
 
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  padding: 10px 12px;
 }
 /* ============================= */
 /* CORREÇÃO DE CONTEXTO DO HEADER */
@@ -79,22 +84,41 @@
 
 .card {
   width: 100%;
-  max-width: 1100px;
-  background: white;
+  max-width: 1200px;
+  background: rgba(255, 255, 255, 0.05);
   padding: 25px;
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+  backdrop-filter: blur(8px);
+
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
 }
 
 .btn-status {
-  padding: 5px 10px;
+  padding: 6px 10px;
   border-radius: 6px;
   border: none;
   cursor: pointer;
   font-size: 12px;
-  background: #e5e7eb;
+
+  background: #374151;
+  color: #fff;
+
+  transition: 0.2s;
 }
 
 .btn-status:hover {
-  opacity: 0.9;
+  background: #4b5563;
+}
+.tituloPrincipal {
+  font-size: 22px;
+  font-weight: bold;
+  color: #22c55e;
+  margin-bottom: 5px;
+}
+
+.tituloSecundario {
+  font-size: 14px;
+  color: #94a3b8;
+  margin-bottom: 20px;
 }
