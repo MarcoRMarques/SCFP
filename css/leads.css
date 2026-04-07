@@ -100,15 +100,23 @@ body {
   border: none;
   cursor: pointer;
   font-size: 12px;
-
-  background: #374151;
-  color: #fff;
-
-  transition: 0.2s;
+  color: white;
 }
 
-.btn-status:hover {
-  background: #4b5563;
+.btn-status.pago {
+  background: #22c55e;
+}
+
+.btn-status.pendente {
+  background: #ef4444;
+}
+
+.btn-status.pago:hover {
+  background: #16a34a; /* verde mais escuro */
+}
+
+.btn-status.pendente:hover {
+  background: #dc2626; /* vermelho mais escuro */
 }
 .tituloPrincipal {
   font-size: 22px;
@@ -121,4 +129,36 @@ body {
   font-size: 14px;
   color: #94a3b8;
   margin-bottom: 20px;
+}
+
+.container-lista-leads {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 10px;
+
+  background: #ffffff;
+  border-radius: 8px;
+}
+.linha-lead {
+  display: grid;
+  grid-template-columns: 1.5fr 2fr 1.5fr 1fr 1fr 1fr 1fr;
+
+  align-items: center;
+  padding: 10px 12px;
+
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 13px;
+
+  color: #1f2937;
+}
+
+.linha-lead:hover {
+  background: #f3f4f6;
+}
+.btn-status {
+  transition: 0.2s;
+}
+
+.btn-status:hover {
+  transform: scale(1.05);
 }

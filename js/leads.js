@@ -29,7 +29,8 @@ async function carregarLeads() {
   <div>R$ ${lead.valor}</div>
   <div>${lead.vendedor}</div>
   <div>
-    <button class="btn-status" onclick="alternarStatus('${lead.id}', '${lead.status_pagamento}')">
+    <button class="btn-status ${lead.status_pagamento === "pago" ? "pago" : "pendente"}" 
+onclick="alternarStatus('${lead.id}', '${lead.status_pagamento}')">
   ${lead.status_pagamento}
 </button>
   </div>
