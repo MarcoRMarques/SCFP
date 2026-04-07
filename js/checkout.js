@@ -173,10 +173,18 @@ window.addEventListener("load", function () {
     const hoje = new Date();
     let proxima = new Date();
 
-    if (planoNome === "mensal") {
-      proxima.setMonth(proxima.getMonth() + 1);
-    } else {
+    const planoFormatado = (planoNome || "").toLowerCase();
+
+    if (planoFormatado.includes("semestral")) {
+      proxima.setMonth(proxima.getMonth() + 6);
+    } else if (planoFormatado.includes("anual")) {
       proxima.setFullYear(proxima.getFullYear() + 1);
+    } else if (planoFormatado.includes("permanente")) {
+      // 🔥 vitalício (praticamente sem expiração)
+      proxima.setFullYear(proxima.getFullYear() + 100);
+    } else {
+      // fallback de segurança
+      proxima.setMonth(proxima.getMonth() + 1);
     }
 
     const { error } = await supabase.from("leads_vendas").insert([

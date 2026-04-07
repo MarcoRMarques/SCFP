@@ -117,10 +117,13 @@ function copiarMensagem(nome, email, whatsapp, plano, valor, dataPagamento) {
   // 👉 usa data real do pagamento
   const dataBase = dataPagamento ? new Date(dataPagamento) : new Date();
 
-  if (planoFormatado.includes("mensal")) {
-    const dia = dataBase.getDate();
+  if (planoFormatado.includes("semestral")) {
+    const dataRenovacao = new Date(dataBase);
+    dataRenovacao.setMonth(dataRenovacao.getMonth() + 6);
 
-    infoPlano = `🔄 Renovação: todo dia ${dia}`;
+    const dataFormatada = dataRenovacao.toLocaleDateString("pt-BR");
+
+    infoPlano = `📅 Renovação semestral: ${dataFormatada}`;
   } else if (planoFormatado.includes("anual")) {
     const dataRenovacao = new Date(dataBase);
     dataRenovacao.setFullYear(dataRenovacao.getFullYear() + 1);
@@ -128,6 +131,8 @@ function copiarMensagem(nome, email, whatsapp, plano, valor, dataPagamento) {
     const dataFormatada = dataRenovacao.toLocaleDateString("pt-BR");
 
     infoPlano = `📅 Renovação anual: ${dataFormatada}`;
+  } else if (planoFormatado.includes("permanente")) {
+    infoPlano = `💎  Acesso permanente - sem renovação`;
   } else {
     infoPlano = "🔄 Renovação: conforme plano contratado";
   }
@@ -136,6 +141,7 @@ function copiarMensagem(nome, email, whatsapp, plano, valor, dataPagamento) {
 Olá ${nome}, tudo bem? 😊
 
 Seja bem-vindo ao SCFP 🚀
+Seu sistema de controle financeiro pessoal.
 
 Seu acesso foi liberado com sucesso.
 
@@ -146,11 +152,14 @@ Seu acesso foi liberado com sucesso.
 💰 Valor: R$ ${valor}
 ${infoPlano}
 
+📊 Acesse sua plataforma:
+👉 SCFP (acesso seguro 🔒):
+https://marcormarques.github.io/SCFP/login.html
+
 Em breve você poderá acessar o sistema.
 
 Qualquer dúvida estou à disposição 👍
 `;
-
   navigator.clipboard.writeText(mensagem);
   mostrarAviso("Mensagem copiada!", "sucesso");
 }
@@ -177,7 +186,7 @@ function mostrarAviso(msg, tipo = "erro") {
   // 👇 AQUI (exatamente aqui)
   setTimeout(() => {
     fecharAviso();
-  }, 2000);
+  }, 3000);
 }
 
 function fecharAviso() {
