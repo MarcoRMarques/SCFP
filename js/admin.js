@@ -77,12 +77,12 @@ async function criarUsuario() {
   }
 
   // 🔥 ATUALIZA O LEAD COMO ACESSO CRIADO
-  // 🔥 BUSCA O LEAD MAIS RECENTE PELO EMAIL
+  // 🔥 BUSCA O LEAD MAIS RECENTE (SEM DEPENDER DO EMAIL)
   const { data: leads } = await supabaseClient
     .from("leads_vendas")
     .select("id")
-    .eq("email", email)
-    .order("data", { ascending: false });
+    .order("data", { ascending: false })
+    .limit(1);
 
   if (leads && leads.length > 0) {
     const ultimoLead = leads[0];
