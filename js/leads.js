@@ -50,6 +50,19 @@ onclick="alternarStatus('${lead.id}', '${lead.status_pagamento}')">
     ${lead.acesso_criado ? "criado" : "pendente"}
   </button>
 </div>
+<div>
+  <button class="btn-msg"
+    onclick="copiarMensagem(
+  '${lead.nome}', 
+  '${lead.email}', 
+  '${lead.whatsapp}', 
+  '${lead.plano}', 
+  '${lead.valor}',
+  '${lead.data}'
+)">
+    copiar
+  </button>
+</div>
 `;
 
     lista.appendChild(linha);
@@ -94,4 +107,50 @@ async function alternarAcesso(id, statusAtual) {
   }
 
   carregarLeads();
+}
+
+function copiarMensagem(nome, email, whatsapp, plano, valor, dataPagamento) {
+  let infoPlano = "";
+
+  const planoFormatado = (plano || "").toLowerCase();
+
+  // 👉 usa data real do pagamento
+  const dataBase = dataPagamento ? new Date(dataPagamento) : new Date();
+
+  if (planoFormatado.includes("mensal")) {
+    const dia = dataBase.getDate();
+
+    infoPlano = `🔄 Renovação: todo dia ${dia}`;
+  } else if (planoFormatado.includes("anual")) {
+    const dataRenovacao = new Date(dataBase);
+    dataRenovacao.setFullYear(dataRenovacao.getFullYear() + 1);
+
+    const dataFormatada = dataRenovacao.toLocaleDateString("pt-BR");
+
+    infoPlano = `📅 Renovação anual: ${dataFormatada}`;
+  } else {
+    infoPlano = "🔄 Renovação: conforme plano contratado";
+  }
+
+  const mensagem = `
+Olá ${nome}, tudo bem? 😊
+
+Seja bem-vindo ao SCFP 🚀
+
+Seu acesso foi liberado com sucesso.
+
+📧 Login: ${email}
+🔑 Senha: (informada pelo suporte)
+
+📦 Plano: ${plano || "---"}
+💰 Valor: R$ ${valor}
+${infoPlano}
+
+Em breve você poderá acessar o sistema.
+
+Qualquer dúvida estou à disposição 👍
+`;
+
+  navigator.clipboard.writeText(mensagem);
+  alert("Mensagem copiada!");
 }

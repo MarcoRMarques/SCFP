@@ -14,7 +14,7 @@ body {
 
 .linha-lead {
   display: grid;
-  grid-template-columns: 1.5fr 2fr 1.5fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1.5fr 2fr 1.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
 
   align-items: center;
   padding: 10px 12px;
@@ -62,7 +62,7 @@ body {
 
 .header-leads {
   display: grid;
-  grid-template-columns: 1.5fr 2fr 1.5fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1.5fr 2fr 1.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
 
   font-size: 13px;
   font-weight: bold;
