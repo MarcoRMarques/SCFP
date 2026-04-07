@@ -28,9 +28,6 @@ async function carregarLeads() {
       pendentes++;
     }
 
-    document.getElementById("total-leads").textContent = total;
-    document.getElementById("total-pagos").textContent = pagos;
-    document.getElementById("total-pendentes").textContent = pendentes;
     const linha = document.createElement("div");
     linha.className = "linha-lead";
 
@@ -42,7 +39,7 @@ async function carregarLeads() {
   <div>R$ ${lead.valor}</div>
   <div>${lead.vendedor}</div>
   <div>
-    <button class="btn-status ${lead.status_pagamento === "pago" ? "pago" : "pendente"}" 
+    <button class="btn-status ${lead.status_pagamento.toLowerCase() === "pago" ? "pago" : "pendente"}" 
 onclick="alternarStatus('${lead.id}', '${lead.status_pagamento}')">
   ${lead.status_pagamento}
 </button>
@@ -57,6 +54,10 @@ onclick="alternarStatus('${lead.id}', '${lead.status_pagamento}')">
 
     lista.appendChild(linha);
   });
+
+  document.getElementById("total-leads").textContent = total;
+  document.getElementById("total-pagos").textContent = pagos;
+  document.getElementById("total-pendentes").textContent = pendentes;
 }
 
 carregarLeads();
