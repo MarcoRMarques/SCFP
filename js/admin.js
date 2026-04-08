@@ -76,30 +76,25 @@ async function criarUsuario() {
     return;
   }
 
-  // 🔥 ATUALIZA O LEAD COMO ACESSO CRIADO
-  // 🔥 ATUALIZA O LEAD CORRETO PELO EMAIL
   // 🔥 ATUALIZA O LEAD PELO ID (FORMA SEGURA)
-  const { data: leads } = await supabaseClient
-    .from("leads_vendas")
-    .select("id, email")
-    .order("data", { ascending: false });
+  // 🔥 PEGA O ID DO LEAD SALVO
+  const leadId = localStorage.getItem("lead_id");
 
-  const leadEncontrado = leads.find(
-    (l) =>
-      l.email && l.email.trim().toLowerCase() === email.trim().toLowerCase(),
-  );
+  console.log("🔥 LEAD ID RECUPERADO:", leadId);
 
-  console.log("🔥 LEAD ENCONTRADO:", leadEncontrado);
-
-  if (leadEncontrado) {
-    const { error: erroUpdate } = await supabaseClient
+  if (leadId) {
+    const { error } = await supabaseClient
       .from("leads_vendas")
       .update({ acesso_criado: true })
-      .eq("id", leadEncontrado.id);
+      .eq("id", leadId);
 
-    console.log("🔥 ATUALIZOU ID:", leadEncontrado.id);
+    if (error) {
+      console.error("Erro ao atualizar acesso:", error);
+    } else {
+      console.log("✅ ACESSO LIBERADO PARA LEAD:", leadId);
+    }
   } else {
-    console.log("❌ NÃO ENCONTROU LEAD PARA ESSE EMAIL");
+    console.log("❌ NÃO EXISTE LEAD_ID SALVO");
   }
 
   carregarUsuarios();

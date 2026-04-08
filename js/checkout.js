@@ -216,6 +216,12 @@ window.addEventListener("load", function () {
       return;
     }
 
+    // 🔥 SALVA O ID DO LEAD PARA USAR NO ADMIN
+    // 🔥 SALVA O ID DO LEAD
+    localStorage.setItem("lead_id", leadId);
+
+    console.log("🔥 LEAD ID SALVO:", leadId);
+
     // =============================
     // 🔥 GERAR PIX DINÂMICO (SUPABASE FUNCTION)
     // =============================
