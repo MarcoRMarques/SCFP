@@ -1042,7 +1042,14 @@
 
           try {
             if (editandoMov !== null) {
-              const itemEditando = mov[editandoMov];
+              const itemEditando = mov.find((m) => m.id === editandoMov);
+
+              if (!itemEditando) {
+                mostrarAviso(
+                  "Não foi possível identificar o lançamento para atualizar.",
+                );
+                return;
+              }
 
               if (!itemEditando || !itemEditando.id) {
                 mostrarAviso(
@@ -1161,9 +1168,20 @@
           let saldo = 0;
 
           // 🔥 ORDENAÇÃO CORRETA (do mais antigo para o mais novo)
-          let movOrdenado = [...mov].sort(
-            (a, b) => new Date(a.data) - new Date(b.data),
-          );
+          // 🔥 ORDENAÇÃO CORRETA (data + ordem de inserção)
+          let movOrdenado = [...mov]
+            .map((item, index) => ({
+              ...item,
+              _index: index, // mantém ordem original de inserção
+            }))
+            .sort((a, b) => {
+              // 1️⃣ ordena por data
+              let diff = new Date(a.data) - new Date(b.data);
+              if (diff !== 0) return diff;
+
+              // 2️⃣ desempate pela ordem de inserção
+              return a._index - b._index;
+            });
 
           let dataAnterior = "";
 
@@ -1258,8 +1276,8 @@ ${formatarMoeda(resultadoDia)}
         <td>${m.obs || ""}</td>
 
         <td class="acoesTabela">
-          <button class="btnEditar" onclick="editarMov(${indexOriginal})">Editar</button>
-          <button class="btnExcluir" onclick="excluirMov(${indexOriginal})">Excluir</button>
+          <button class="btnEditar" onclick="editarMov(${m.id})">Editar</button>
+<button class="btnExcluir" onclick="excluirMov(${m.id})">Excluir</button>
         </td>
 
       </tr>
@@ -2163,9 +2181,17 @@ ${formatarMoeda(resultadoDia)}
           });
         }
 
-        function editarMov(i) {
-          let m = mov[i];
+        function editarMov(id) {
+          // 🔍 Agora buscamos pelo ID (não mais pelo índice)
+          let m = mov.find((item) => item.id === id);
 
+          // 🔒 Validação de segurança
+          if (!m) {
+            mostrarAviso("Não foi possível identificar o lançamento.");
+            return;
+          }
+
+          // 🧾 Preenche os campos normalmente
           document.getElementById("data").value = m.data;
           document.getElementById("banco").value = m.banco;
           document.getElementById("descricao").value = m.descricao;
@@ -2182,18 +2208,10 @@ ${formatarMoeda(resultadoDia)}
           document.getElementById("valorReal").value = m.valor;
           document.getElementById("obsMov").value = m.obs;
 
-          editandoMov = i;
+          // 🔥 AGORA GUARDA O ID (não o índice)
+          editandoMov = id;
+
           document.getElementById("btnSalvarMov").innerText = "Atualizar";
-        }
-
-        let painel = document.getElementById("painelPagamento");
-
-        if (painel) {
-          painel.addEventListener("click", function (e) {
-            if (e.target.id === "painelPagamento") {
-              cancelarPagamento();
-            }
-          });
         }
 
         function aplicarFiltroTopo() {
@@ -2691,17 +2709,17 @@ ${formatarMoeda(resultadoDia)}
           });
         }
 
-        function excluirMov(i) {
-          const item = mov[i];
-
-          if (!item || !item.id) {
+        function excluirMov(id) {
+          // 🔒 Validação básica
+          if (!id) {
             mostrarAviso(
               "Não foi possível identificar o lançamento para excluir.",
             );
             return;
           }
 
-          indexExcluir = item.id;
+          // 🔥 Agora usamos o ID direto (sem depender do array)
+          indexExcluir = id;
           tipoExclusao = "mov";
 
           document.getElementById("textoPopupExcluir").innerText =
@@ -2712,11 +2730,20 @@ ${formatarMoeda(resultadoDia)}
 
         async function confirmarExclusao() {
           if (indexExcluir !== null) {
+            // 🔥 EXCLUSÃO DE MOVIMENTAÇÃO (JÁ CORRETA, só organizei melhor)
             if (tipoExclusao === "mov") {
               await excluirMovSupabase(indexExcluir);
+
+              // 🔒 Limpeza padrão após exclusão
+              document.getElementById("popupExcluir").style.display = "none";
+
+              indexExcluir = null;
+              tipoExclusao = null;
+
               return;
             }
 
+            // 🔥 EXCLUSÃO DE CONTA
             if (tipoExclusao === "conta") {
               const sucesso = await excluirContaSupabase(indexExcluir);
 
@@ -2735,6 +2762,7 @@ ${formatarMoeda(resultadoDia)}
               return;
             }
 
+            // 🔥 EXCLUSÃO DE CONTA DO SISTEMA
             if (tipoExclusao === "contaSistema") {
               const sucesso = await excluirContaSistemaSupabase(indexExcluir);
 
@@ -2754,6 +2782,7 @@ ${formatarMoeda(resultadoDia)}
             }
           }
 
+          // 🔒 fallback de segurança
           document.getElementById("popupExcluir").style.display = "none";
 
           indexExcluir = null;
@@ -2766,7 +2795,6 @@ ${formatarMoeda(resultadoDia)}
           indexExcluir = null;
           tipoExclusao = null;
         }
-
         /* INÍCIO DO PASSO 5 */
 
         /* FIM DO PASSO 5 */
@@ -3154,7 +3182,7 @@ ${formatarMoeda(resultadoDia)}
 
     <script src="js/alertas.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script src="js/relatorios.js?v=6"></script>
-    <script src="js/relatoriosContas.js?v=6"></script>
+    <script src="js/relatorios.js?v=7"></script>
+    <script src="js/relatoriosContas.js?v=7"></script>
   </body>
 </html>

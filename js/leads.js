@@ -154,7 +154,7 @@ ${infoPlano}
 
 📊 Acesse sua plataforma:
 👉 SCFP (acesso seguro 🔒):
-https://marcormarques.github.io/SCFP/login.html
+https://scfpsistema.github.io/login.html
 
 Em breve você poderá acessar o sistema.
 
